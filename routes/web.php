@@ -12,7 +12,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/factory', function () {
+  return view('welcome');
+});
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
+
+Route::group(['middleware' => ['checkrole:admin']], function () {
+    
+
+});
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

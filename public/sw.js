@@ -36,7 +36,7 @@ var checkResponse = function (request) {
 var addToCache = function (request) {
     return caches.open("offline").then(function (cache) {
         return fetch(request).then(function (response) {
-            return cache.put(request, response);
+            // return cache.put(request, response);
         });
     });
 };
