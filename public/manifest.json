@@ -1,9 +1,9 @@
 {
-    "name": "Laravel Package Tutorial",
-    "short_name": "LPT",
+    "name": "FindFactory Rmutt",
+    "short_name": "FindFactory",
     "start_url": "/index.php",
     "background_color": "#6777ef",
-    "description": "Tutorial of Laravel Package",
+    "description": "Your Can Find About Factory",
     "display": "fullscreen",
     "theme_color": "#6777ef",
     "icons": [

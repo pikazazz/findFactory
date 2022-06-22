@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\fontend\viewFactoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,11 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::group(['middleware' => ['checkrole:admin']], function () {
-    
+Route::resource('factory', viewFactoryController::class);
 
-});
+// Route::group(['middleware' => ['checkrole:admin']], function () {
+    
+// });
 
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

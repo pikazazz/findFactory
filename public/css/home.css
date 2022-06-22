@@ -6,7 +6,7 @@
 ================================================== */
 
 body{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Prompt', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -21,11 +21,11 @@ body{
 }
 ::selection {
   color: #fff;
-  background-color: #8167a9;
+  background-color: #C5D6BA;
 }
 ::-moz-selection {
   color: #fff;
-  background-color: #8167a9;
+  background-color: #C5D6BA;
 }
 
 
@@ -118,7 +118,7 @@ body{
     transition: all 200ms linear;
 }
 .nav-item:hover .nav-link{
-  color: #8167a9 !important;
+  color: #C5D6BA !important;
 }
 .nav-item.active .nav-link{
   color: #777 !important;
@@ -135,7 +135,7 @@ body{
   width: 100%;
   height: 2px;
   content: '';
-  background-color: #8167a9;
+  background-color: #C5D6BA;
   opacity: 0;
     transition: all 200ms linear;
 }
@@ -153,7 +153,18 @@ body{
 
 /* #Primary style
 ================================================== */
-
+.gap-1{
+  gap: 6px;
+}
+.gap-2{
+  gap: 12px;
+}
+.gap-3{
+  gap: 18px;
+}
+.gap-4{
+  gap: 24px;
+}
 .bg-light {
   background-color: #fff !important;
     transition: all 200ms linear;
@@ -162,6 +173,10 @@ body{
     position: relative;
   width: 100%;
   display: block;
+ 
+}
+.content{
+  margin-top: 100px;
 }
 .full-height {
     height: 100vh;
@@ -319,7 +334,7 @@ h1 span:nth-child(15){
 #switch {
   width: 60px;
   height: 8px;
-  border: 2px solid #8167a9;
+  border: 2px solid #C5D6BA;
   border-radius: 27px;
   background: #9BC2B2;
   position: relative;
@@ -347,7 +362,7 @@ body.hero-anime #switch{
 }
 .switched {
   border-color: #9BC2B2 !important;
-  background: #8167a9 !important;
+  background: #C5D6BA !important;
 }
 .switched #circle {
   left: 43px;

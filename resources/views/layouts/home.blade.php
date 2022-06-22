@@ -13,54 +13,15 @@
     <meta name="theme-color" content="#6777ef" />
     <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
-
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <style>
-
     </style>
 </head>
 
-<body class="hero-anime">
-  <style src="{{ asset('css/home.css') }}"></style>
-   @include('include.navbar')
-    <div class="section full-height">
-        <div class="absolute-center">
-            <div class="section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1>
-                                <span>ค้</span><span>น</span><span>ห</span><span>า</span><span>โ</span><span>ร</span><span>ง</span><span>ง</span><span>า</span><span>น</span><span>ข</span><span>อ</span><span>ง</span><span>เ</span><span>ร</span><span>า</span>
-                            </h1>
-                            <p>เลื่อนเพื่อเปลี่ยนเป็นโหมดกลางคืน</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section mt-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="switch">
-                                <div id="circle"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="my-5 py-5">
-    </div>
-
-    <!-- Link to page
-  ================================================== -->
-
-    <a href="https://front.codes/" class="logo" target="_blank">
-        <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-    </a>
-
-</body>
+<main class="py-4">
+    @include('include.navbar')
+    @yield('content')
+</main>
 
 </html>
 
