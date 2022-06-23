@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fontend\viewFactoryController;
+use App\Http\Controllers\fontend\pageDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::resource('factory', viewFactoryController::class);
+Route::resource('page', pageDetailController::class);
 
 // Route::group(['middleware' => ['checkrole:admin']], function () {
     
