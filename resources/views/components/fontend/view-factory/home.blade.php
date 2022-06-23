@@ -67,7 +67,7 @@
                                                     <option value="1">โรงงาน C</option>
                                                     <option value="1">โรงงาน D</option>
                                                     <option value="1">โรงงาน E</option>
-                                                  </select>
+                                                </select>
                                                 <li>
                                                     ระยะทางทั้งหมด : 180 กิโลเมตร
                                                 </li>
@@ -105,10 +105,9 @@
                                     <center>
                                         <div class="row mt-4">
                                             <div class="col">
-                                                <a
-                                                href=""><img
-                                                    src="{{ asset('asset/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}" width="20%"
-                                                    alt=""></a>
+                                                <a href="{{ route('page.index') }}"><img
+                                                        src="{{ asset('asset/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
+                                                        width="20%" alt=""></a>
                                                 <a data-toggle="modal"
                                                     data-target="#exampleModalCenter{{ $i }}"><img
                                                         src="{{ asset('asset/about/picture/kindpng_1491757.png') }}"

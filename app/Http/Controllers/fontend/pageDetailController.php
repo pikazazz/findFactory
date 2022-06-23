@@ -14,7 +14,7 @@ class pageDetailController extends Controller
      */
     public function index()
     {
-        return view('components.fontend.view-factory.home');
+        return view('components.fontend.page-detail.home');
     }
 
     /**
