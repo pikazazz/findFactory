@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- PWA  -->
     <meta name="theme-color" content="#6777ef" />
     <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
@@ -32,14 +35,20 @@
                             <h1>
                                 <span>ค้</span><span>น</span><span>ห</span><span>า</span><span>โ</span><span>ร</span><span>ง</span><span>ง</span><span>า</span><span>น</span><span>ข</span><span>อ</span><span>ง</span><span>เ</span><span>ร</span><span>า</span>
                             </h1>
-                            <p>เลื่อนเพื่อเปลี่ยนเป็นโหมดกลางคืน</p>
-
-                           
+                            <div class="input-group">
+                                <input type="text" class="form-control" style="width: 50%" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p>เลื่อนเพื่อเปลี่ยนเป็นโหมดกลางคืน </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="section mt-5">
+            <div class="section mt-2">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -50,14 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                </div>
-            </div>
+
         </div>
     </div>
     <div class="my-5 py-5">
