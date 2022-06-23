@@ -107,7 +107,7 @@
                                             <div class="col">
                                                 <a
                                                 href=""><img
-                                                    src="{{ asset('asset/about/picture/355980.png') }}" width="20%"
+                                                    src="{{ asset('asset/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}" width="20%"
                                                     alt=""></a>
                                                 <a data-toggle="modal"
                                                     data-target="#exampleModalCenter{{ $i }}"><img

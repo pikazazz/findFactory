@@ -21,8 +21,8 @@
 </head>
 
 <body class="hero-anime">
-  <style src="{{ asset('css/home.css') }}"></style>
-   @include('include.navbar')
+    <style src="{{ asset('css/home.css') }}"></style>
+    @include('include.navbar')
     <div class="section full-height">
         <div class="absolute-center">
             <div class="section">
@@ -33,6 +33,8 @@
                                 <span>ค้</span><span>น</span><span>ห</span><span>า</span><span>โ</span><span>ร</span><span>ง</span><span>ง</span><span>า</span><span>น</span><span>ข</span><span>อ</span><span>ง</span><span>เ</span><span>ร</span><span>า</span>
                             </h1>
                             <p>เลื่อนเพื่อเปลี่ยนเป็นโหมดกลางคืน</p>
+
+                           
                         </div>
                     </div>
                 </div>
@@ -46,6 +48,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
                 </div>
             </div>
         </div>
