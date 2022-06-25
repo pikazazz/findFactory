@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fontend\viewFactoryController;
 use App\Http\Controllers\fontend\pageDetailController;
 use App\Http\Controllers\backend\employeeController;
+use App\Http\Controllers\SurveyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
