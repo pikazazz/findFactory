@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fontend\viewFactoryController;
 use App\Http\Controllers\fontend\pageDetailController;
+use  App\Http\Controllers\SurveyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,9 @@ use App\Http\Controllers\fontend\pageDetailController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/factory', function () {
-  return view('welcome');
-});
+// Route::get('/factory', function () {
+//   return view('welcome');
+// });
 
 Route::get('/', function () {
   return view('welcome');
@@ -24,7 +25,7 @@ Route::get('/', function () {
 
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
-
+Route::resource('survay',SurveyController::class);
 // Route::group(['middleware' => ['checkrole:admin']], function () {
     
 // });

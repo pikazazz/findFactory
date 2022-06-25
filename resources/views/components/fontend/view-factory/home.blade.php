@@ -105,7 +105,7 @@
                                     <center>
                                         <div class="row mt-4">
                                             <div class="col">
-                                                <a href="{{ route('page.index') }}"><img
+                                                <a target="_blank" href="{{ route('page.index') }}"><img
                                                         src="{{ asset('asset/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
                                                         width="20%" alt=""></a>
                                                 <a data-toggle="modal"
