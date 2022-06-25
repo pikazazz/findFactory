@@ -1,13 +1,3 @@
-.fac-page-header {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 350px;
-    filter: contrast(0.4);
-}
-.detail-page {
-    color: #000;
-}
 
 .fac-card-hover:hover {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

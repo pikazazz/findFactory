@@ -105,16 +105,21 @@
                                     <center>
                                         <div class="row mt-4">
                                             <div class="col">
+<<<<<<< HEAD
                                                 <a target="_blank" href="{{ route('page.index') }}"><img
                                                         src="{{ asset('asset/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
+=======
+                                                <a href="{{ route('page.index') }}"><img
+                                                        src="{{ asset('assets/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
+>>>>>>> 0a2f65ffdddf800402dddee1ac3e8f0ece0069a3
                                                         width="20%" alt=""></a>
                                                 <a data-toggle="modal"
                                                     data-target="#exampleModalCenter{{ $i }}"><img
-                                                        src="{{ asset('asset/about/picture/kindpng_1491757.png') }}"
+                                                        src="{{ asset('assets/about/picture/kindpng_1491757.png') }}"
                                                         width="20%" alt=""></a>
                                                 <a
                                                     href="http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003"><img
-                                                        src="{{ asset('asset/about/picture/355980.png') }}" width="20%"
+                                                        src="{{ asset('assets/about/picture/355980.png') }}" width="20%"
                                                         alt=""></a>
                                             </div>
                                         </div>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="fac-page-header"
-        style="background-image: url({{ asset('asset/factories/patrick-hendry-6xeDIZgoPaw-unsplash.jpg') }})">
+        style="background-image: url({{ asset('assets/factories/patrick-hendry-6xeDIZgoPaw-unsplash.jpg') }})">
     </div>
     <div class="container py-4 detail-page">
         <div class="row">
