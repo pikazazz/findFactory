@@ -5,8 +5,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> @yield('backend-header')</title>
 
-        <title>หน้า | แอดมิน</title>
+
 
 
         <!-- Google Font: Source Sans Pro -->
@@ -45,21 +46,19 @@
 
     </style>
 
-    <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
+    <body class="hold-transition sidebar-mini layout-fixed ">
 
 
         <main class="py-4">
 
-            <form id="logout-form" action="s{{ asset('assets/logout') }}" method="POST" class="d-none">
+            <form id="logout-form" action="{{ asset('assets/logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
-
-
             <div class="wrapper">
 
                 <!-- Preloader -->
                 <div class="preloader flex-column justify-content-center align-items-center">
-                    <img class="animation__shake" src="{{ asset('assets//img/loading.png') }}" alt="AdminLTELogo" height="200"
+                    <img class="animation__shake" src="{{ asset('assets/img/loading.png') }}" alt="AdminLTELogo" height="200"
                         width="200">
                 </div>
 
@@ -100,7 +99,7 @@
                     <a href="index3.html" class="brand-link">
                         <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                             class="brand-image img-circle elevation-3" style="opacity: .8">
-                        <span class="brand-text font-weight-light" style="color: white">MP GROUP</span>
+                        <span class="brand-text font-weight-light" style="color: white">{Factory Name}</span>
                     </a>
                     <hr>
                     <!-- Sidebar -->
@@ -113,8 +112,7 @@
                             </div>
                             <div class="info">
                                 <a href="s{{ asset('assets/Account.index') }}" style="color: white"
-                                    class="d-block">{{ Auth::user()->fname }}
-                                    {{ Auth::user()->lname }}</a>
+                                    class="d-block">{Fname Lname}</a>
                             </div>
                         </div>
                         <hr>
@@ -145,34 +143,17 @@
                                 <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                                 <li class="nav-item">
-                                    <a href="s{{ asset('assets/UserDashboard.index') }}" class="nav-link ">
+                                    <a href="{{route('dashboard.index')}}" class="nav-link ">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>จัดการผู้ใช้งาน</p>
                                     </a>
                                 </li>
-
-
                                 <li class="nav-item">
-                                    <a href="s{{ asset('assets/Introduce.index') }}" class="nav-link ">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                                        <p>จัดคู่มือเอกสาร</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="s{{ asset('assets/CalendarEdit.index') }}" class="nav-link ">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                                        <p>จัดการตารางสอบ</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="s{{ asset('assets/logout') }}" onclick="event.preventDefault();
+                                    <a href="" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" class="nav-link">
                                         <i class="nav-icon fas fa-sign-out-alt"></i>
                                         <p>
                                             Logout
-
                                         </p>
                                     </a>
                                 </li>
@@ -186,21 +167,14 @@
                 <!-- Content Wrapper. Contains page content -->
                 <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
-
-                    @yield('header-content')
-
+                    @yield('backend-header-content')
                     <!-- /.content-header -->
-
                     <!-- Main content -->
-
                     <section class="content">
                         <div class="container-fluid">
-                            @yield('content')
+                            @yield('backend-content')
                         </div><!-- /.container-fluid -->
-
-
                     </section>
-
                     <!-- /.content -->
                 </div>
                 <!-- /.content-wrapper -->

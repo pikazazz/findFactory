@@ -22,13 +22,13 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::resource('admin/dashboard', dashBoradCOntroller::class);
+Route::resource('dashboard', dashBoradCOntroller::class);
 
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
 
 // Route::group(['middleware' => ['checkrole:admin']], function () {
-    
+
 // });
 
 
