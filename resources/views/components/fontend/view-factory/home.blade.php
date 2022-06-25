@@ -106,15 +106,15 @@
                                         <div class="row mt-4">
                                             <div class="col">
                                                 <a href="{{ route('page.index') }}"><img
-                                                        src="{{ asset('asset/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
+                                                        src="{{ asset('assets/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
                                                         width="20%" alt=""></a>
                                                 <a data-toggle="modal"
                                                     data-target="#exampleModalCenter{{ $i }}"><img
-                                                        src="{{ asset('asset/about/picture/kindpng_1491757.png') }}"
+                                                        src="{{ asset('assets/about/picture/kindpng_1491757.png') }}"
                                                         width="20%" alt=""></a>
                                                 <a
                                                     href="http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003"><img
-                                                        src="{{ asset('asset/about/picture/355980.png') }}" width="20%"
+                                                        src="{{ asset('assets/about/picture/355980.png') }}" width="20%"
                                                         alt=""></a>
                                             </div>
                                         </div>
