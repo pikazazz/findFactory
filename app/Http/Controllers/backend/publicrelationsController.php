@@ -14,7 +14,7 @@ class publicrelationsController extends Controller
      */
     public function index()
     {
-        //
+       return view('components.backend.infomation.home');
     }
 
     /**

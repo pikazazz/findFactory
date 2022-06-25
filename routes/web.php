@@ -5,6 +5,8 @@ use App\Http\Controllers\fontend\viewFactoryController;
 use App\Http\Controllers\fontend\pageDetailController;
 use App\Http\Controllers\backend\employeeController;
 use App\Http\Controllers\backend\factoryController;
+use App\Http\Controllers\backend\publicrelationsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
