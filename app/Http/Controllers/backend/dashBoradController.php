@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class dashBoradController extends Controller
+class employeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class dashBoradController extends Controller
      */
     public function index()
     {
-       return view('components.backend.dashboard.home');
+       return view('components.backend.employee.home');
     }
 
     /**

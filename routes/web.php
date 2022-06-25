@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fontend\viewFactoryController;
 use App\Http\Controllers\fontend\pageDetailController;
-use App\Http\Controllers\backend\dashBoradCOntroller;
+use App\Http\Controllers\backend\employeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +22,7 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::resource('dashboard', dashBoradCOntroller::class);
+Route::resource('employee', employeeController::class);
 
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
