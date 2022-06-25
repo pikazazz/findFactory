@@ -143,13 +143,13 @@
                             <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                             <li class="nav-item">
-                                <a href="{{ route('employee.index') }}" class="nav-link ">
+                                <a href="{{ route('manage-employee.index') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>จัดการผู้ใช้งาน</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link ">
+                                <a href="{{route('manage-factory.index')}}" class="nav-link ">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>จัดการข้อมูลโรงงาน</p>
                                 </a>
