@@ -15,9 +15,9 @@ use App\Http\Controllers\backend\factoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/factory', function () {
-  return view('welcome');
-});
+// Route::get('/factory', function () {
+//   return view('welcome');
+// });
 
 Route::get('/', function () {
   return view('welcome');
@@ -31,7 +31,7 @@ Route::resource('manage-infomation', publicrelationsController::class);
 
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
-
+Route::resource('survay',SurveyController::class);
 // Route::group(['middleware' => ['checkrole:admin']], function () {
 
 // });

@@ -105,8 +105,13 @@
                                     <center>
                                         <div class="row mt-4">
                                             <div class="col">
+<<<<<<< HEAD
+                                                <a target="_blank" href="{{ route('page.index') }}"><img
+                                                        src="{{ asset('asset/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
+=======
                                                 <a href="{{ route('page.index') }}"><img
                                                         src="{{ asset('assets/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
+>>>>>>> 0a2f65ffdddf800402dddee1ac3e8f0ece0069a3
                                                         width="20%" alt=""></a>
                                                 <a data-toggle="modal"
                                                     data-target="#exampleModalCenter{{ $i }}"><img
