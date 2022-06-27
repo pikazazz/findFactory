@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class surveyController extends Controller
+class SurveyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class surveyController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**

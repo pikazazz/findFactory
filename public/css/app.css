@@ -1,4 +1,3 @@
-
 .fac-card-hover:hover {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
@@ -37,3 +36,19 @@
     font-family: "fontawesome";
 }
 
+.survey {
+    color: #000;
+    font-weight: 300;
+}
+.survey-text-blod {
+    font-weight: 400;
+}
+legend {
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.survey-label {
+    font-weight: 400;
+    text-decoration: underline;
+}

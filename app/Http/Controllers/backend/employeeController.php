@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class employeeController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.

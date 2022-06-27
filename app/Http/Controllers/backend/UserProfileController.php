@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\fontend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ViewFactoryController extends Controller
+class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ViewFactoryController extends Controller
      */
     public function index()
     {
-        return view('components.fontend.view-factory.home');
+        //
     }
 
     /**

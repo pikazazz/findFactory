@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\fontend;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ViewFactoryController extends Controller
+class UploadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class ViewFactoryController extends Controller
      */
     public function index()
     {
-        return view('components.fontend.view-factory.home');
+        //
     }
 
     /**
@@ -35,7 +34,20 @@ class ViewFactoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $input['file'] = '';
+
+        if ($image = $request->file('file')) {
+            $destinationPath = 'groups/' . Auth::user()->group . '/' . $request->type;
+            $file = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $file);
+            $input['file'] = "$file";
+        }
+        
+        // $group = groupModel::find(Auth::user()->group);
+        // $group->path_ch2 = "$destinationPath" . "/" . "$file";
+        // $group->save();
+        // return redirect()->route('Group.index')->with('messagesok','เพิ่มไฟล์สำเร็จ')->with('messagetype','success');
     }
 
     /**
