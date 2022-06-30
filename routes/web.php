@@ -34,7 +34,7 @@ Route::resource('manage-infomation', publicrelationsController::class);
 
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
-Route::resource('survay',SurveyController::class);
+Route::resource('survey',SurveyController::class);
 // Route::group(['middleware' => ['checkrole:admin']], function () {
 
 // });
