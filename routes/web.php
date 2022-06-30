@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\fontend\viewFactoryController;
-use App\Http\Controllers\fontend\pageDetailController;
-use App\Http\Controllers\backend\employeeController;
-use App\Http\Controllers\backend\factoryController;
-use App\Http\Controllers\backend\publicrelationsController;
-use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\fontend\ViewFactoryController;
+use App\Http\Controllers\fontend\PageDetailController;
+
+
+use App\Http\Controllers\backend\EmployeeController;
+use App\Http\Controllers\backend\FactoryController;
+use App\Http\Controllers\backend\PublicrelationsController;
+use App\Http\Controllers\backend\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,15 +28,17 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::resource('manage-employee', employeeController::class);
-Route::resource('manage-factory', factoryController::class);
-Route::resource('manage-survey', surveyController::class);
-Route::resource('manage-infomation', publicrelationsController::class);
+Route::resource('manage-employee', EmployeeController::class);
+Route::resource('manage-factory', FactoryController::class);
+Route::resource('manage-survey', SurveyController::class);
+Route::resource('manage-infomation', PublicrelationsController::class);
+Route::resource('manage-profile', UserProfileController::class);
 
 
-Route::resource('factory', viewFactoryController::class);
-Route::resource('page', pageDetailController::class);
-Route::resource('survey',SurveyController::class);
+
+Route::resource('factory', ViewFactoryController::class);
+Route::resource('page', PageDetailController::class);
+Route::resource('survay',SurveyController::class);
 // Route::group(['middleware' => ['checkrole:admin']], function () {
 
 // });

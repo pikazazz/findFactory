@@ -18,6 +18,7 @@
 {{-- @extends('layouts.no-layout')
 
 @section('content')
+<<<<<<< HEAD
     <div class="container survey py-5 bg-white shadow">
         <h2>แบบสำรวจข้อมูลเพิ่มเติมของสถานประกอบการอุตสาหกรรมพลาสติก</h2>
         <div class="card pt-3 px-3 text-danger my-4 survey-text-blod">
@@ -456,3 +457,7 @@
         }
     </script>
 @endsection --}}
+=======
+test
+@endsection
+>>>>>>> e218e3b4a9864c5362c6b223b765ed93084c042b
