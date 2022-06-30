@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\EmployeeController;
 use App\Http\Controllers\backend\FactoryController;
 use App\Http\Controllers\backend\PublicrelationsController;
 use App\Http\Controllers\backend\UserProfileController;
+use App\Http\Controllers\SurveyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::resource('manage-profile', UserProfileController::class);
 
 Route::resource('factory', ViewFactoryController::class);
 Route::resource('page', PageDetailController::class);
-Route::resource('survay',SurveyController::class);
+Route::resource('survey',SurveyController::class);
 // Route::group(['middleware' => ['checkrole:admin']], function () {
 
 // });
