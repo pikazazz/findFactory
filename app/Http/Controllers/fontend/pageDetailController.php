@@ -5,7 +5,7 @@ namespace App\Http\Controllers\fontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PageDetailController extends Controller
+class pageDetailController extends Controller
 {
     /**
      * Display a listing of the resource.

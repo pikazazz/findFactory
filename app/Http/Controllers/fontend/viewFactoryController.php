@@ -5,7 +5,7 @@ namespace App\Http\Controllers\fontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ViewFactoryController extends Controller
+class viewFactoryController extends Controller
 {
     /**
      * Display a listing of the resource.

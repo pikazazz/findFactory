@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> @yield('backend-header')</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('/logo.png') }}">
+
+
+
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -98,7 +98,7 @@
             <aside class="main-sidebar  elevation-4" style="background-color: #455a64">
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
-                    <img src="{{ asset('/logo.png') }}" alt="AdminLTE Logo"
+                    <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                         class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light" style="color: white">{Factory Name}</span>
                 </a>
@@ -149,15 +149,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('manage-factory.index') }}" class="nav-link ">
+                                <a href="{{route('manage-factory.index')}}" class="nav-link ">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>จัดการข้อมูลโรงงาน</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('manage-infomation.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>จัดการข้อมูลข่าวประชาสัมพันธ์</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -251,7 +245,6 @@
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/fullcalendar/main.js') }}"></script>
-    <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#summernote').summernote();
@@ -274,25 +267,6 @@
                 "autoWidth": false,
                 "responsive": true,
             });
-        });
-    </script>
-
-    <script>
-        $(document).on("click", ".browse", function() {
-            var file = $(this).parents().find(".file");
-            file.trigger("click");
-        });
-        $('input[type="file"]').change(function(e) {
-            var fileName = e.target.files[0].name;
-            $("#file").val(fileName);
-
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                // get loaded data and render thumbnail.
-                document.getElementById("preview").src = e.target.result;
-            };
-            // read the image file as a data URL.
-            reader.readAsDataURL(this.files[0]);
         });
     </script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
