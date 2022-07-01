@@ -112,7 +112,7 @@
                                 class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="s{{ asset('assets/Account.index') }}" style="color: white"
+                            <a href="{{ route('manage-profile.index') }}" style="color: white"
                                 class="d-block">{Fname Lname}</a>
                         </div>
                     </div>
