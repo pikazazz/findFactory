@@ -6397,12 +6397,8 @@ var _Extended = function Extended(_ref2) {
     className: "mt-2",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "d-flex align-items-center gap-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-        type: "checkbox",
-        id: "to-back"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-        htmlFor: "to-back",
-        className: "underline",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "water-processed",
         children: "\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E19\u0E49\u0E33\u0E43\u0E19\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "d-flex align-items-center gap-2",
@@ -6443,9 +6439,9 @@ var _Extended = function Extended(_ref2) {
       className: "d-flex align-items-center gap-2 mt-2",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
         type: "checkbox",
-        id: "to-back"
+        id: "to-back-water"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-        htmlFor: "to-back",
+        htmlFor: "to-back-water",
         children: "\u0E19\u0E33\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"
       }), "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
         unit: "kg/\u0E40\u0E14\u0E37\u0E2D\u0E19",
@@ -6457,9 +6453,9 @@ var _Extended = function Extended(_ref2) {
       className: "d-flex align-items-center gap-2 mt-2",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
         type: "checkbox",
-        id: "to-some"
+        id: "to-some-water"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-        htmlFor: "to-some",
+        htmlFor: "to-some-water",
         children: "\u0E23\u0E30\u0E1A\u0E1A\u0E2B\u0E25\u0E48\u0E2D\u0E40\u0E22\u0E47\u0E19\u0E41\u0E1A\u0E1A\u0E43\u0E0A\u0E49\u0E23\u0E27\u0E21\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E08\u0E31\u0E01\u0E23\u0E17\u0E38\u0E01\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07 \u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E01\u0E32\u0E23\u0E40\u0E15\u0E34\u0E21\u0E19\u0E49\u0E33\u0E43\u0E19\u0E23\u0E30\u0E1A\u0E1A\u0E2B\u0E25\u0E48\u0E2D\u0E40\u0E22\u0E47\u0E19"
       }), "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
         unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
@@ -6587,55 +6583,153 @@ var Row = function Row(_ref) {
   }, index);
 };
 
-var _Extended = function Extended(_ref2) {
-  var noSum = _ref2.noSum,
-      setNoSum = _ref2.setNoSum;
+var RowForWash = function RowForWash(_ref2) {
+  var index = _ref2.index,
+      removeRow = _ref2.removeRow;
+
+  var onRemoveRow = function onRemoveRow() {
+    removeRow(index);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "row mt-1 gap-2 align-items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "col-md-2 col-sm-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        useOther: true,
+        items: _data_mock__WEBPACK_IMPORTED_MODULE_1__.wash
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "col-md-2 col-sm-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "d-flex align-items-center gap-2",
+        children: ["\u0E08\u0E33\u0E19\u0E27\u0E19", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          unit: "\u0E1A\u0E48\u0E2D",
+          style: {
+            width: "150px"
+          }
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "col-md-3 col-sm-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "d-flex align-items-center gap-2",
+        children: ["\u0E02\u0E19\u0E32\u0E14\u0E1A\u0E48\u0E2D", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          unit: "\u0E25\u0E39\u0E01\u0E1A\u0E32\u0E28\u0E01\u0E4C\u0E40\u0E21\u0E15\u0E23",
+          style: {
+            width: "150px"
+          }
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "col-md-3 col-sm-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "d-flex align-items-center gap-2",
+        children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E19\u0E49\u0E33\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
+          style: {
+            width: "150px"
+          }
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "col-md-1 col-sm-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "d-flex justify-content-end",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "btn btn-sm btn-danger",
+          onClick: onRemoveRow,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+            className: "fas fa-minus"
+          })
+        })
+      })
+    })]
+  }, index);
+};
+
+var RowManageWater = function RowManageWater(_ref3) {
+  var index = _ref3.index,
+      removeRow = _ref3.removeRow;
+
+  var onRemoveRow = function onRemoveRow() {
+    removeRow(index);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "row mt-1 gap-2 align-items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "col-md-6 col-sm-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        useOther: true,
+        items: _data_mock__WEBPACK_IMPORTED_MODULE_1__.manageWater
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "col-md-1 col-sm-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "d-flex justify-content-end",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "btn btn-sm btn-danger",
+          onClick: onRemoveRow,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+            className: "fas fa-minus"
+          })
+        })
+      })
+    })]
+  }, index);
+};
+
+var _Extended = function Extended(_ref4) {
+  var noSum = _ref4.noSum,
+      setNoSum = _ref4.setNoSum;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       useWater = _useState2[0],
       setUseWater = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      useForWash = _useState4[0],
+      setUseForWash = _useState4[1];
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "mt-2",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "d-flex align-items-center gap-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-        type: "checkbox",
-        id: "to-back"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-        htmlFor: "to-back",
-        className: "underline",
-        children: "\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E19\u0E49\u0E33\u0E43\u0E19\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15"
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "to-back-water-waste",
+        children: "\u0E19\u0E49\u0E33\u0E40\u0E2A\u0E35\u0E22\u0E17\u0E35\u0E48\u0E40\u0E01\u0E34\u0E14\u0E08\u0E32\u0E01\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "d-flex align-items-center gap-2",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "radio",
-          id: "water-1",
-          name: "water",
+          id: "water-1-water-waste",
+          name: "water-water-waste",
           onChange: function onChange(e) {
             return setUseWater(e.target.value);
           },
           checked: useWater === "0",
           value: "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          htmlFor: "water-1",
+          htmlFor: "water-1-water-waste",
           children: "\u0E44\u0E21\u0E48\u0E21\u0E35"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "radio",
-          id: "water-2",
-          name: "water",
+          id: "water-2-water-waste",
+          name: "water-water-waste",
           checked: useWater === "1",
           value: "1",
           onChange: function onChange(e) {
             return setUseWater(e.target.value);
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          htmlFor: "water-2",
+          htmlFor: "water-2-water-waste",
           children: "\u0E21\u0E35"
         })]
       }), useWater === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [" ", "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E19\u0E49\u0E33\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49\u0E23\u0E27\u0E21", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
           unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
           style: {
             width: "300px"
@@ -6643,58 +6737,62 @@ var _Extended = function Extended(_ref2) {
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "d-flex align-items-center gap-2 mt-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-        type: "checkbox",
-        id: "to-back"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-        htmlFor: "to-back",
-        children: "\u0E19\u0E33\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"
-      }), "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        unit: "kg/\u0E40\u0E14\u0E37\u0E2D\u0E19",
-        style: {
-          width: "300px"
-        }
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "d-flex align-items-center gap-2 mt-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-        type: "checkbox",
-        id: "to-some"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-        htmlFor: "to-some",
-        children: "\u0E23\u0E30\u0E1A\u0E1A\u0E2B\u0E25\u0E48\u0E2D\u0E40\u0E22\u0E47\u0E19\u0E41\u0E1A\u0E1A\u0E43\u0E0A\u0E49\u0E23\u0E27\u0E21\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E08\u0E31\u0E01\u0E23\u0E17\u0E38\u0E01\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07 \u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E01\u0E32\u0E23\u0E40\u0E15\u0E34\u0E21\u0E19\u0E49\u0E33\u0E43\u0E19\u0E23\u0E30\u0E1A\u0E1A\u0E2B\u0E25\u0E48\u0E2D\u0E40\u0E22\u0E47\u0E19"
-      }), "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
-        style: {
-          width: "300px"
-        }
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "d-flex align-items-center gap-2 mt-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-        type: "checkbox",
-        id: "no-sum",
-        checked: noSum,
-        onChange: function onChange(e) {
-          return setNoSum(e.target.checked);
-        }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-        htmlFor: "no-sum",
-        children: "\u0E41\u0E1A\u0E1A\u0E44\u0E21\u0E48\u0E23\u0E27\u0E21"
+      className: "d-flex align-items-center gap-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "to-back-water-waste",
+        children: "\u0E01\u0E23\u0E13\u0E35\u0E25\u0E49\u0E32\u0E07\u0E17\u0E33\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E30\u0E2D\u0E32\u0E14\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C \u0E19\u0E49\u0E33\u0E40\u0E2A\u0E35\u0E22\u0E17\u0E35\u0E48\u0E40\u0E01\u0E34\u0E14\u0E08\u0E32\u0E01\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E25\u0E49\u0E32\u0E07\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "d-flex align-items-center gap-2",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "radio",
+          id: "water-1-for-waste",
+          name: "water-for-waste",
+          onChange: function onChange(e) {
+            return setUseForWash(e.target.value);
+          },
+          checked: useForWash === "0",
+          value: "0"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "water-1-for-waste",
+          children: "\u0E44\u0E21\u0E48\u0E21\u0E35"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "radio",
+          id: "water-2-for-waste",
+          name: "water-for-waste",
+          checked: useForWash === "1",
+          value: "1",
+          onChange: function onChange(e) {
+            return setUseForWash(e.target.value);
+          }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "water-2-for-waste",
+          children: "\u0E21\u0E35"
+        })]
+      }), useForWash === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
+          style: {
+            width: "300px"
+          }
+        })]
       })]
     })]
   });
 };
 
 function WasteWater() {
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      noSum = _useState4[0],
-      setNoSum = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      noSum = _useState6[0],
+      setNoSum = _useState6[1];
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      washMachine = _useState8[0],
+      setWashMachine = _useState8[1];
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
       renderItem: Row,
       label: "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E01\u0E32\u0E23\u0E40\u0E01\u0E34\u0E14\u0E19\u0E49\u0E33\u0E40\u0E2A\u0E35\u0E22",
       Extended: function Extended() {
@@ -6704,7 +6802,53 @@ function WasteWater() {
         });
       },
       showButton: noSum
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: "\u0E21\u0E35\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E25\u0E49\u0E32\u0E07\u0E41\u0E1A\u0E1A\u0E43\u0E14",
+      renderItem: RowForWash
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "d-flex align-items-center gap-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "to-back-water-waste",
+        children: "\u0E19\u0E49\u0E33\u0E40\u0E2A\u0E35\u0E22\u0E17\u0E35\u0E48\u0E40\u0E01\u0E34\u0E14\u0E08\u0E32\u0E01\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E25\u0E49\u0E32\u0E07\u0E17\u0E33\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E30\u0E2D\u0E32\u0E14\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E08\u0E31\u0E01\u0E23 \u0E2B\u0E23\u0E37\u0E2D\u0E25\u0E49\u0E32\u0E07\u0E20\u0E32\u0E0A\u0E19\u0E30"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "d-flex align-items-center gap-2",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "radio",
+          id: "water-1-washMachine",
+          name: "water-washMachine",
+          onChange: function onChange(e) {
+            return setWashMachine(e.target.value);
+          },
+          checked: washMachine === "0",
+          value: "0"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "water-1-washMachine",
+          children: "\u0E44\u0E21\u0E48\u0E21\u0E35"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "radio",
+          id: "water-2-washMachine",
+          name: "water-washMachine",
+          checked: washMachine === "1",
+          value: "1",
+          onChange: function onChange(e) {
+            return setWashMachine(e.target.value);
+          }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "water-2-washMachine",
+          children: "\u0E21\u0E35"
+        })]
+      }), washMachine === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E19\u0E49\u0E33\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49\u0E23\u0E27\u0E21", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
+          style: {
+            width: "300px"
+          }
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: "\u0E21\u0E35\u0E01\u0E32\u0E23\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E19\u0E49\u0E33\u0E40\u0E2A\u0E35\u0E22\u0E17\u0E35\u0E48\u0E40\u0E01\u0E34\u0E14\u0E02\u0E36\u0E49\u0E19\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E44\u0E23",
+      renderItem: RowManageWater
+    })]
   });
 }
 
@@ -6805,7 +6949,9 @@ function RowRender(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "machine": () => (/* binding */ machine),
-/* harmony export */   "plasticTypes": () => (/* binding */ plasticTypes)
+/* harmony export */   "manageWater": () => (/* binding */ manageWater),
+/* harmony export */   "plasticTypes": () => (/* binding */ plasticTypes),
+/* harmony export */   "wash": () => (/* binding */ wash)
 /* harmony export */ });
 var machine = [{
   label: "เครื่องจักรสำหรับโม่",
@@ -6865,6 +7011,29 @@ var plasticTypes = [{
 }, {
   label: "ABS",
   value: "ABS"
+}];
+var wash = [{
+  label: "บ่อผงซักฟอก",
+  value: "บ่อผงซักฟอก"
+}, {
+  label: "บ่อโซดาไฟ",
+  value: "บ่อโซดาไฟ"
+}, {
+  label: "บ่อล้างน้ำรวม",
+  value: "บ่อล้างน้ำรวม"
+}];
+var manageWater = [{
+  label: "ทิ้งลงท่อระบายน้ำ",
+  value: "ทิ้งลงท่อระบายน้ำ"
+}, {
+  label: "เข้าสู่ระบบบำบัดแบบชีวภาพ + เติมอากาศ",
+  value: "เข้าสู่ระบบบำบัดแบบชีวภาพ + เติมอากาศ"
+}, {
+  label: "เข้าสู่ระบบบำบัดแบบชีวภาพ + ไร้อากาศ",
+  value: "เข้าสู่ระบบบำบัดแบบชีวภาพ + ไร้อากาศ"
+}, {
+  label: "เข้าสู่ระบบบำบัดแบบเคมี",
+  value: "เข้าสู่ระบบบำบัดแบบเคมี"
 }];
 
 /***/ }),
