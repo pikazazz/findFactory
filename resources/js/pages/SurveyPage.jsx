@@ -70,6 +70,7 @@ function SurveyPage() {
                 <Water />
                 <hr />
                 <WasteWater />
+                
                 <hr />
                 <PlasticProcessed />
                 <hr />
