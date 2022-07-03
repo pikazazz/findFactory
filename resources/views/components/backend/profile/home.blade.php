@@ -25,7 +25,31 @@
                             </h3>
                         </div>
                         <div class="card-body">
-                         
+                            <div class="col-md-12">
+                                <form>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ชื่อ - นามสกุล</label>
+                                            <input type="name" value="วิศรุต คงจำเนียร" class="form-control" id="exampleInputEmail1"
+                                                placeholder="กรุณากรอกชื่อ  - นามสกุล">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">อีเมล์</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                            value="nongmixnatr@gmail.com" placeholder="กรุณากรอก อีเมล์">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">รหัสผ่าน</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                                placeholder="กรุณากรอก รหัสผ่าน">
+                                        </div>
+                                        <div class="form-group">
+                                           <button type="submit" class="btn btn-success">แก้ไข</button>
+
+                                        </div>
+                                    </div>
+
+                                </form>
                         </div>
                         <!-- /.card -->
                     </div>

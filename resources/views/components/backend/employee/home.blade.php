@@ -116,9 +116,9 @@
                                                     class="fa-solid fa-pencil"></i></button>
                                             <button type="submit" class="btn btn-danger"><i
                                                     class="fa-solid fa-trash-can"></i></button>
-                                                </tr>
+                                    </tr>
 
-                                            </tfoot>
+                                    </tfoot>
 
                             </table>
                         </div>
@@ -172,17 +172,27 @@
                                             <option value="1">ผู้ดูแลระบบ</option>
                                         </select>
                                     </div>
-                        </div>
+                                    <div class="form-group">
+                                        <label>หน่วยงาน</label>
+                                        <select class="form-control select2" style="width: 100%;">
 
+                                            <option value="0">บริษัท เคียงดอย โปรดักส์ จำกัด</option>
+                                            <option value="1">บริษัท พงศ์พสิษฐ์ จำกัด</option>
+                                            <option value="2">นิศารัตน์ พลาสติก</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" style=" background-color: #78909c;color:#FFFFFF"
+                            class="btn">บันทึก</button>
                     </div>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" style=" background-color: #78909c;color:#FFFFFF" class="btn">บันทึก</button>
-                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-@endsection
+        <!-- /.modal -->
+    @endsection
