@@ -37,8 +37,7 @@ const Extended = ({ noSum, setNoSum }) => {
     return (
         <div className="mt-2">
             <div className="d-flex align-items-center gap-2">
-                <input type="checkbox" id="to-back" />
-                <label htmlFor="to-back" className="underline">
+                <label htmlFor="water-processed">
                     การใช้น้ำในกระบวนการผลิต
                 </label>
                 <div className="d-flex align-items-center gap-2">
@@ -73,15 +72,15 @@ const Extended = ({ noSum, setNoSum }) => {
                 )}
             </div>
             <div className="d-flex align-items-center gap-2 mt-2">
-                <input type="checkbox" id="to-back" />
-                <label htmlFor="to-back">
+                <input type="checkbox" id="to-back-water" />
+                <label htmlFor="to-back-water">
                     นำกลับเข้าสู่กระบวนการผลิตทั้งหมด
                 </label>
                 ปริมาณ <InputGroup unit="kg/เดือน" style={{ width: "300px" }} />
             </div>
             <div className="d-flex align-items-center gap-2 mt-2">
-                <input type="checkbox" id="to-some" />
-                <label htmlFor="to-some">
+                <input type="checkbox" id="to-some-water" />
+                <label htmlFor="to-some-water">
                     ระบบหล่อเย็นแบบใช้รวมเครื่องจักรทุกเครื่อง
                     ปริมาณการเติมน้ำในระบบหล่อเย็น
                 </label>
