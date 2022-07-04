@@ -6,13 +6,19 @@ export default function RowRender({
     Extended,
     showButton = true,
 }) {
-    const [row, setRow] = useState([]);
+    const [indexes, setIndexes] = useState([]);
+    const [current, setCurrent] = useState(0);
+
     const addRow = function () {
-        setRow((n) => [...n, RenderItem]);
+        setIndexes((prevIndexes) => [...prevIndexes, current]);
+        setCurrent((prevCounter) => prevCounter + 1);
     };
 
     const removeRow = function (index) {
-        setRow((current) => current.filter((_, i) => i != index));
+        setIndexes((prevIndexes) => [
+            ...prevIndexes.filter((item) => item !== index),
+        ]);
+        setCurrent((prevCounter) => prevCounter - 1);
     };
 
     return (
@@ -30,9 +36,12 @@ export default function RowRender({
                 )}
             </h5>
             {Extended && <Extended />}
-            {row.map((Row, key) => (
-                <Fragment key={key}>
-                    <Row index={key} removeRow={removeRow} />
+            {indexes.map((index) => (
+                <Fragment key={index}>
+                    <RenderItem
+                        index={index}
+                        removeRow={() => removeRow(index)}
+                    />
                 </Fragment>
             ))}
         </Fragment>
