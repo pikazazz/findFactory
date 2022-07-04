@@ -253,9 +253,9 @@
     <script src="{{ asset('assets/plugins/fullcalendar/main.js') }}"></script>
     <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            $('#summernote').summernote();
-        });
+       $(document).ready(function() {
+  $('#summernote').summernote();
+});
     </script>
     <script>
         $(function() {
@@ -276,6 +276,7 @@
             });
         });
     </script>
+
      <script>
         $(document).on("click", ".browse", function() {
             var file = $(this).parents().find(".file");
