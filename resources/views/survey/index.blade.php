@@ -11,7 +11,7 @@
 
 <body>
     <div id="react-app"></div>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('public/js/app.js') }}"></script>
 </body>
 
 </html>
