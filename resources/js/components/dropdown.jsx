@@ -5,6 +5,7 @@ export default function Dropdown({
     useOther = false,
     onChange = function () {},
     value,
+    name = "",
 }) {
     const [selected, setSelected] = useState(value ?? "1");
     const handleChange = (e) => {
@@ -22,6 +23,7 @@ export default function Dropdown({
         <div className="d-flex align-items-center gap-2">
             <select
                 className="form-control"
+                name={name}
                 onChange={handleChange}
                 value={selected}
             >
@@ -33,6 +35,8 @@ export default function Dropdown({
                     type="text"
                     className="form-control"
                     placeholder="โปรดระบุ"
+                    name={`other-${name}`}
+                    required
                 />
             )}
         </div>

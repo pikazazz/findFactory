@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
@@ -36,6 +37,11 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
         //
+        $survey = new Survey();
+        $survey->data = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
+        $survey->factoryId = 0;
+        $survey->save();
+        return redirect()->route('survey.index');
     }
 
     /**

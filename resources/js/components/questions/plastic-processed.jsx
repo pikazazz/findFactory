@@ -15,7 +15,7 @@ export default function PlasticProcessed() {
                     <input
                         type="radio"
                         id="processed-1"
-                        name="processed"
+                        name="processsed-processed"
                         value="0"
                         onClick={(e) => setProcessed(e.target.value)}
                     />
@@ -25,13 +25,18 @@ export default function PlasticProcessed() {
                     <input
                         type="radio"
                         id="processed-2"
-                        name="processed"
+                        name="processed-processed"
                         value="1"
                         onClick={(e) => setProcessed(e.target.value)}
                     />
                     <label htmlFor="processed-2">มี</label>
                 </div>
-                {processed === "1" && <MultiCheckbox items={plasticTypes} />}
+                {processed === "1" && (
+                    <MultiCheckbox
+                        items={plasticTypes}
+                        name="processed-value[]"
+                    />
+                )}
             </div>
         </Fragment>
     );

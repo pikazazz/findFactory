@@ -5,6 +5,7 @@ export default function InputGroup({
     min,
     max,
     className,
+    required = false,
 }) {
     return (
         <div className={`input-group ${className}`} style={style}>
@@ -15,6 +16,7 @@ export default function InputGroup({
                 min={min}
                 max={max}
                 className="form-control"
+                required={required}
             />
             <span className="input-group-text" id="basic-addon2">
                 {unit}

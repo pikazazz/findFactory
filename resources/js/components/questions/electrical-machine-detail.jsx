@@ -11,18 +11,22 @@ function Row({ index, removeRow }) {
     return (
         <div className="row mt-1 gap-2  align-items-center" key={index}>
             <div className="col-md-4 col-sm-12">
-                <Dropdown useOther items={machine} />
+                <Dropdown
+                    useOther
+                    items={machine}
+                    name="electrical-machine[]"
+                />
             </div>
             <div className="col-md-3 col-sm-12">
                 <div className="d-flex gap-2 align-items-center">
                     ขนาด
-                    <InputGroup unit="KW" />
+                    <InputGroup unit="KW" name="electrical-size[]" required/>
                 </div>
             </div>
             <div className="col-md-3 col-sm-12">
                 <div className="d-flex gap-2  align-items-center">
                     จำนวน
-                    <InputGroup unit="เครื่อง" />
+                    <InputGroup unit="เครื่อง" name="electrical-quantity[]" required/>
                 </div>
             </div>
             <div className="col-md-1 col-sm-12">
@@ -48,7 +52,11 @@ export default function ElectrialMachineDetail() {
             />
             <div className="d-flex gap-2  align-items-center mt-2">
                 อัตราการใช้ไฟฟ้า
-                <InputGroup unit="บาท/เดือน" style={{ width: "200px" }} />
+                <InputGroup
+                    unit="บาท/เดือน"
+                    style={{ width: "200px" }}
+                    name="electrical-rate"
+                />
             </div>
         </Fragment>
     );

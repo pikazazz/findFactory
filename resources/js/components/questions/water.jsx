@@ -10,12 +10,12 @@ const Row = ({ index, removeRow }) => {
     return (
         <div className="row mt-1 gap-2 align-items-center" key={index}>
             <div className="col-md-4 col-sm-12">
-                <Dropdown useOther items={machine} />
+                <Dropdown useOther items={machine} name="water-valueNoSum[]"/>
             </div>
             <div className="col-md-6 col-sm-12">
                 <div className="d-flex align-items-center gap-2">
                     ปริมาณ
-                    <InputGroup unit="ลิตร/เดือน" style={{ width: "350px" }} />
+                    <InputGroup name="water-noSumQuantity[]" unit="ลิตร/เดือน" style={{ width: "350px" }} />
                 </div>
             </div>
             <div className="col-md-1 col-sm-12">
@@ -33,7 +33,7 @@ const Row = ({ index, removeRow }) => {
 };
 
 const Extended = ({ noSum, setNoSum }) => {
-    const [useWater, setUseWater] = useState(false);
+    const [useWater, setUseWater] = useState("0");
     return (
         <div className="mt-2">
             <div className="d-flex align-items-center gap-2">
@@ -44,7 +44,7 @@ const Extended = ({ noSum, setNoSum }) => {
                     <input
                         type="radio"
                         id="water-1"
-                        name="water"
+                        name="water-useWater"
                         onChange={(e) => setUseWater(e.target.value)}
                         checked={useWater === "0"}
                         value="0"
@@ -53,7 +53,7 @@ const Extended = ({ noSum, setNoSum }) => {
                     <input
                         type="radio"
                         id="water-2"
-                        name="water"
+                        name="water-useWater"
                         checked={useWater === "1"}
                         value="1"
                         onChange={(e) => setUseWater(e.target.value)}
@@ -62,9 +62,9 @@ const Extended = ({ noSum, setNoSum }) => {
                 </div>
                 {useWater === "1" && (
                     <Fragment>
-                        {" "}
                         ปริมาณ
                         <InputGroup
+                            name="water-useWaterQuantity"
                             unit="ลิตร/เดือน"
                             style={{ width: "300px" }}
                         />
@@ -72,25 +72,22 @@ const Extended = ({ noSum, setNoSum }) => {
                 )}
             </div>
             <div className="d-flex align-items-center gap-2 mt-2">
-                <input type="checkbox" id="to-back-water" />
-                <label htmlFor="to-back-water">
-                    นำกลับเข้าสู่กระบวนการผลิตทั้งหมด
-                </label>
-                ปริมาณ <InputGroup unit="kg/เดือน" style={{ width: "300px" }} />
-            </div>
-            <div className="d-flex align-items-center gap-2 mt-2">
-                <input type="checkbox" id="to-some-water" />
-                <label htmlFor="to-some-water">
+                <label>
                     ระบบหล่อเย็นแบบใช้รวมเครื่องจักรทุกเครื่อง
                     ปริมาณการเติมน้ำในระบบหล่อเย็น
                 </label>
                 ปริมาณ
-                <InputGroup unit="ลิตร/เดือน" style={{ width: "300px" }} />
+                <InputGroup
+                    name="water-machine"
+                    unit="ลิตร/เดือน"
+                    style={{ width: "300px" }}
+                />
             </div>
             <div className="d-flex align-items-center gap-2 mt-2">
                 <input
                     type="checkbox"
                     id="no-sum"
+                    name="water-noSum"
                     checked={noSum}
                     onChange={(e) => setNoSum(e.target.checked)}
                 />

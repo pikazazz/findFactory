@@ -163,6 +163,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('manage-survey.index') }}" class="nav-link ">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>จัดการข้อมูลแบบสำรวจ</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href=""
                                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"
@@ -300,7 +306,7 @@
     </script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
+    @yield('script')
 </body>
 
 </html>

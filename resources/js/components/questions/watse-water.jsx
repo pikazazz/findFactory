@@ -10,12 +10,16 @@ const Row = ({ index, removeRow }) => {
     return (
         <div className="row mt-1 gap-2 align-items-center" key={index}>
             <div className="col-md-4 col-sm-12">
-                <Dropdown useOther items={machine} />
+                <Dropdown useOther items={machine} name="waste-value[]" />
             </div>
             <div className="col-md-6 col-sm-12">
                 <div className="d-flex align-items-center gap-2">
                     ปริมาณ
-                    <InputGroup unit="ลิตร/เดือน" style={{ width: "350px" }} />
+                    <InputGroup
+                        name="waste-quantity[]"
+                        unit="ลิตร/เดือน"
+                        style={{ width: "350px" }}
+                    />
                 </div>
             </div>
             <div className="col-md-1 col-sm-12">
@@ -38,18 +42,23 @@ const RowForWash = ({ index, removeRow }) => {
     return (
         <div className="row mt-1 gap-2 align-items-center" key={index}>
             <div className="col-md-2 col-sm-12">
-                <Dropdown useOther items={wash} />
+                <Dropdown useOther items={wash} name="waste-forWasteValue[]" />
             </div>
             <div className="col-md-2 col-sm-12">
                 <div className="d-flex align-items-center gap-2">
                     จำนวน
-                    <InputGroup unit="บ่อ" style={{ width: "150px" }} />
+                    <InputGroup
+                        name="waste-forWasteValueQuantity[]"
+                        unit="บ่อ"
+                        style={{ width: "150px" }}
+                    />
                 </div>
             </div>
             <div className="col-md-3 col-sm-12">
                 <div className="d-flex align-items-center gap-2">
                     ขนาดบ่อ
                     <InputGroup
+                        name="waste-forWasteSize[]"
                         unit="ลูกบาศก์เมตร"
                         style={{ width: "150px" }}
                     />
@@ -58,7 +67,11 @@ const RowForWash = ({ index, removeRow }) => {
             <div className="col-md-3 col-sm-12">
                 <div className="d-flex align-items-center gap-2">
                     ปริมาณน้ำที่ใช้
-                    <InputGroup unit="ลิตร/เดือน" style={{ width: "150px" }} />
+                    <InputGroup
+                        name="waste-forWasteTotal[]"
+                        unit="ลิตร/เดือน"
+                        style={{ width: "150px" }}
+                    />
                 </div>
             </div>
             <div className="col-md-1 col-sm-12">
@@ -81,7 +94,11 @@ const RowManageWater = ({ index, removeRow }) => {
     return (
         <div className="row mt-1 gap-2 align-items-center" key={index}>
             <div className="col-md-6 col-sm-12">
-                <Dropdown useOther items={manageWater} />
+                <Dropdown
+                    useOther
+                    items={manageWater}
+                    name="waste-manageWaterValue[]"
+                />
             </div>
             <div className="col-md-1 col-sm-12">
                 <div className="d-flex justify-content-end">
@@ -97,20 +114,18 @@ const RowManageWater = ({ index, removeRow }) => {
     );
 };
 
-const Extended = ({ noSum, setNoSum }) => {
+const Extended = ({}) => {
     const [useWater, setUseWater] = useState(false);
     const [useForWash, setUseForWash] = useState(false);
     return (
         <div className="mt-2">
             <div className="d-flex align-items-center gap-2">
-                <label htmlFor="to-back-water-waste">
-                    น้ำเสียที่เกิดจากกระบวนการผลิต
-                </label>
+                <label>น้ำเสียที่เกิดจากกระบวนการผลิต</label>
                 <div className="d-flex align-items-center gap-2">
                     <input
                         type="radio"
                         id="water-1-water-waste"
-                        name="water-water-waste"
+                        name="water-waterWaste"
                         onChange={(e) => setUseWater(e.target.value)}
                         checked={useWater === "0"}
                         value="0"
@@ -119,7 +134,7 @@ const Extended = ({ noSum, setNoSum }) => {
                     <input
                         type="radio"
                         id="water-2-water-waste"
-                        name="water-water-waste"
+                        name="water-waterWaste"
                         checked={useWater === "1"}
                         value="1"
                         onChange={(e) => setUseWater(e.target.value)}
@@ -137,7 +152,7 @@ const Extended = ({ noSum, setNoSum }) => {
                 )}
             </div>
             <div className="d-flex align-items-center gap-2">
-                <label htmlFor="to-back-water-waste">
+                <label>
                     กรณีล้างทำความสะอาดผลิตภัณฑ์
                     น้ำเสียที่เกิดจากกระบวนการล้างผลิตภัณฑ์
                 </label>
@@ -145,7 +160,7 @@ const Extended = ({ noSum, setNoSum }) => {
                     <input
                         type="radio"
                         id="water-1-for-waste"
-                        name="water-for-waste"
+                        name="water-forWasteWash"
                         onChange={(e) => setUseForWash(e.target.value)}
                         checked={useForWash === "0"}
                         value="0"
@@ -154,7 +169,7 @@ const Extended = ({ noSum, setNoSum }) => {
                     <input
                         type="radio"
                         id="water-2-for-waste"
-                        name="water-for-waste"
+                        name="water-forWasteWash"
                         checked={useForWash === "1"}
                         value="1"
                         onChange={(e) => setUseForWash(e.target.value)}
@@ -165,6 +180,7 @@ const Extended = ({ noSum, setNoSum }) => {
                     <Fragment>
                         ปริมาณ
                         <InputGroup
+                            name="water-forWasteWashQuantity"
                             unit="ลิตร/เดือน"
                             style={{ width: "300px" }}
                         />
@@ -195,7 +211,7 @@ export default function WasteWater() {
                     <input
                         type="radio"
                         id="water-1-washMachine"
-                        name="water-washMachine"
+                        name="waste-washMachine"
                         onChange={(e) => setWashMachine(e.target.value)}
                         checked={washMachine === "0"}
                         value="0"
@@ -204,7 +220,7 @@ export default function WasteWater() {
                     <input
                         type="radio"
                         id="water-2-washMachine"
-                        name="water-washMachine"
+                        name="waste-washMachine"
                         checked={washMachine === "1"}
                         value="1"
                         onChange={(e) => setWashMachine(e.target.value)}
@@ -215,6 +231,7 @@ export default function WasteWater() {
                     <Fragment>
                         ปริมาณน้ำที่ใช้รวม
                         <InputGroup
+                            name="waste-total"
                             unit="ลิตร/เดือน"
                             style={{ width: "300px" }}
                         />
