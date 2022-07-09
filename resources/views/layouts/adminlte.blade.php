@@ -161,6 +161,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('manage-survey.index') }}" class="nav-link ">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>จัดการข้อมูลแบบสำรวจ</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href=""
                                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"
