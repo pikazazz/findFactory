@@ -28,54 +28,65 @@ function SurveyPage() {
                     </li>
                 </ol>
             </div>
-            <fieldset className="border p-2">
-                <legend className="float-none w-auto p-2">ข้อมูลโรงงาน</legend>
-                <div className="px-3">
-                    ชื่อโรงงาน บริษัท มู่ พลาสติก อินดัสตรีส์ จำกัด
-                    <br />
-                    อัตราการผลิต 80 ตัน/เดือน
-                    <br />
-                    <div className="d-flex align-items-md-center flex-md-row flex-column gap-2">
-                        <div className="d-flex align-items-md-center">
-                            จำนวนวันทำงาน
-                            <InputGroup
-                                className="mx-2"
-                                unit="วันต่อสัปดาห์"
-                                style={{ width: "300px" }}
-                                min="0"
-                                max="7"
-                            />
-                        </div>
-                        <div className="d-flex align-items-md-center">
-                            หรือ
-                            <InputGroup
-                                className="mx-2"
-                                unit="วันต่อปี"
-                                style={{ width: "300px" }}
-                                min="0"
-                                max="366"
-                            />
-                        </div>
+            <form method="POST" action={window.postUrl}>
+                <input type="hidden" name="_token" value={window.csrf_token} />
+                <fieldset className="border p-2">
+                    <legend className="float-none w-auto p-2">
+                        ข้อมูลโรงงาน
+                    </legend>
+                    <div className="px-3">
+                        ชื่อโรงงาน บริษัท มู่ พลาสติก อินดัสตรีส์ จำกัด
                         <br />
+                        อัตราการผลิต 80 ตัน/เดือน
+                        <br />
+                        <div className="d-flex align-items-md-center flex-md-row flex-column gap-2">
+                            <div className="d-flex align-items-md-center">
+                                จำนวนวันทำงาน
+                                <InputGroup
+                                    className="mx-2"
+                                    unit="วันต่อสัปดาห์"
+                                    style={{ width: "300px" }}
+                                    name="totalDaysPerWeek"
+                                    min="0"
+                                    max="7"
+                                />
+                            </div>
+                            <div className="d-flex align-items-md-center">
+                                หรือ
+                                <InputGroup
+                                    className="mx-2"
+                                    unit="วันต่อปี"
+                                    style={{ width: "300px" }}
+                                    name="totalDaysPerYear"
+                                    min="0"
+                                    max="366"
+                                />
+                            </div>
+                            <br />
+                        </div>
                     </div>
-                </div>
 
-                <hr />
-                <ElectrialMachineDetail />
-                <hr />
-                <PlastocAdditiveColors />
-                <hr />
-                <PlasticRecycle />
-                <hr />
-                <Water />
-                <hr />
-                <WasteWater />
-                
-                <hr />
-                <PlasticProcessed />
-                <hr />
-                <MakeBenefit />
-            </fieldset>
+                    <hr />
+                    <ElectrialMachineDetail />
+                    <hr />
+                    <PlastocAdditiveColors />
+                    <hr />
+                    <PlasticRecycle />
+                    <hr />
+                    <Water />
+                    <hr />
+                    <WasteWater />
+                    <hr />
+                    <PlasticProcessed />
+                    <hr />
+                    <MakeBenefit />
+                    <div className="d-flex justify-content-end">
+                        <button className="btn btn-success">
+                            บันทึกข้อมูล
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     );
 }

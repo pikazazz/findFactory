@@ -36,6 +36,11 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
         //
+        $keys = array_keys($request->all());
+        $filter_info = array_filter($keys,function($k){
+            return str_starts_with($k,'info_');
+        });
+        dd(json_encode($request->all()));
     }
 
     /**

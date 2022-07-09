@@ -11,12 +11,19 @@ function Row({ index, removeRow }) {
     return (
         <div className="row mt-1 gap-2 align-items-center" key={index}>
             <div className="col-md-4 col-sm-12">
-                <Dropdown useOther items={plasticTypes} />
+                <Dropdown
+                    useOther
+                    items={plasticTypes}
+                    name="plasticAdditive-name[]"
+                />
             </div>
             <div className="col-md-3 col-sm-12">
                 <div className="d-flex gap-2 align-items-center">
                     <span style={{ width: "100px" }}>จำนวนที่ใช้</span>
-                    <InputGroup unit="kg/เดือน" />
+                    <InputGroup
+                        unit="kg/เดือน"
+                        name="plasticAdditive-quantity[]"
+                    />
                 </div>
             </div>
             <div className="col-md-1 col-sm-12">
@@ -36,9 +43,19 @@ function Row({ index, removeRow }) {
 function Extended() {
     return (
         <div className="d-flex align-items-center gap-2">
-            <input type="radio" name="mix-color" id="mix-color-1" />
+            <input
+                type="radio"
+                name="plasticAdditive-mixColor"
+                id="mix-color-1"
+                value="ผสม"
+            />
             <label htmlFor="mix-color-1">ผสม</label>
-            <input type="radio" name="mix-color" id="mix-color-2" />
+            <input
+                type="radio"
+                name="plasticAdditive-mixColor"
+                id="mix-color-2"
+                value="ไม่ผสม"
+            />
             <label htmlFor="mix-color-2">ไม่ผสม</label>
         </div>
     );
@@ -55,6 +72,7 @@ function ColorTypeRow({ index, removeRow }) {
                     <input
                         type="text"
                         className="form-control"
+                        name="plasticAdditive-colorType[]"
                         style={{ width: "250px" }}
                     />
                 </div>
@@ -64,6 +82,7 @@ function ColorTypeRow({ index, removeRow }) {
                     ปริมาณที่ใช้
                     <InputGroup
                         unit="% / การใช้เม็ดพลาสติก 1 kg"
+                        name="plasticAdditive-colorTotal"
                         style={{ width: "350px" }}
                     />
                 </div>
@@ -92,6 +111,7 @@ function AdditiveRow({ index, removeRow }) {
                     ชนิดของสารเติมแต่ง
                     <input
                         type="text"
+                        name="plasticAdditive-additiveType"
                         className="form-control"
                         style={{ width: "250px" }}
                     />
@@ -101,6 +121,7 @@ function AdditiveRow({ index, removeRow }) {
                 <div className="d-flex align-items-center gap-2">
                     ปริมาณที่ใช้
                     <InputGroup
+                    name="plasticAdditive-additiveTotal"
                         unit="% / การใช้เม็ดพลาสติก 1 kg"
                         style={{ width: "350px" }}
                     />
@@ -135,7 +156,7 @@ export default function PlastocAdditiveColors() {
                 <div className="d-flex align-items-center gap-2">
                     <input
                         type="radio"
-                        name="use-color"
+                        name="plasticAdditive-useColor"
                         id="use-color-1"
                         onChange={(e) => setUseColor(e.target.value)}
                         checked={useColor === "1"}
@@ -144,7 +165,7 @@ export default function PlastocAdditiveColors() {
                     <label htmlFor="use-color-1">ใช้</label>
                     <input
                         type="radio"
-                        name="use-color"
+                        name="plasticAdditive-useColor"
                         id="use-color-2"
                         onChange={(e) => setUseColor(e.target.value)}
                         checked={useColor === "0"}
@@ -159,7 +180,7 @@ export default function PlastocAdditiveColors() {
                     <div className="d-flex align-items-center gap-2">
                         <input
                             type="radio"
-                            name="type-color"
+                            name="plasticAdditive-typeColor"
                             id="type-color-1"
                             value="1"
                             checked={typeColor === "1"}
@@ -170,7 +191,7 @@ export default function PlastocAdditiveColors() {
                         <label htmlFor="type-color-1">ใช้</label>
                         <input
                             type="radio"
-                            name="type-color"
+                            name="plasticAdditive-typeColor"
                             id="type-color-2"
                             value="0"
                             checked={typeColor === "0"}
@@ -190,7 +211,7 @@ export default function PlastocAdditiveColors() {
                 <div className="d-flex align-items-center gap-2">
                     <input
                         type="radio"
-                        name="use-additive"
+                        name="plasticAdditive-useAdditive"
                         id="use-additive-1"
                         onChange={(e) => setAdditive(e.target.value)}
                         checked={additive === "1"}
@@ -199,7 +220,7 @@ export default function PlastocAdditiveColors() {
                     <label htmlFor="use-color-1">ใช้</label>
                     <input
                         type="radio"
-                        name="use-additive"
+                        name="plasticAdditive-useAdditive"
                         id="use-additive-2"
                         onChange={(e) => setAdditive(e.target.value)}
                         checked={additive === "0"}

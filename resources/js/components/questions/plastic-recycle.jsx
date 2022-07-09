@@ -10,12 +10,17 @@ const Row = ({ index, removeRow }) => {
     return (
         <div className="row mt-1 gap-2 align-items-center" key={index}>
             <div className="col-md-4 col-sm-12">
-                <Dropdown useOther items={plasticTypes} />
+                <Dropdown
+                    useOther
+                    items={plasticTypes}
+                    name="recycle-backValue[]"
+                />
             </div>
             <div className="col-md-6 col-sm-12">
                 <div className="d-flex align-items-center gap-2">
                     ปริมาณ
                     <InputGroup
+                        name="recycle-notBackQuantity"
                         unit="kg/เดือน"
                         style={{ width: "350px" }}
                     />
@@ -39,18 +44,22 @@ const Extended = ({ toNo, setToNo }) => {
     return (
         <div className="mt-2">
             <div className="d-flex align-items-center gap-2">
-                <input type="checkbox" id="to-back" />
-                <label htmlFor="to-back">
-                    นำกลับเข้าสู่กระบวนการผลิตทั้งหมด
-                </label>
-                ปริมาณ <InputGroup unit="kg/เดือน" style={{ width: "300px" }} />
+                <label>นำกลับเข้าสู่กระบวนการผลิตทั้งหมด</label>
+                ปริมาณ
+                <InputGroup
+                    name="recycle-backAll"
+                    unit="kg/เดือน"
+                    style={{ width: "300px" }}
+                />
             </div>
             <div className="d-flex align-items-center gap-2 mt-2">
-                <input type="checkbox" id="to-some" />
-                <label htmlFor="to-some">
-                    นำกลับเข้าสู่กระบวนการผลิตบางส่วน
-                </label>
-                ปริมาณ <InputGroup unit="kg/เดือน" style={{ width: "300px" }} />
+                <label>นำกลับเข้าสู่กระบวนการผลิตบางส่วน</label>
+                ปริมาณ
+                <InputGroup
+                    name="recycle-backSome"
+                    unit="kg/เดือน"
+                    style={{ width: "300px" }}
+                />
             </div>
             <div className="d-flex align-items-center gap-2 mt-2">
                 <input
