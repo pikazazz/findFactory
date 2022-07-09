@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class ManageSurveyController extends Controller
@@ -15,7 +16,8 @@ class ManageSurveyController extends Controller
     public function index()
     {
         //
-        return view('components.backend.survey.index');
+        $surveyList = Survey::all();
+        return view('components.backend.survey.index', ['surveyList' => $surveyList]);
     }
 
     /**
