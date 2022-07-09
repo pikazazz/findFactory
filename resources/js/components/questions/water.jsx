@@ -33,7 +33,7 @@ const Row = ({ index, removeRow }) => {
 };
 
 const Extended = ({ noSum, setNoSum }) => {
-    const [useWater, setUseWater] = useState(false);
+    const [useWater, setUseWater] = useState("0");
     return (
         <div className="mt-2">
             <div className="d-flex align-items-center gap-2">

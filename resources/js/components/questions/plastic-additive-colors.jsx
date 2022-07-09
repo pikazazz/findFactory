@@ -74,6 +74,7 @@ function ColorTypeRow({ index, removeRow }) {
                         className="form-control"
                         name="plasticAdditive-colorType[]"
                         style={{ width: "250px" }}
+                        required
                     />
                 </div>
             </div>
@@ -114,6 +115,7 @@ function AdditiveRow({ index, removeRow }) {
                         name="plasticAdditive-additiveType"
                         className="form-control"
                         style={{ width: "250px" }}
+                        required
                     />
                 </div>
             </div>
@@ -121,7 +123,7 @@ function AdditiveRow({ index, removeRow }) {
                 <div className="d-flex align-items-center gap-2">
                     ปริมาณที่ใช้
                     <InputGroup
-                    name="plasticAdditive-additiveTotal"
+                        name="plasticAdditive-additiveTotal"
                         unit="% / การใช้เม็ดพลาสติก 1 kg"
                         style={{ width: "350px" }}
                     />

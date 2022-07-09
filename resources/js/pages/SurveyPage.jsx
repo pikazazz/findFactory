@@ -80,7 +80,13 @@ function SurveyPage() {
                     <PlasticProcessed />
                     <hr />
                     <MakeBenefit />
-                    <div className="d-flex justify-content-end">
+                    <div className="d-flex gap-2 justify-content-end">
+                        <button
+                            className="btn btn-secondary"
+                            onClick={() => window.location.reload()}
+                        >
+                            ล้างข้อมูล
+                        </button>
                         <button className="btn btn-success">
                             บันทึกข้อมูล
                         </button>

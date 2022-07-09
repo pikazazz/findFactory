@@ -36,6 +36,7 @@ export default function Dropdown({
                     className="form-control"
                     placeholder="โปรดระบุ"
                     name={`other-${name}`}
+                    required
                 />
             )}
         </div>

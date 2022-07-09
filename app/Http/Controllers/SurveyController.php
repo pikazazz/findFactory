@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
@@ -36,11 +37,11 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
         //
-        $keys = array_keys($request->all());
-        $filter_info = array_filter($keys,function($k){
-            return str_starts_with($k,'info_');
-        });
-        dd(json_encode($request->all()));
+        $survey = new Survey();
+        $survey->data = json_encode($request->all());
+        $survey->factoryId = 0;
+        $survey->save();
+        return redirect()->route('survey.index');
     }
 
     /**

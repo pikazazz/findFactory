@@ -20,13 +20,13 @@ function Row({ index, removeRow }) {
             <div className="col-md-3 col-sm-12">
                 <div className="d-flex gap-2 align-items-center">
                     ขนาด
-                    <InputGroup unit="KW" name="electrical-size[]" />
+                    <InputGroup unit="KW" name="electrical-size[]" required/>
                 </div>
             </div>
             <div className="col-md-3 col-sm-12">
                 <div className="d-flex gap-2  align-items-center">
                     จำนวน
-                    <InputGroup unit="เครื่อง" name="electrical-quantity[]" />
+                    <InputGroup unit="เครื่อง" name="electrical-quantity[]" required/>
                 </div>
             </div>
             <div className="col-md-1 col-sm-12">
