@@ -6,8 +6,18 @@
     จัดการข้อมูลโรงงาน
 @endsection
 
-
+  <!-- sweetalert -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @section('backend-header-content')
+    @if (\Session::has('message'))
+        <script>
+            Swal.fire(
+                'สำเร็จ',
+                '{!! \Session::get('message') !!}',
+                '{!! \Session::get('message-status') !!}',
+            )
+        </script>
+    @endif
 @endsection
 
 
@@ -51,56 +61,66 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title">ตารางรายการโรงงาน </h3>
+
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <form action="{{ route('manage-factory.update', true) }}" method="post">
+                                @csrf
+                                @method('put')
+
+                                <button type="submit" class="btn btn-success">
+                                    Update Map
+                                </button>
+                            </form>
                             <table id="example1" class="table table-bordered table-striped">
+
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>ชื่อโรงงาน</th>
+                                        <th>เลขที่จดทะเบียน</th>
+                                        <th>หมวดหมู่โรงงาน</th>
+                                        <th>ที่อยู่โรงงาน</th>
+                                        <th>พิกัดละติจูด</th>
+                                        <th>พิกัดลองติจูด</th>
+                                        <th>เบอร์ติดต่อ</th>
+                                        <th>เบอร์แฟกซ์</th>
                                         <th>เมนู</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-eye"></i></button>
-                                            <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-pencil"></i></button>
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td>5</td>
-                                        <td>C</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-eye"></i></button>
-                                            <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-pencil"></i></button>
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </td>
-                                    </tr>
+
+                                    @foreach ($factory as $factoryS)
+                                        <tr>
+                                            <td><?= $factoryS->fac_name ?></td>
+                                            <td><?= $factoryS->fac_no ?></td>
+                                            <td><?= $factoryS->fac_category ?></td>
+                                            <td><?= $factoryS->fac_address ?></td>
+                                            <td><?= $factoryS->fac_lat ?></td>
+                                            <td><?= $factoryS->fac_lon ?></td>
+                                            <td><?= $factoryS->fac_tel ?></td>
+                                            <td><?= $factoryS->fac_fax ?></td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
+                                                        class="fa-solid fa-eye"></i></button>
+                                                <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
+                                                        class="fa-solid fa-pencil"></i></button>
+                                                <form action="{{ route('manage-factory.destroy', $factoryS->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                            class="fa-solid fa-trash-can"></i></button>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+
+
                                     </tfoot>
                             </table>
                         </div>
@@ -131,48 +151,51 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form>
+                            <form action="{{ route('manage-factory.store') }}" method="POST">
+                                @csrf
+                                @method('post')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>ชื่อโรงงาน</label>
-                                        <input type="name" name="" class="form-control" placeholder="">
+                                        <input type="name" name="fac_name" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label>ทะเบียนโรงงานเลขที่</label>
-                                        <input type="name" name="" class="form-control" placeholder="">
+                                        <input type="name" name="fac_no" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label>ประกอบกิจการ</label>
-                                        <select class="form-control select2" style="width: 100%;" multiple>
-
+                                        <select class="form-control select2" name="fac_category[]" style="width: 100%;"
+                                            multiple>
                                             <option value="0">โรงงานรีไซเคิล</option>
                                             <option value="1">โรงงานผลิตอุปกรณ์ก่อสร้าง</option>
                                             <option value="2">โรงงานผลิตอุปกรณ์เกษตร</option>
                                             <option value="3">โรงปูน</option>
                                             <option value="4">เปลี่ยนเป็นเชื้อเพลิง</option>
-
                                         </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label>ที่อยู่โรงงาน</label>
-                                        <input type="name" name="" class="form-control" placeholder="">
+                                        <input type="name" name="fac_address" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label>พิกัด UTM 1</label>
-                                        <input type="name" name="" class="form-control" placeholder="">
+                                        <input type="name" value="1" name="fac_utm1" class="form-control"
+                                            placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label>พิกัด UTM 2</label>
-                                        <input type="name" name="" class="form-control" placeholder="">
+                                        <input type="name" value="1" name="fac_utm2" class="form-control"
+                                            placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label>เบอร์โทร</label>
-                                        <input type="name" name="" class="form-control" placeholder="">
+                                        <input type="name" name="fac_tel" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label>fax</label>
-                                        <input type="name" name="" class="form-control" placeholder="">
+                                        <input type="name" name="fac_fax" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <div id="msg"></div>
@@ -192,19 +215,19 @@
 
                                     </div>
                                     <!-- /.card-body -->
-                            </form>
-                        </div>
+                                </div>
 
+                        </div>
                     </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="submit" style=" background-color: #78909c;color:#FFFFFF"
+                            class="btn">บันทึก</button>
+                    </div>
+                    </form>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" style=" background-color: #78909c;color:#FFFFFF"
-                        class="btn">บันทึก</button>
-                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-@endsection
+        <!-- /.modal -->
+    @endsection

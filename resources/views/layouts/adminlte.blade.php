@@ -33,7 +33,9 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css') }}">
-    <!-- summernote -->
+
+
+
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -252,6 +254,8 @@
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/fullcalendar/main.js') }}"></script>
     <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <!-- sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
        $(document).ready(function() {
   $('#summernote').summernote();
