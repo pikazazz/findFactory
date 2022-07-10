@@ -2,9 +2,18 @@
 
 namespace App\Http\Controllers\fontend;
 
+use App\Models\factory;
 use App\Http\Controllers\Controller;
+use ArrayObject;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\Object_;
 
+class Map
+{
+    public $name;
+    public $lat;
+    public $lon;
+}
 class viewFactoryController extends Controller
 {
     /**
@@ -12,9 +21,22 @@ class viewFactoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return view('components.fontend.view-factory.home');
+
+
+        $Map  = new Map();
+        $Data = new ArrayObject();
+        $factory = factory::get();
+        foreach($factory as $Factory){
+            $Map->name = $Factory->fac_name;
+            $Map->lat = $Factory->fac_lat;
+            $Map->lon = $Factory->fac_lon;
+            $Data->append(["name"=>$Factory->fac_name,"lat"=>$Factory->fac_lat,"lon"=>$Factory->fac_lon]);
+        }
+
+        return view('components.fontend.view-factory.home', ['factory' => $factory,'map'=>$Data]);
     }
 
     /**

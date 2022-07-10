@@ -103,8 +103,8 @@
                                             <td><?= $factoryS->fac_tel ?></td>
                                             <td><?= $factoryS->fac_fax ?></td>
                                             <td>
-                                                <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
-                                                        class="fa-solid fa-eye"></i></button>
+                                                <a target="blank" type="button" href="https://www.google.com/maps/@<?= $factoryS->fac_lat ?>,<?= $factoryS->fac_lon?>,15z" class="btn btn-primary" style="color: #FFFFFF"> <i
+                                                        class="fa-solid fa-eye"></i></a>
                                                 <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
                                                         class="fa-solid fa-pencil"></i></button>
                                                 <form action="{{ route('manage-factory.destroy', $factoryS->id) }}"
