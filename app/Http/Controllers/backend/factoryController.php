@@ -43,7 +43,8 @@ class factoryController extends Controller
         $factory = new factory();
         $factory->fac_name = $request['fac_name'];
         $factory->fac_no = $request['fac_no'];
-        $factory->fac_category = '';
+        $factory->fac_des = $request['fac_des'];
+        $factory->fac_category = $request['fac_category'];
         $factory->fac_address = $request['fac_address'];
         $factory->fac_utm1 = $request['fac_utm1'];
         $factory->fac_utm2 = $request['fac_utm2'];

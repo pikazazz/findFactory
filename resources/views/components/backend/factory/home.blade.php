@@ -157,16 +157,20 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>ชื่อโรงงาน</label>
-                                        <input type="name" name="fac_name" class="form-control" placeholder="">
+                                        <input type="name" name="fac_name" class="form-control" placeholder="" required>
                                     </div>
                                     <div class="form-group">
                                         <label>ทะเบียนโรงงานเลขที่</label>
-                                        <input type="name" name="fac_no" class="form-control" placeholder="">
+                                        <input type="name" name="fac_no" class="form-control" placeholder="" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>เกี่ยวกับโรงงาน</label>
+                                        <textarea id="summernote" name="fac_des"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>ประกอบกิจการ</label>
                                         <select class="form-control select2" name="fac_category[]" style="width: 100%;"
-                                            multiple>
+                                            multiple required>
                                             <option value="0">โรงงานรีไซเคิล</option>
                                             <option value="1">โรงงานผลิตอุปกรณ์ก่อสร้าง</option>
                                             <option value="2">โรงงานผลิตอุปกรณ์เกษตร</option>
@@ -177,30 +181,30 @@
 
                                     <div class="form-group">
                                         <label>ที่อยู่โรงงาน</label>
-                                        <input type="name" name="fac_address" class="form-control" placeholder="">
+                                        <input type="name" name="fac_address" class="form-control" placeholder="" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>พิกัด UTM 1</label>
-                                        <input type="name" value="1" name="fac_utm1" class="form-control"
-                                            placeholder="">
+                                        <label>พิกัด UTM N</label>
+                                        <input type="name" name="fac_utm1" class="form-control"
+                                            placeholder="" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>พิกัด UTM 2</label>
-                                        <input type="name" value="1" name="fac_utm2" class="form-control"
-                                            placeholder="">
+                                        <label>พิกัด UTM E</label>
+                                        <input type="name"  name="fac_utm2" class="form-control"
+                                            placeholder="" required>
                                     </div>
                                     <div class="form-group">
                                         <label>เบอร์โทร</label>
-                                        <input type="name" name="fac_tel" class="form-control" placeholder="">
+                                        <input type="name" name="fac_tel" class="form-control" placeholder="" required>
                                     </div>
                                     <div class="form-group">
                                         <label>fax</label>
-                                        <input type="name" name="fac_fax" class="form-control" placeholder="">
+                                        <input type="name" name="fac_fax" class="form-control" placeholder="" required>
                                     </div>
                                     <div class="form-group">
                                         <div id="msg"></div>
                                         <label for="exampleInputEmail1">อัพโหลดรูปภาพโรงงาน</label>
-                                        <input type="file" name="img[]" class="file" accept="image/*" hidden>
+                                        <input type="file" name="img[]" class="file" accept="image/*" hidden required>
                                         <div class="input-group my-3">
                                             <input type="text" class="form-control" disabled placeholder="Upload File"
                                                 id="file">
