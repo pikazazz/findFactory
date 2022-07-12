@@ -15,3 +15,8 @@ label {
 .dark {
     color: black !important;
 }
+
+.text-default{
+    font-weight: 200 !important;
+    color: white;
+}

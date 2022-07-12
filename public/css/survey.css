@@ -1,0 +1,48 @@
+.fac-page-header {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 350px;
+    filter: contrast(0.4);
+}
+.detail-page {
+    color: #000;
+}
+
+.fac-card-hover:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.fac-label {
+    color: #78909c;
+}
+.fac-card-title {
+    color: #546e7a;
+}
+
+.fac-info-item {
+    color: #90a4ae;
+}
+
+.fac-agenda {
+    list-style-type: none;
+}
+
+.fac-agenda .fac-agenda-item {
+    margin-top: 10px;
+}
+.fac-agenda .fac-agenda-item::before {
+    content: "\f068";
+    margin-right: 10px;
+    font-family: "fontawesome";
+}
+.fac-agenda .fac-agenda-item a {
+    color: #546e7a;
+}
+.fac-agenda .fac-agenda-item:hover a {
+    color: #000;
+}
+.fac-agenda .fac-agenda-item:hover::before {
+    content: "\f061";
+    font-family: "fontawesome";
+}

@@ -20,7 +20,7 @@ const Row = ({ index, removeRow }) => {
                 <div className="d-flex align-items-center gap-2">
                     ปริมาณ
                     <InputGroup
-                        name="recycle-notBackQuantity"
+                        name="recycle-notBackQuantity[]"
                         unit="kg/เดือน"
                         style={{ width: "350px" }}
                     />
@@ -64,9 +64,11 @@ const Extended = ({ toNo, setToNo }) => {
             <div className="d-flex align-items-center gap-2 mt-2">
                 <input
                     type="checkbox"
+                    name="usenoback"
                     id="to-no"
                     checked={toNo}
                     onChange={(e) => setToNo(e.target.checked)}
+                    value="1"
                 />
                 <label htmlFor="to-no">ไม่ได้นำกลับเข้าสู่กระบวนการผลิต</label>
             </div>

@@ -15,7 +15,7 @@
         window.postUrl = "{{ route('survey.store') }}"
         window.csrf_token = "{{ csrf_token() }}"
     </script>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ asset('/resources/js/app.js') }}"></script>
 </body>
 
 </html>

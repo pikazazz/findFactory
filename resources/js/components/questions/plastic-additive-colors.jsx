@@ -83,7 +83,7 @@ function ColorTypeRow({ index, removeRow }) {
                     ปริมาณที่ใช้
                     <InputGroup
                         unit="% / การใช้เม็ดพลาสติก 1 kg"
-                        name="plasticAdditive-colorTotal"
+                        name="plasticAdditive-colorTotal[]"
                         style={{ width: "350px" }}
                     />
                 </div>
@@ -112,7 +112,7 @@ function AdditiveRow({ index, removeRow }) {
                     ชนิดของสารเติมแต่ง
                     <input
                         type="text"
-                        name="plasticAdditive-additiveType"
+                        name="plasticAdditive-additiveType[]"
                         className="form-control"
                         style={{ width: "250px" }}
                         required
@@ -123,7 +123,7 @@ function AdditiveRow({ index, removeRow }) {
                 <div className="d-flex align-items-center gap-2">
                     ปริมาณที่ใช้
                     <InputGroup
-                        name="plasticAdditive-additiveTotal"
+                        name="plasticAdditive-additiveTotal[]"
                         unit="% / การใช้เม็ดพลาสติก 1 kg"
                         style={{ width: "350px" }}
                     />
@@ -190,7 +190,7 @@ export default function PlastocAdditiveColors() {
                                 setTypeColor(e.target.value);
                             }}
                         />
-                        <label htmlFor="type-color-1">ใช้</label>
+                        <label htmlFor="type-color-1">ชนิดผง</label>
                         <input
                             type="radio"
                             name="plasticAdditive-typeColor"
@@ -201,7 +201,7 @@ export default function PlastocAdditiveColors() {
                                 setTypeColor(e.target.value);
                             }}
                         />
-                        <label htmlFor="type-color-2">ไม่ใช้</label>
+                        <label htmlFor="type-color-2">ชนิดเม็ด</label>
                     </div>
                 </div>
             )}
@@ -219,7 +219,7 @@ export default function PlastocAdditiveColors() {
                         checked={additive === "1"}
                         value="1"
                     />
-                    <label htmlFor="use-color-1">ใช้</label>
+                    <label htmlFor="use-additive-1">ใช้</label>
                     <input
                         type="radio"
                         name="plasticAdditive-useAdditive"
@@ -228,7 +228,7 @@ export default function PlastocAdditiveColors() {
                         checked={additive === "0"}
                         value="0"
                     />
-                    <label htmlFor="use-color-2">ไม่ใช้</label>
+                    <label htmlFor="use-additive-2">ไม่ใช้</label>
                 </div>
             </div>
             {additive === "1" && (
