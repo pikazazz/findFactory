@@ -90,6 +90,7 @@ const Extended = ({ noSum, setNoSum }) => {
                     name="water-noSum"
                     checked={noSum}
                     onChange={(e) => setNoSum(e.target.checked)}
+                    value="1"
                 />
                 <label htmlFor="no-sum">แบบไม่รวม</label>
             </div>

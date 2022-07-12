@@ -5918,7 +5918,7 @@ function ColorTypeRow(_ref2) {
         className: "d-flex align-items-center gap-2",
         children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
           unit: "% / \u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E40\u0E21\u0E47\u0E14\u0E1E\u0E25\u0E32\u0E2A\u0E15\u0E34\u0E01 1 kg",
-          name: "plasticAdditive-colorTotal",
+          name: "plasticAdditive-colorTotal[]",
           style: {
             width: "350px"
           }
@@ -5956,7 +5956,7 @@ function AdditiveRow(_ref3) {
         className: "d-flex align-items-center gap-2",
         children: ["\u0E0A\u0E19\u0E34\u0E14\u0E02\u0E2D\u0E07\u0E2A\u0E32\u0E23\u0E40\u0E15\u0E34\u0E21\u0E41\u0E15\u0E48\u0E07", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "text",
-          name: "plasticAdditive-additiveType",
+          name: "plasticAdditive-additiveType[]",
           className: "form-control",
           style: {
             width: "250px"
@@ -5969,7 +5969,7 @@ function AdditiveRow(_ref3) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "d-flex align-items-center gap-2",
         children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          name: "plasticAdditive-additiveTotal",
+          name: "plasticAdditive-additiveTotal[]",
           unit: "% / \u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E40\u0E21\u0E47\u0E14\u0E1E\u0E25\u0E32\u0E2A\u0E15\u0E34\u0E01 1 kg",
           style: {
             width: "350px"
@@ -6064,7 +6064,7 @@ function PlastocAdditiveColors() {
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "type-color-1",
-          children: "\u0E43\u0E0A\u0E49"
+          children: "\u0E0A\u0E19\u0E34\u0E14\u0E1C\u0E07"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "radio",
           name: "plasticAdditive-typeColor",
@@ -6076,7 +6076,7 @@ function PlastocAdditiveColors() {
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "type-color-2",
-          children: "\u0E44\u0E21\u0E48\u0E43\u0E0A\u0E49"
+          children: "\u0E0A\u0E19\u0E34\u0E14\u0E40\u0E21\u0E47\u0E14"
         })]
       })]
     }), typeColor === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -6099,7 +6099,7 @@ function PlastocAdditiveColors() {
           checked: additive === "1",
           value: "1"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          htmlFor: "use-color-1",
+          htmlFor: "use-additive-1",
           children: "\u0E43\u0E0A\u0E49"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "radio",
@@ -6111,7 +6111,7 @@ function PlastocAdditiveColors() {
           checked: additive === "0",
           value: "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          htmlFor: "use-color-2",
+          htmlFor: "use-additive-2",
           children: "\u0E44\u0E21\u0E48\u0E43\u0E0A\u0E49"
         })]
       })]
@@ -6176,7 +6176,8 @@ function PlasticProcessed() {
           value: "0",
           onClick: function onClick(e) {
             return setProcessed(e.target.value);
-          }
+          },
+          checked: processed === "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
           htmlFor: "processed-1",
           children: "\u0E44\u0E21\u0E48\u0E21\u0E35"
@@ -6190,7 +6191,8 @@ function PlasticProcessed() {
           value: "1",
           onClick: function onClick(e) {
             return setProcessed(e.target.value);
-          }
+          },
+          checked: processed === "1"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
           htmlFor: "processed-2",
           children: "\u0E21\u0E35"
@@ -6264,7 +6266,7 @@ var Row = function Row(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "d-flex align-items-center gap-2",
         children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          name: "recycle-notBackQuantity",
+          name: "recycle-notBackQuantity[]",
           unit: "kg/\u0E40\u0E14\u0E37\u0E2D\u0E19",
           style: {
             width: "350px"
@@ -6318,11 +6320,13 @@ var _Extended = function Extended(_ref2) {
       className: "d-flex align-items-center gap-2 mt-2",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
         type: "checkbox",
+        name: "usenoback",
         id: "to-no",
         checked: toNo,
         onChange: function onChange(e) {
           return setToNo(e.target.checked);
-        }
+        },
+        value: "1"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
         htmlFor: "to-no",
         children: "\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E19\u0E33\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15"
@@ -6508,7 +6512,8 @@ var _Extended = function Extended(_ref2) {
         checked: noSum,
         onChange: function onChange(e) {
           return setNoSum(e.target.checked);
-        }
+        },
+        value: "1"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
         htmlFor: "no-sum",
         children: "\u0E41\u0E1A\u0E1A\u0E44\u0E21\u0E48\u0E23\u0E27\u0E21"

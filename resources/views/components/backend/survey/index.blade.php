@@ -81,17 +81,18 @@
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">จำนวนวันทำงาน: </span>
+                                        <span class="input-group-text">จำนวนวันทำงาน: </span>
                                     </div>
-                                    <input type="text" class="form-control bg-white" value="${item.data["totalDaysPerWeek"]} วันต่อสัปดาห์ ${item.data["totalDaysPerYear"]} วันต่อปี" disabled>
+                                    <input type="text" class="form-control bg-white" value="${item.data["totalDaysPerWeek"]} วันต่อสัปดาห์ หรือ ${item.data["totalDaysPerYear"]} วันต่อปี" disabled>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 mt-3">
+                        <div class="row">
+                            <div class="col-md-12 mt-3">
                             <h6>รายละเอียดเครื่องจักรที่ใช้ และอัตราการใช้ไฟฟ้า   <a data-toggle="collapse" href="#electrical-collapse" role="button" aria-expanded="false" aria-controls="electrical-collapse">
     เรียกดูรายละเอียด
   </a></h6>
-                            <div class="collapse" id="electrical-collapse">
+                            <div class="collapse mx-sm-4" id="electrical-collapse">
                                 <table class="table">
                                                             <thead>
                                                                 <tr>
@@ -103,16 +104,271 @@
                                                                 <tbody>
                                                                     ${item.data["electrical-machine"].map((v,i)=>(
                                                                     `<tr>
-                                                                                                <td>${v}</td>
-                                                                                                <td align="center">${item.data["electrical-size"][i]}</td>
-                                                                                                <td align="center">${item.data["electrical-quantity"][i]}</td>
-                                                                                            </tr>`
+                                                                                                                                    <td>${v}</td>
+                                                                                                                                    <td align="center">${item.data["electrical-size"][i]}</td>
+                                                                                                                                    <td align="center">${item.data["electrical-quantity"][i]}</td>
+                                                                                                                                </tr>`
                                                                     )).join("")}
                                                                 </tbody>
                                                             </table>
+                                                            <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">อัตราการใช้ไฟฟ้า: </span>
+                                    </div>
+                                    <input type="text" class="form-control bg-white" value="${item.data["electrical-rate"]}" disabled>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">บาทต่อเดือน</span>
+                                    </div>
+                                </div>        
                                                         </div>
+                                                        
                                 </div>
+                            </div>
                             <hr/>
+                            <div class="row">
+                            <div class="col-md-12 mt-3">
+                            <h6>การใช้เม็ดพลาสติก สี และสารเติมแต่งในกระบวนการผลิต   <a data-toggle="collapse" href="#additive-color-collapse" role="button" aria-expanded="false" aria-controls="additive-color-collapse">
+    เรียกดูรายละเอียด
+  </a></h6>
+                            <div class="collapse mx-sm-4" id="additive-color-collapse">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">ชนิดเม็ดพลาสติกที่ใช้: </span>
+                                    </div>
+                                    <input type="text" class="form-control bg-white" value="${item.data["plasticAdditive-mixColor"]}" disabled>
+                                </div>      
+                                <table class="table mt-3">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">รายการพลาสติกที่ใช้</th>
+                                                                    <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
+                                                                </tr>
+                                                            </thead>
+                                                                <tbody>
+                                                                    ${item.data["plasticAdditive-name"].map((v,i)=>(
+                                                                    `<tr>
+                                                                                                                                    <td>${v}</td>
+                                                                                                                                    <td align="center">${item.data["plasticAdditive-quantity"][i]}</td>
+                                                                                                                                </tr>`
+                                                                    )).join("")}
+                                                                </tbody>
+                                                            </table>
+
+                                                            <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">การใช้สี: </span>
+                                    </div>
+                                    <input type="text" class="form-control bg-white" value="${item.data["plasticAdditive-useColor"]=='1'?('ใช้ ('+(item.data["plasticAdditive-typeColor"]=='1'?'ชนิดผง':'ชนิดเม็ด')+')'):'ไม่ใช้'}" disabled>
+                                </div>  
+                                ${
+                                    item.data['plasticAdditive-useColor'] == '1'?
+                                    `
+                                                        <table class="table mt-3">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th scope="col">ชนิดของสี</th>
+                                                                                        <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                    <tbody>
+                                                                                        ${item.data["plasticAdditive-colorType"].map((v,i)=>(
+                                                                                        `<tr>
+                                                                                                                <td>${v}</td>
+                                                                                                                <td align="center">${item.data["plasticAdditive-colorTotal"][i]}</td>
+                                                                                                            </tr>`
+                                                                                        )).join("")}
+                                                                                    </tbody>
+                                                                                </table>`
+                                                            :''
+                                }
+                                   
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">การใช้สี: </span>
+                                    </div>
+                                    <input type="text" class="form-control bg-white" value="${item.data["plasticAdditive-useAdditive"]=='1'?'ใช้':'ไม่ใช้'}" disabled>
+                                </div>  
+                                ${
+                                    item.data['plasticAdditive-useAdditive'] == '1'?
+                                    `
+                                                        <table class="table mt-3">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th scope="col">ชนิดของสารเติมแต่ง</th>
+                                                                                        <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                    <tbody>
+                                                                                        ${item.data["plasticAdditive-additiveType"].map((v,i)=>(
+                                                                                        `<tr>
+                                                                                                                <td>${v}</td>
+                                                                                                                <td align="center">${item.data["plasticAdditive-additiveTotal"][i]}</td>
+                                                                                                            </tr>`
+                                                                                        )).join("")}
+                                                                                    </tbody>
+                                                                                </table>`
+                                                            :''
+                                }
+                                </div>              
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                            <div class="col-md-12 mt-3">
+                            <h6>ขยะพลาสติกที่เกิดจากกระบวนการผลิต<a data-toggle="collapse" href="#recycle-collapse" role="button" aria-expanded="false" aria-controls="recycle-collapse">
+    เรียกดูรายละเอียด
+  </a></h6>
+                            <div class="collapse mx-sm-4" id="recycle-collapse">
+                                <div class="col-md-12 col-sm-12 mt-2">
+                                    <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">นำกลับเข้าสู่กระบวนการผลิตทั้งหมด: </span>
+                                    </div>
+                                    <input type="text" class="form-control bg-white" value="${item.data["recycle-backAll"]}" disabled>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">kg/เดือน</span>
+                                    </div>
+                                </div>      
+                                   
+                                </div>
+                                <div class="col-md-12 col-sm-12 mt-2">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">นำกลับเข้าสู่กระบวนการผลิตบางส่วน: </span>
+                                        </div>
+                                        <input type="text" class="form-control bg-white" value="${item.data["recycle-backSome"]}" disabled>
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text">kg/เดือน</span>
+                                    </div>
+                                    </div>      
+                                </div>
+                                ${
+                                    item.data['usenoback'] == '1'?
+                                    `
+                                                        <table class="table mt-3">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th scope="col">รายการพลาสติก</th>
+                                                                                        <th scope="col" class="text-center">ปริมาณ (kg/เดือน)</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                    <tbody>
+                                                                                        ${item.data["recycle-backValue"].map((v,i)=>(
+                                                                                        `<tr>
+                                                                                                                <td>${v}</td>
+                                                                                                                <td align="center">${item.data["recycle-notBackQuantity"][i]}</td>
+                                                                                                            </tr>`
+                                                                                        )).join("")}
+                                                                                    </tbody>
+                                                                                </table>`
+                                                            :''
+                                }
+                                   
+                                </div>              
+                                </div>
+                            </div>
+                            <hr>
+                                 <div class="row">
+                            <div class="col-md-12 mt-3">
+                            <h6>ปริมาณการใช้น้ำ<a data-toggle="collapse" href="#water-collapse" role="button" aria-expanded="false" aria-controls="water-collapse">
+    เรียกดูรายละเอียด
+  </a></h6>
+                            <div class="collapse mx-sm-4" id="water-collapse">
+                                <div class="col-md-12 col-sm-12 mt-2">
+                                    ${item.data["water-useWater"] == '1'?`<div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">การใช้น้ำในกระบวนการผลิต: </span>
+                                        </div>
+                                        <input type="text" class="form-control bg-white" value="${item.data["water-useWaterQuantity"]}" disabled>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">ลิตร/เดือน</span>
+                                        </div></div>`:""}
+                                    <span>ระบบหล่อเย็นแบบใช้รวมเครื่องจักรทุกเครื่อง ปริมาณการเติมน้ำในระบบหล่อเย็น</span>
+                                    <div class="input-group">
+                                    <input type="text" class="form-control bg-white" value="${item.data["recycle-backAll"]}" disabled>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">ลิตร/เดือน</span>
+                                    </div>
+                                </div>      
+                                   
+                                </div>
+                                ${
+                                    item.data['water-noSum'] == '1'?
+                                    `
+                                                        <table class="table mt-3">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th scope="col">เครื่องจักร</th>
+                                                                                        <th scope="col" class="text-center">ปริมาณ (ลิตร/เดือน)</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                    <tbody>
+                                                                                        ${item.data["water-valueNoSum"].map((v,i)=>(
+                                                                                        `<tr>
+                                                                                                                <td>${v}</td>
+                                                                                                                <td align="center">${item.data["water-noSumQuantity"][i]}</td>
+                                                                                                            </tr>`
+                                                                                        )).join("")}
+                                                                                    </tbody>
+                                                                                </table>`
+                                                            :''
+                                }
+                                   
+                                </div>              
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                            <div class="col-md-12 mt-3">
+                            <h6>ปริมาณการเกิดน้ำเสีย<a data-toggle="collapse" href="#waste-water-collapse" role="button" aria-expanded="false" aria-controls="waste-water-collapse">
+    เรียกดูรายละเอียด
+  </a></h6>
+                            <div class="collapse mx-sm-4" id="waste-water-collapse">
+                                <div class="col-md-12 col-sm-12 mt-2">
+                                    ${item.data["water-useWater"] == '1'?`<div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">การใช้น้ำในกระบวนการผลิต: </span>
+                                        </div>
+                                        <input type="text" class="form-control bg-white" value="${item.data["water-useWaterQuantity"]}" disabled>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">ลิตร/เดือน</span>
+                                        </div></div>`:""}
+                                    <span>ระบบหล่อเย็นแบบใช้รวมเครื่องจักรทุกเครื่อง ปริมาณการเติมน้ำในระบบหล่อเย็น</span>
+                                    <div class="input-group">
+                                    <input type="text" class="form-control bg-white" value="${item.data["recycle-backAll"]}" disabled>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">ลิตร/เดือน</span>
+                                    </div>
+                                </div>      
+                                   
+                                </div>
+                                ${
+                                    item.data['water-noSum'] == '1'?
+                                    `
+                                                        <table class="table mt-3">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th scope="col">เครื่องจักร</th>
+                                                                                        <th scope="col" class="text-center">ปริมาณ (ลิตร/เดือน)</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                    <tbody>
+                                                                                        ${item.data["water-valueNoSum"].map((v,i)=>(
+                                                                                        `<tr>
+                                                                                                                <td>${v}</td>
+                                                                                                                <td align="center">${item.data["water-noSumQuantity"][i]}</td>
+                                                                                                            </tr>`
+                                                                                        )).join("")}
+                                                                                    </tbody>
+                                                                                </table>`
+                                                            :''
+                                }
+                                   
+                                </div>              
+                                </div>
+                            </div>
+                            <hr>
+                            
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
