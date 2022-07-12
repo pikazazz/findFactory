@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="section content full-height ">
-
         <div class="section">
             <div class="container ">
                 <div class="row">
@@ -10,18 +9,47 @@
                         <h1>
                             <span>โรงงานของเรา</span>
                         </h1>
-
                     </div>
                 </div>
                 <div class="row ">
-                    @for ($i = 0; $i < 10; $i++)
+                    @foreach ($factory as $Factory)
+                        <div class="col mt-4 ml-4">
+                            <div class="card" style="width:18rem;">
+                                <img class="card-img-top"
+                                    src="https://image.shutterstock.com/z/stock-photo-cartoon-factory-176642414.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $Factory->fac_name }}</h5>
+                                    <p class="card-text">
+                                        - ไม่มีข้อมูลตัวอย่าง -
+                                    </p>
+                                    <center>
+                                        <div class="row mt-4">
+                                            <div class="col">
+                                                <a target="_blank" href="{{ route('page.index') }}"><img
+                                                        src="{{ asset('assets/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
+                                                        width="20%" alt=""></a>
+                                                <a data-toggle="modal"
+                                                    data-target="#exampleModalCenter{{ $Factory->id }}"><img
+                                                        src="{{ asset('assets/about/picture/kindpng_1491757.png') }}"
+                                                        width="20%" alt=""></a>
+                                                <a target="blank"
+                                                    href="https://www.google.com/maps/@<?= $Factory->fac_lat ?>,<?= $Factory->fac_lon ?>,15z"><img
+                                                        src="{{ asset('assets/about/picture/355980.png') }}"
+                                                        width="20%" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter{{ $i }}" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="exampleModalCenter{{ $Factory->id }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog  modal-lg " role="document">
                                 <div class="modal-content " style="width: auto;">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalCenterTitle">โรงงาน A</h5>
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">{{ $Factory->fac_name }}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -32,51 +60,46 @@
                                                 <h1>เกี่ยวกับโรงงาน</h1>
                                                 <div class="bd-callout bd-callout-warning">
                                                     <p style="text-align: left;">
-                                                        Using color to add meaning only provides a visual indication, which
-                                                        will not be conveyed to users of assistive technologies – such as
-                                                        screen readers. Ensure that information denoted by the color is
-                                                        either obvious from the content itself (e.g. the visible text), or
-                                                        is included through alternative means, such as additional text
-                                                        hidden with the <code>.sr-only</code> class.
+                                                        - ข้อมูลตัวอย่าง -
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="col-md-5">
                                                 <li>
-                                                    ชื่อโรงงาน : โรงงาน A
+                                                    ชื่อโรงงาน : {{ $Factory->fac_name }}
                                                 </li>
                                                 <li>
-                                                    ทะเบียนโรงงานเลขที่ : AB4878419797
+                                                    ทะเบียนโรงงานเลขที่ : {{ $Factory->fac_no }}
                                                 </li>
 
                                                 <li>
-                                                    ประกอบกิจการ : โรงงานผลิตอุปกรณ์ก่อสร้าง
+                                                    ประกอบกิจการ : {{ $Factory->fac_category }}
                                                 </li>
                                                 <li>
-                                                    โทรศัพท์ : 0884751625
+                                                    โทรศัพท์ : {{ $Factory->fac_tel }}
                                                 </li>
-
-
                                                 <br>
                                                 <br>
-
-                                                <select class="custom-select">
+                                                <select class="custom-select" onchange="changeMap(this)">
                                                     <option selected>ตำแหน่งที่ตั้งของท่าน</option>
-                                                    <option value="1">โรงงาน A</option>
-                                                    <option value="1">โรงงาน B</option>
-                                                    <option value="1">โรงงาน C</option>
-                                                    <option value="1">โรงงาน D</option>
-                                                    <option value="1">โรงงาน E</option>
+                                                    @foreach ($map as $Map)
+                                                        <option
+                                                            value="{{ print_r($Map['lat']) }},{{ print_r($Map['lon']) }},{{ $Factory->fac_lat }},{{ $Factory->fac_lon }}">
+                                                            {{ print_r($Map['name']) }}</option>
+                                                    @endforeach
                                                 </select>
-                                                <li>
-                                                    ระยะทางทั้งหมด : 180 กิโลเมตร
+
+                                                <li class="inner">
+                                                    {{-- <button type="submit" class="btn btn-success"
+                                                        onclick="calldistance()">เรียกข้อมูล</button> --}}
+                                                    ระยะทางทั้งหมด : โปรดเลือกโรงงานของท่าน
                                                 </li>
                                             </div>
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-md-12 ml-auto">
                                                 <iframe
-                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.8084190296095!2d-76.99285713465012!3d38.8826248295729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b834fb4029d3%3A0x9270eee67ab54203!2zMTIwMCBQZW5uc3lsdmFuaWEgQXZlLiBTRSwgV2FzaGluZ3RvbiwgREMgMjAwMDMg4Liq4Lir4Lij4Lix4LiQ4Lit4LmA4Lih4Lij4Li04LiB4Liy!5e0!3m2!1sth!2sth!4v1655954309401!5m2!1sth!2sth"
+                                                    src="https://maps.google.com/maps?q={{ $Factory->fac_lat }},{{ $Factory->fac_lon }}&hl=es;z=14&amp;output=embed"
                                                     width="100%" height="400px" style="border:0;" allowfullscreen=""
                                                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                             </div>
@@ -88,59 +111,58 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col mt-4 ml-4">
-                            <div class="card" style="width:18rem;">
-                                <img class="card-img-top"
-                                    src="https://image.shutterstock.com/z/stock-photo-cartoon-factory-176642414.jpg"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">ชื่อโรงาน</h5>
-                                    <p class="card-text">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-
-                                    </p>
-
-
-                                    <center>
-                                        <div class="row mt-4">
-                                            <div class="col">
-                                                <a target="_blank" href="{{ route('page.index') }}"><img
-                                                        src="{{ asset('assets/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
-                                                        width="20%" alt=""></a>
-                                                <a data-toggle="modal"
-                                                    data-target="#exampleModalCenter{{ $i }}"><img
-                                                        src="{{ asset('assets/about/picture/kindpng_1491757.png') }}"
-                                                        width="20%" alt=""></a>
-                                                <a
-                                                    href="http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003"><img
-                                                        src="{{ asset('assets/about/picture/355980.png') }}" width="20%"
-                                                        alt=""></a>
-                                            </div>
-                                        </div>
-                                    </center>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Modal -->
-                    @endfor
+                    @endforeach
                 </div>
 
             </div>
         </div>
-
-
-        {{-- <div class="section mt-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="switch">
-                                <div id="circle"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-    </div>
     </div>
 @endsection
+
+<script>
+    function changeMap(data) {
+        var map = data.value.split(",");
+        onchangeLocation(map[0], map[1], map[2], map[3]);
+    }
+
+    function onchangeLocation(lat, lon, local_lat, local_lon) {
+        //Set id to 0 so you will get all records on page load.
+        params = {
+            key: "GXVnVpMIXOX(mLaVclrF4eguAh4vKRKXuJXz8uI0V0T8ZggCWsjCt4Gw)(hMBKnxuBfC48mc22gW1eR1uuOa6P0=====2",
+            stops: '[{"name":"location_1","lat":' + lat + ',"lon":' + lon +
+                ',"timeWindowStart":"","timeWindowEnd":"","serviceTime":""},{"name":"location_2","lat":' +
+                local_lat + ',"lon":' + local_lon + ',"timeWindowStart":"","timeWindowEnd":"","serviceTime":""}]'
+        }
+        $.ajax({
+            url: "//api.nostramap.com/Service/V2/Network/Route",
+            jsonp: "callback",
+            dataType: "jsonp",
+            contentType: "application/json",
+            data: params,
+
+            success: function(data) {
+
+                $(".inner").html('');
+                $(".inner").append("ระยะทางทั้งหมด : " + Math.round(data.results.totalLength / 1000) +
+                    " กิโลเมตร");
+
+                Swal.fire(
+                    'สำเร็จ',
+                    'คํานวณระยะทางสำเร็จ',
+                    'success',
+                )
+
+
+
+            },
+            error: function(err) {
+                Swal.fire(
+                    'Error',
+                    'คํานวณระยะทางไม่สำเร็จ',
+                    'error',
+                )
+            }
+        });
+    }
+</script>

@@ -94,7 +94,7 @@ class factoryController extends Controller
             $Factory->fac_lat = $map->attr->lat;
             $Factory->save();
         }
-       
+
         return redirect()->route('manage-factory.index')->with('message', 'อัพเดทข้อมูลสำเร็จ')->with('message-status', 'success');
     }
 
