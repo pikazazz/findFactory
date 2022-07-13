@@ -30,7 +30,6 @@ function Row({ index, removeRow }) {
     );
 }
 function Extended({ other, setOther, value, setValues }) {
-    console.log(setValues);
     return (
         <div className="d-flex flex-column gap-2">
             <div className="d-flex gap-2 align-items-center">
@@ -131,7 +130,6 @@ export default function MakeBenefit() {
     const [value, setValue] = useState([]);
     const setValues = (event) => {
         let newArray = [...value, event.target.value];
-        console.log(event.target.value);
         if (value.includes(event.target.value)) {
             newArray = newArray.filter((v) => v !== event.target.value);
         }
