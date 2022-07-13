@@ -60,7 +60,7 @@ const RowForWash = ({ index, removeRow }) => {
                     <InputGroup
                         name="waste-forWasteSize[]"
                         unit="ลูกบาศก์เมตร"
-                        style={{ width: "150px" }}
+                        style={{ width: "220px" }}
                     />
                 </div>
             </div>
@@ -70,7 +70,7 @@ const RowForWash = ({ index, removeRow }) => {
                     <InputGroup
                         name="waste-forWasteTotal[]"
                         unit="ลิตร/เดือน"
-                        style={{ width: "150px" }}
+                        style={{ width: "200px" }}
                     />
                 </div>
             </div>
@@ -114,9 +114,7 @@ const RowManageWater = ({ index, removeRow }) => {
     );
 };
 
-const Extended = ({}) => {
-    const [useWater, setUseWater] = useState(false);
-    const [useForWash, setUseForWash] = useState(false);
+const Extended = ({ state1, state2, setState1, setState2 }) => {
     return (
         <div className="mt-2">
             <div className="d-flex align-items-center gap-2">
@@ -126,8 +124,8 @@ const Extended = ({}) => {
                         type="radio"
                         id="water-1-water-waste"
                         name="water-waterWaste"
-                        onChange={(e) => setUseWater(e.target.value)}
-                        checked={useWater === "0"}
+                        onChange={(e) => setState1(e.target.value)}
+                        checked={state1 === "0"}
                         value="0"
                     />
                     <label htmlFor="water-1-water-waste">ไม่มี</label>
@@ -135,17 +133,18 @@ const Extended = ({}) => {
                         type="radio"
                         id="water-2-water-waste"
                         name="water-waterWaste"
-                        checked={useWater === "1"}
+                        checked={state1 === "1"}
                         value="1"
-                        onChange={(e) => setUseWater(e.target.value)}
+                        onChange={(e) => setState1(e.target.value)}
                     />
                     <label htmlFor="water-2-water-waste">มี</label>
                 </div>
-                {useWater === "1" && (
+                {state1 === "1" && (
                     <Fragment>
                         ปริมาณน้ำที่ใช้รวม
                         <InputGroup
                             unit="ลิตร/เดือน"
+                            name="water-waterWasteValue"
                             style={{ width: "300px" }}
                         />
                     </Fragment>
@@ -161,8 +160,8 @@ const Extended = ({}) => {
                         type="radio"
                         id="water-1-for-waste"
                         name="water-forWasteWash"
-                        onChange={(e) => setUseForWash(e.target.value)}
-                        checked={useForWash === "0"}
+                        onChange={(e) => setState2(e.target.value)}
+                        checked={state2 === "0"}
                         value="0"
                     />
                     <label htmlFor="water-1-for-waste">ไม่มี</label>
@@ -170,13 +169,13 @@ const Extended = ({}) => {
                         type="radio"
                         id="water-2-for-waste"
                         name="water-forWasteWash"
-                        checked={useForWash === "1"}
+                        checked={state2 === "1"}
                         value="1"
-                        onChange={(e) => setUseForWash(e.target.value)}
+                        onChange={(e) => setState2(e.target.value)}
                     />
                     <label htmlFor="water-2-for-waste">มี</label>
                 </div>
-                {useForWash === "1" && (
+                {state2 === "1" && (
                     <Fragment>
                         ปริมาณ
                         <InputGroup
@@ -193,12 +192,23 @@ const Extended = ({}) => {
 export default function WasteWater() {
     const [noSum, setNoSum] = useState("");
     const [washMachine, setWashMachine] = useState(false);
+    const [state1, setState1] = useState("0");
+    const [state2, setState2] = useState("0");
     return (
         <Fragment>
             <RowRender
                 renderItem={Row}
                 label="ปริมาณการเกิดน้ำเสีย"
-                Extended={() => <Extended noSum={noSum} setNoSum={setNoSum} />}
+                Extended={() => (
+                    <Extended
+                        noSum={noSum}
+                        setNoSum={setNoSum}
+                        state1={state1}
+                        setState1={setState1}
+                        state2={state2}
+                        setState2={setState2}
+                    />
+                )}
                 showButton={noSum}
             />
             <RowRender label="มีกระบวนการล้างแบบใด" renderItem={RowForWash} />
