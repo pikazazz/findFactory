@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\fontend\ViewFactoryController;
-use App\Http\Controllers\fontend\PageDetailController;
+use App\Http\Controllers\fontend\viewFactoryController;
+use App\Http\Controllers\fontend\pageDetailController;
 
 
-use App\Http\Controllers\backend\EmployeeController;
-use App\Http\Controllers\backend\FactoryController;
-use App\Http\Controllers\backend\ManageSurveyController;
-use App\Http\Controllers\backend\PublicrelationsController;
+use App\Http\Controllers\backend\employeeController;
+use App\Http\Controllers\backend\factoryController;
+use App\Http\Controllers\backend\fanageSurveyController;
+use App\Http\Controllers\backend\fublicrelationsController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\SurveyController;
 
