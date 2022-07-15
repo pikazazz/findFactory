@@ -27,11 +27,12 @@ use App\Http\Controllers\SurveyController;
 // });
 
 Route::get('/', function () {
-  return view('welcome');
+    return view('welcome');
 });
 
 Route::resource('manage-employee', EmployeeController::class);
 Route::resource('manage-factory', FactoryController::class);
+Route::put('manage-factory/m/{id}', [FactoryController::class, 'updateFac'])->name('manage-factory.updateFac');
 Route::resource('manage-survey', SurveyController::class);
 Route::resource('manage-infomation', PublicrelationsController::class);
 Route::resource('manage-profile', UserProfileController::class);

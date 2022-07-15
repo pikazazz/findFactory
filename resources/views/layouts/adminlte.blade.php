@@ -67,7 +67,7 @@
 
             <!-- Preloader -->
             <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__shake" src="{{ asset('//logo.png') }}" alt="AdminLTELogo" height="100"
+                <img class="animation__shake" src="{{ asset('/logo.png') }}" alt="AdminLTELogo" height="100"
                     width="100">
             </div>
 
@@ -106,7 +106,7 @@
             <aside class="main-sidebar  elevation-4" style="background-color: #455a64">
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
-                    <img src="{{ asset('//logo.png') }}" alt="AdminLTE Logo" width="20%">
+                    <img src="{{ asset('/logo.png') }}" alt="AdminLTE Logo" width="20%">
                     <span class="brand-text font-weight-light" style="color: white">{Factory Name}</span>
                 </a>
                 <hr>
