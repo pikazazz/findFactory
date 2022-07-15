@@ -1,8 +1,9 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { plasticTypes } from "../../data/mock";
 import Dropdown from "../dropdown";
 import InputGroup from "../InputGroup";
 import RowRender from "../row-render";
+import { debounce } from "lodash";
 const Row = ({ index, removeRow }) => {
     const onRemoveRow = () => {
         removeRow(index);
@@ -40,7 +41,7 @@ const Row = ({ index, removeRow }) => {
     );
 };
 
-const Extended = ({ toNo, setToNo }) => {
+const Extended = ({ toNo, setToNo, state1, state2, setState1, setState2 }) => {
     return (
         <div className="mt-2">
             <div className="d-flex align-items-center gap-2">
@@ -49,6 +50,8 @@ const Extended = ({ toNo, setToNo }) => {
                 <InputGroup
                     name="recycle-backAll"
                     unit="kg/เดือน"
+                    value={state1}
+                    onChange={setState1}
                     style={{ width: "300px" }}
                 />
             </div>
@@ -58,6 +61,8 @@ const Extended = ({ toNo, setToNo }) => {
                 <InputGroup
                     name="recycle-backSome"
                     unit="kg/เดือน"
+                    value={state2}
+                    onChange={setState2}
                     style={{ width: "300px" }}
                 />
             </div>
@@ -77,12 +82,35 @@ const Extended = ({ toNo, setToNo }) => {
 };
 export default function PlasticRecycle() {
     const [toNo, setToNo] = useState("");
+    const [state1, setState1] = useState("0");
+    const [state2, setState2] = useState("0");
+    const handleDebounceFn = (e, fn) => {
+        fn(e);
+    };
+    const debounceFn = useCallback(debounce(handleDebounceFn, 1000), []);
     return (
         <Fragment>
             <RowRender
                 renderItem={Row}
                 label="ขยะพลาสติกที่เกิดจากกระบวนการผลิต"
-                Extended={() => <Extended toNo={toNo} setToNo={setToNo} />}
+                Extended={() => (
+                    <Extended
+                        toNo={toNo}
+                        setToNo={setToNo}
+                        state1={state1}
+                        state2={state2}
+                        setState1={(e) =>
+                            debounceFn(e, (v) => {
+                                setState1(v);
+                            })
+                        }
+                        setState2={(e) =>
+                            debounceFn(e, (v) => {
+                                setState2(v);
+                            })
+                        }
+                    />
+                )}
                 showButton={toNo}
             />
         </Fragment>

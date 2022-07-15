@@ -93,24 +93,25 @@
     เรียกดูรายละเอียด
   </a></h6>
                             <div class="collapse mx-sm-4" id="electrical-collapse">
-                                <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">รายการ</th>
-                                                                    <th scope="col" class="text-center">ขนาด (KW)</th>
-                                                                    <th scope="col" class="text-center">จำนวน (เครื่อง)</th>
-                                                                </tr>
-                                                            </thead>
-                                                                <tbody>
-                                                                    ${item.data["electrical-machine"].map((v,i)=>(
-                                                                    `<tr>
+                                ${item.data["electrical-machine"] ?`<table class="table">
+                                                                                                                                <thead>
+                                                                                                                                    <tr>
+                                                                                                                                        <th scope="col">รายการ</th>
+                                                                                                                                        <th scope="col" class="text-center">ขนาด (KW)</th>
+                                                                                                                                        <th scope="col" class="text-center">จำนวน (เครื่อง)</th>
+                                                                                                                                    </tr>
+                                                                                                                                </thead>
+                                                                                                                                    <tbody>
+                                                                                                                                        ${item.data["electrical-machine"].map((v,i)=>(
+                                                                                                                                        `<tr>
                                                                                                                                     <td>${v}</td>
                                                                                                                                     <td align="center">${item.data["electrical-size"][i]}</td>
                                                                                                                                     <td align="center">${item.data["electrical-quantity"][i]}</td>
                                                                                                                                 </tr>`
-                                                                    )).join("")}
-                                                                </tbody>
-                                                            </table>
+                                                                                                                                        )).join("")}
+                                                                                                                                    </tbody>
+                                                                                                                                </table>`:""}
+                                
                                                             <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">อัตราการใช้ไฟฟ้า: </span>
@@ -137,22 +138,23 @@
                                     </div>
                                     <input type="text" class="form-control bg-white" value="${item.data["plasticAdditive-mixColor"]}" disabled>
                                 </div>      
-                                <table class="table mt-3">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">รายการพลาสติกที่ใช้</th>
-                                                                    <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
-                                                                </tr>
-                                                            </thead>
-                                                                <tbody>
-                                                                    ${item.data["plasticAdditive-name"].map((v,i)=>(
-                                                                    `<tr>
-                                                                                                                                    <td>${v}</td>
-                                                                                                                                    <td align="center">${item.data["plasticAdditive-quantity"][i]}</td>
-                                                                                                                                </tr>`
-                                                                    )).join("")}
-                                                                </tbody>
-                                                            </table>
+                                ${item.data["plasticAdditive-name"]?`<table class="table mt-3">
+                                                                                                                            <thead>
+                                                                                                                                <tr>
+                                                                                                                                    <th scope="col">รายการพลาสติกที่ใช้</th>
+                                                                                                                                    <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
+                                                                                                                                </tr>
+                                                                                                                            </thead>
+                                                                                                                                <tbody>
+                                                                                                                                    ${item.data["plasticAdditive-name"].map((v,i)=>(
+                                                                                                                                    `<tr>
+                                                                                                                                        <td>${v}</td>
+                                                                                                                                        <td align="center">${item.data["plasticAdditive-quantity"][i]}</td>
+                                                                                                                                    </tr>`
+                                                                                                                                    )).join("")}
+                                                                                                                                </tbody>
+                                                                                                                            </table>`:""}
+                                
 
                                                             <div class="input-group">
                                     <div class="input-group-prepend">
@@ -163,22 +165,22 @@
                                 ${
                                     item.data['plasticAdditive-useColor'] == '1'?
                                     `
-                                                        <table class="table mt-3">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th scope="col">ชนิดของสี</th>
-                                                                                        <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                    <tbody>
-                                                                                        ${item.data["plasticAdditive-colorType"].map((v,i)=>(
-                                                                                        `<tr>
+                                                                                                                            <table class="table mt-3">
+                                                                                                                                                    <thead>
+                                                                                                                                                        <tr>
+                                                                                                                                                            <th scope="col">ชนิดของสี</th>
+                                                                                                                                                            <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
+                                                                                                                                                        </tr>
+                                                                                                                                                    </thead>
+                                                                                                                                                        <tbody>
+                                                                                                                                                            ${item.data["plasticAdditive-colorType"].map((v,i)=>(
+                                                                                                                                                            `<tr>
                                                                                                                 <td>${v}</td>
                                                                                                                 <td align="center">${item.data["plasticAdditive-colorTotal"][i]}</td>
                                                                                                             </tr>`
-                                                                                        )).join("")}
-                                                                                    </tbody>
-                                                                                </table>`
+                                                                                                                                                            )).join("")}
+                                                                                                                                                        </tbody>
+                                                                                                                                                    </table>`
                                                             :''
                                 }
                                    
@@ -191,22 +193,22 @@
                                 ${
                                     item.data['plasticAdditive-useAdditive'] == '1'?
                                     `
-                                                        <table class="table mt-3">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th scope="col">ชนิดของสารเติมแต่ง</th>
-                                                                                        <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                    <tbody>
-                                                                                        ${item.data["plasticAdditive-additiveType"].map((v,i)=>(
-                                                                                        `<tr>
+                                                                                                                            <table class="table mt-3">
+                                                                                                                                                    <thead>
+                                                                                                                                                        <tr>
+                                                                                                                                                            <th scope="col">ชนิดของสารเติมแต่ง</th>
+                                                                                                                                                            <th scope="col" class="text-center">จำนวนที่ใช้ (kg/เดือน)</th>
+                                                                                                                                                        </tr>
+                                                                                                                                                    </thead>
+                                                                                                                                                        <tbody>
+                                                                                                                                                            ${item.data["plasticAdditive-additiveType"].map((v,i)=>(
+                                                                                                                                                            `<tr>
                                                                                                                 <td>${v}</td>
                                                                                                                 <td align="center">${item.data["plasticAdditive-additiveTotal"][i]}</td>
                                                                                                             </tr>`
-                                                                                        )).join("")}
-                                                                                    </tbody>
-                                                                                </table>`
+                                                                                                                                                            )).join("")}
+                                                                                                                                                        </tbody>
+                                                                                                                                                    </table>`
                                                             :''
                                 }
                                 </div>              
@@ -245,22 +247,22 @@
                                 ${
                                     item.data['usenoback'] == '1'?
                                     `
-                                                        <table class="table mt-3">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th scope="col">รายการพลาสติก</th>
-                                                                                        <th scope="col" class="text-center">ปริมาณ (kg/เดือน)</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                    <tbody>
-                                                                                        ${item.data["recycle-backValue"].map((v,i)=>(
-                                                                                        `<tr>
+                                                                                                                            <table class="table mt-3">
+                                                                                                                                                    <thead>
+                                                                                                                                                        <tr>
+                                                                                                                                                            <th scope="col">รายการพลาสติก</th>
+                                                                                                                                                            <th scope="col" class="text-center">ปริมาณ (kg/เดือน)</th>
+                                                                                                                                                        </tr>
+                                                                                                                                                    </thead>
+                                                                                                                                                        <tbody>
+                                                                                                                                                            ${item.data["recycle-backValue"].map((v,i)=>(
+                                                                                                                                                            `<tr>
                                                                                                                 <td>${v}</td>
                                                                                                                 <td align="center">${item.data["recycle-notBackQuantity"][i]}</td>
                                                                                                             </tr>`
-                                                                                        )).join("")}
-                                                                                    </tbody>
-                                                                                </table>`
+                                                                                                                                                            )).join("")}
+                                                                                                                                                        </tbody>
+                                                                                                                                                    </table>`
                                                             :''
                                 }
                                    
@@ -276,14 +278,14 @@
                             <div class="collapse mx-sm-4" id="water-collapse">
                                 <div class="col-md-12 col-sm-12 mt-2">
                                     ${item.data["water-useWater"] == '1'?`<div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">การใช้น้ำในกระบวนการผลิต: </span>
-                                        </div>
-                                        <input type="text" class="form-control bg-white" value="${item.data["water-useWaterQuantity"]}" disabled>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">ลิตร/เดือน</span>
-                                        </div></div>`:""}
-                                    <span>ระบบหล่อเย็นแบบใช้รวมเครื่องจักรทุกเครื่อง ปริมาณการเติมน้ำในระบบหล่อเย็น</span>
+                                                                                                            <div class="input-group-prepend">
+                                                                                                                <span class="input-group-text">การใช้น้ำในกระบวนการผลิต: </span>
+                                                                                                            </div>
+                                                                                                            <input type="text" class="form-control bg-white" value="${item.data["water-useWaterQuantity"]}" disabled>
+                                                                                                            <div class="input-group-prepend">
+                                                                                                                <span class="input-group-text">ลิตร/เดือน</span>
+                                                                                                            </div></div>`:""}
+                                    <div class="mt-3">ระบบหล่อเย็นแบบใช้รวมเครื่องจักรทุกเครื่อง ปริมาณการเติมน้ำในระบบหล่อเย็น</div>
                                     <div class="input-group">
                                     <input type="text" class="form-control bg-white" value="${item.data["recycle-backAll"]}" disabled>
                                     <div class="input-group-prepend">
@@ -295,22 +297,22 @@
                                 ${
                                     item.data['water-noSum'] == '1'?
                                     `
-                                                        <table class="table mt-3">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th scope="col">เครื่องจักร</th>
-                                                                                        <th scope="col" class="text-center">ปริมาณ (ลิตร/เดือน)</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                    <tbody>
-                                                                                        ${item.data["water-valueNoSum"].map((v,i)=>(
-                                                                                        `<tr>
+                                                                                                                            <table class="table mt-3">
+                                                                                                                                                    <thead>
+                                                                                                                                                        <tr>
+                                                                                                                                                            <th scope="col">เครื่องจักร</th>
+                                                                                                                                                            <th scope="col" class="text-center">ปริมาณ (ลิตร/เดือน)</th>
+                                                                                                                                                        </tr>
+                                                                                                                                                    </thead>
+                                                                                                                                                        <tbody>
+                                                                                                                                                            ${item.data["water-valueNoSum"].map((v,i)=>(
+                                                                                                                                                            `<tr>
                                                                                                                 <td>${v}</td>
                                                                                                                 <td align="center">${item.data["water-noSumQuantity"][i]}</td>
                                                                                                             </tr>`
-                                                                                        )).join("")}
-                                                                                    </tbody>
-                                                                                </table>`
+                                                                                                                                                            )).join("")}
+                                                                                                                                                        </tbody>
+                                                                                                                                                    </table>`
                                                             :''
                                 }
                                    
@@ -325,54 +327,93 @@
   </a></h6>
                             <div class="collapse mx-sm-4" id="waste-water-collapse">
                                 <div class="col-md-12 col-sm-12 mt-2">
-                                    ${item.data["water-useWater"] == '1'?`<div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">การใช้น้ำในกระบวนการผลิต: </span>
-                                        </div>
-                                        <input type="text" class="form-control bg-white" value="${item.data["water-useWaterQuantity"]}" disabled>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">ลิตร/เดือน</span>
-                                        </div></div>`:""}
-                                    <span>ระบบหล่อเย็นแบบใช้รวมเครื่องจักรทุกเครื่อง ปริมาณการเติมน้ำในระบบหล่อเย็น</span>
-                                    <div class="input-group">
-                                    <input type="text" class="form-control bg-white" value="${item.data["recycle-backAll"]}" disabled>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">ลิตร/เดือน</span>
-                                    </div>
-                                </div>      
-                                   
+                                    <div class="mt-3">น้ำเสียที่เกิดจากกระบวนการผลิต</div>
+                                    ${item.data["water-waterWaste"] == '1'?`<div class="input-group">
+                                                                                                            
+                                                                                                            <input type="text" class="form-control bg-white" value="${item.data["water-waterWasteValue"]}" disabled>
+                                                                                                            <div class="input-group-prepend">
+                                                                                                                <span class="input-group-text">ลิตร/เดือน</span>
+                                                                                                            </div></div>`:""}
+                                                    <div class="mt-3">กรณีล้างทำความสะอาดผลิตภัณฑ์ น้ำเสียที่เกิดจากกระบวนการล้างผลิตภัณฑ์</div>
+                                    ${item.data["water-forWasteWash"] == '1'?`<div class="input-group">
+                                                                                                            <input type="text" class="form-control bg-white" value="${item.data["water-forWasteWash"]}" disabled>
+                                                                                                            <div class="input-group-prepend">
+                                                                                                                <span class="input-group-text">ลิตร/เดือน</span>
+                                                                                                            </div></div>`:""}
                                 </div>
                                 ${
-                                    item.data['water-noSum'] == '1'?
-                                    `
-                                                        <table class="table mt-3">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th scope="col">เครื่องจักร</th>
-                                                                                        <th scope="col" class="text-center">ปริมาณ (ลิตร/เดือน)</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                    <tbody>
-                                                                                        ${item.data["water-valueNoSum"].map((v,i)=>(
-                                                                                        `<tr>
+                                    item.data['waste-forWasteValue'] != null ?
+                                    ` <div class="mt-3">กระบวนการล้าง </div>
+                                                                                                                            <table class="table mt-3">
+                                                                                                                                                    <thead>
+                                                                                                                                                        <tr>
+                                                                                                                                                            <th scope="col">กระบวนการ</th>
+                                                                                                                                                            <th scope="col" class="text-center">จำนวน (บ่อ)</th>
+                                                                                                                                                            <th scope="col" class="text-center">ขนาด (ลูกบาศก์เมตร)</th>
+                                                                                                                                                            <th scope="col" class="text-center">ปริมาณ (ลิตร/เดือน)</th>
+                                                                                                                                                        </tr>
+                                                                                                                                                    </thead>
+                                                                                                                                                        <tbody>
+                                                                                                                                                            ${item.data["waste-forWasteValue"].map((v,i)=>(
+                                                                                                                                                            `<tr>
                                                                                                                 <td>${v}</td>
-                                                                                                                <td align="center">${item.data["water-noSumQuantity"][i]}</td>
+                                                                                                                <td align="center">${item.data["waste-forWasteValueQuantity"][i]}</td>
+                                                                                                                <td align="center">${item.data["waste-forWasteSize"][i]}</td>
+                                                                                                                <td align="center">${item.data["waste-forWasteTotal"][i]}</td>
                                                                                                             </tr>`
-                                                                                        )).join("")}
-                                                                                    </tbody>
-                                                                                </table>`
+                                                                                                                                                            )).join("")}
+                                                                                                                                                        </tbody>
+                                                                                                                                                    </table>`
                                                             :''
                                 }
-                                   
+                                   <div class="col-md-12 mt-3">
+                                    <div class="mt-3">น้ำเสียที่เกิดจากกระบวนการล้างทำความสะอาดเครื่องจักร หรือล้างภาชนะ</div>
+                                    ${item.data["waste-washMachine"] == '1'?`<div class="input-group">
+                                                                                                            <input type="text" class="form-control bg-white" value="${item.data["waste-total"]}" disabled>
+                                                                                                            <div class="input-group-prepend">
+                                                                                                                <span class="input-group-text">ลิตร/เดือน</span>
+                                                                                                            </div></div>`:""}
+                                                            </div>
+
+                                                            ${
+                                    item.data['waste-manageWaterValue'] != null ?
+                                    ` <div class="mt-3 text-bold">กระบวนการจัดการน้ำเสียที่เกิดขึ้น</div>
+                                                                                                                            <div class="mt-2">${item.data["waste-manageWaterValue"].join(",")}</div>`
+                                                            :''
+                                }
                                 </div>              
                                 </div>
                             </div>
                             <hr>
-                            
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                            <div class="row">
+                            <div class="col-md-12 mt-3">
+                            <h6>ขยะพลาสติกประเภทใดที่ไม่ได้นำไปใช้ประโยชน์ แต่ต้องการนำไปแปรรูปเพื่อเพิ่มมูลค่า<a data-toggle="collapse" href="#waste-process-collapse" role="button" aria-expanded="false" aria-controls="waste-process-collapse">
+    เรียกดูรายละเอียด
+  </a></h6>
+                            <div class="collapse mx-sm-4" id="waste-process-collapse">
+                                    <div class="mt-2"> ${item.data["processed-processed"] != '1'?`ไม่มี`:`<ul>`+item.data['processed-value'].map(v=>(
+                                        `<li>${v}</li>`
+                                    )).join("")+`</ul>`}</div>
+                                                            </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                            <div class="col-md-12 mt-3">
+                            <h6>ความต้องการที่จะนำไปใช้ประโยชน์<a data-toggle="collapse" href="#benefit-process-collapse" role="button" aria-expanded="false" aria-controls="benefit-process-collapse">
+    เรียกดูรายละเอียด
+  </a></h6>
+                            <div class="collapse mx-sm-4" id="benefit-process-collapse">
+
+                                    <div class="mt-2"><ul>${item.data["benefit-value"] && item.data["benefit-value"]?.length > 0?item.data['benefit-value'].map(v=>(
+                                        `<li>${v}</li>`
+                                    )).join(""):''} 
+                                    ${item.data["benefit-other"] && item.data["benefit-other"]?.length > 0?item.data['benefit-other'].map(v=>(
+                                        `<li>${v}</li>`
+                                    )).join(""):''}</ul></div>
+                                                            </div>
+                                </div>
+                            </div>
                     </div>
                     </div>
                 </div>
@@ -383,7 +424,6 @@
                     <td>${idx+1}</td>
                         <td>${dateTime.setLocale('th').toFormat("วันที่ dd MMMM yyyy (เวลา HH:mm:ss)")}</td>
                          <td><button type="submit" class="btn btn-primary" style="color: #FFFFFF" data-bs-toggle="modal" data-bs-target="#survey-${idx}"><i class="fa-solid fa-eye"></i></button>
-                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 </tr>`)
         })

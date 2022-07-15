@@ -17,7 +17,7 @@ export default function PlasticProcessed() {
                         id="processed-1"
                         name="processsed-processed"
                         value="0"
-                        onClick={(e) => setProcessed(e.target.value)}
+                        onChange={(e) => setProcessed(e.target.value)}
                         checked={processed === "0"}
                     />
                     <label htmlFor="processed-1">ไม่มี</label>
@@ -28,7 +28,7 @@ export default function PlasticProcessed() {
                         id="processed-2"
                         name="processed-processed"
                         value="1"
-                        onClick={(e) => setProcessed(e.target.value)}
+                        onChange={(e) => setProcessed(e.target.value)}
                         checked={processed === "1"}
                     />
                     <label htmlFor="processed-2">มี</label>

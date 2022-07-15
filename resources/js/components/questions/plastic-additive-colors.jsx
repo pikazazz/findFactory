@@ -205,7 +205,7 @@ export default function PlastocAdditiveColors() {
                     </div>
                 </div>
             )}
-            {typeColor === "1" && (
+            {useColor === "1" && (
                 <RowRender renderItem={ColorTypeRow} label="ชนิดของสี" />
             )}
             <div className="mt-2">

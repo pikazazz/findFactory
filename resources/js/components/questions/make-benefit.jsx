@@ -29,35 +29,86 @@ function Row({ index, removeRow }) {
         </div>
     );
 }
-function Extended({ other, setOther }) {
+function Extended({ other, setOther, value, setValues }) {
     return (
         <div className="d-flex flex-column gap-2">
             <div className="d-flex gap-2 align-items-center">
-                <input type="checkbox" id="benefit-1" name="benefit-value[]" value="ผสมทำถนน"/>
+                <input
+                    type="checkbox"
+                    id="benefit-1"
+                    name="benefit-value[]"
+                    value="ผสมทำถนน"
+                    onChange={setValues}
+                    checked={value.includes("ผสมทำถนน")}
+                />
                 <label htmlFor="benefit-1">ผสมทำถนน</label>
             </div>
             <div className="d-flex gap-2 align-items-center">
-                <input type="checkbox" id="benefit-2" name="benefit-value[]" value="ทำเฟอร์นิเจอร์"/>
+                <input
+                    type="checkbox"
+                    id="benefit-2"
+                    name="benefit-value[]"
+                    value="ทำเฟอร์นิเจอร์"
+                    onChange={setValues}
+                    checked={value.includes("ทำเฟอร์นิเจอร์")}
+                />
                 <label htmlFor="benefit-2">ทำเฟอร์นิเจอร์</label>
             </div>
             <div className="d-flex gap-2 align-items-center">
-                <input type="checkbox" id="benefit-3" name="benefit-value[]" value="เผาเพื่อเป็นพลังงาน"/>
+                <input
+                    type="checkbox"
+                    id="benefit-3"
+                    name="benefit-value[]"
+                    value="เผาเพื่อเป็นพลังงาน"
+                    onChange={setValues}
+                    checked={value.includes("เผาเพื่อเป็นพลังงาน")}
+                />
                 <label htmlFor="benefit-3">เผาเพื่อเป็นพลังงาน</label>
             </div>
             <div className="d-flex gap-2 align-items-center">
-                <input type="checkbox" id="benefit-4" name="benefit-value[]" value="ขึ้นรูปเป็นไม้เทียม"/>
+                <input
+                    type="checkbox"
+                    id="benefit-4"
+                    name="benefit-value[]"
+                    value="ขึ้นรูปเป็นไม้เทียม"
+                    onChange={setValues}
+                    checked={value.includes("ขึ้นรูปเป็นไม้เทียม")}
+                />
                 <label htmlFor="benefit-4">ขึ้นรูปเป็นไม้เทียม</label>
             </div>
             <div className="d-flex gap-2 align-items-center">
-                <input type="checkbox" id="benefit-5" name="benefit-value[]" value="ขึ้นรูปเป็นแผ่นผนัง"/>
+                <input
+                    type="checkbox"
+                    id="benefit-5"
+                    name="benefit-value[]"
+                    value="ขึ้นรูปเป็นแผ่นผนัง"
+                    onChange={setValues}
+                    checked={value.includes("ขึ้นรูปเป็นแผ่นผนัง")}
+                />
                 <label htmlFor="benefit-5">ขึ้นรูปเป็นแผ่นผนัง</label>
             </div>
             <div className="d-flex gap-2 align-items-center">
-                <input type="checkbox" id="benefit-6" name="benefit-value[]" value="เชื้อเพลงอัดแท่ง"/>
+                <input
+                    type="checkbox"
+                    id="benefit-6"
+                    name="benefit-value[]"
+                    value="เชื้อเพลงอัดแท่ง"
+                    onChange={setValues}
+                    checked={value.includes("เชื้อเพลงอัดแท่ง")}
+                />
                 <label htmlFor="benefit-6">เชื้อเพลงอัดแท่ง</label>
             </div>
             <div className="d-flex gap-2 align-items-center">
-                <input type="checkbox" id="benefit-7" name="benefit-value[]" value="ผสมเพื่อผลิตเป็นผลิตภัณฑ์วัสดุก่อสร้าง"/>
+                <input
+                    type="checkbox"
+                    id="benefit-7"
+                    name="benefit-value[]"
+                    value="ผสมเพื่อผลิตเป็นผลิตภัณฑ์วัสดุก่อสร้าง"
+                    onChange={setValues}
+                    checked={value.includes(
+                        "ผสมเพื่อผลิตเป็นผลิตภัณฑ์วัสดุก่อสร้าง"
+                    )}
+                />
                 <label htmlFor="benefit-7">
                     ผสมเพื่อผลิตเป็นผลิตภัณฑ์วัสดุก่อสร้าง
                 </label>
@@ -76,12 +127,27 @@ function Extended({ other, setOther }) {
 }
 export default function MakeBenefit() {
     const [other, setOther] = useState(false);
+    const [value, setValue] = useState([]);
+    const setValues = (event) => {
+        let newArray = [...value, event.target.value];
+        if (value.includes(event.target.value)) {
+            newArray = newArray.filter((v) => v !== event.target.value);
+        }
+        setValue(newArray);
+    };
     return (
         <Fragment>
             <RowRender
                 label="ความต้องการที่จะนำไปใช้ประโยชน์"
                 renderItem={Row}
-                Extended={() => <Extended other={other} setOther={setOther} />}
+                Extended={() => (
+                    <Extended
+                        other={other}
+                        setOther={setOther}
+                        value={value}
+                        setValues={setValues}
+                    />
+                )}
                 showButton={other}
             />
         </Fragment>

@@ -50,6 +50,8 @@ class ManageSurveyController extends Controller
     public function show($id)
     {
         //
+        $survey = Survey::find($id);
+        return view('components.backend.survey.print', ['survey' => $survey]);
     }
 
     /**
