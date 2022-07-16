@@ -67,10 +67,9 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('manage-factory.update', true) }}" method="post">
+                            <form action="{{ route('manage-factory.update', true) }}"  method="post">
                                 @csrf
                                 @method('put')
-
                                 <button type="submit" class="btn btn-success">
                                     Update Map
                                 </button>
@@ -159,7 +158,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="{{ route('manage-factory.store') }}" method="POST">
+                            <form action="{{ route('manage-factory.store') }}" method="POST"  enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
                                 <div class="card-body">
@@ -220,7 +219,7 @@
                                     <div class="form-group">
                                         <div id="msg"></div>
                                         <label for="exampleInputEmail1">อัพโหลดรูปภาพโรงงาน</label>
-                                        <input type="file" name="img[]" class="file" accept="image/*" hidden
+                                        <input type="file" name="img" class="file" accept="image/*" hidden
                                             required>
                                         <div class="input-group my-3">
                                             <input type="text" class="form-control" disabled placeholder="Upload File"

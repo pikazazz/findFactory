@@ -7,8 +7,8 @@ use App\Http\Controllers\fontend\pageDetailController;
 
 use App\Http\Controllers\backend\employeeController;
 use App\Http\Controllers\backend\factoryController;
-use App\Http\Controllers\backend\fanageSurveyController;
-use App\Http\Controllers\backend\fublicrelationsController;
+use App\Http\Controllers\backend\ManageSurveyController;
+use App\Http\Controllers\backend\publicrelationsController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\SurveyController;
 
@@ -30,18 +30,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('manage-employee', EmployeeController::class);
-Route::resource('manage-factory', FactoryController::class);
-Route::put('manage-factory/m/{id}', [FactoryController::class, 'updateFac'])->name('manage-factory.updateFac');
+Route::resource('manage-employee', employeeController::class);
+Route::put('manage-employee/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');
+Route::resource('manage-factory', factoryController::class);
+Route::put('manage-factory/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');
 Route::resource('manage-survey', SurveyController::class);
-Route::resource('manage-infomation', PublicrelationsController::class);
-Route::resource('manage-profile', UserProfileController::class);
+Route::resource('manage-infomation', publicrelationsController::class);
+Route::resource('manage-profile', userProfileController::class);
 
 
-
-Route::resource('factory', ViewFactoryController::class);
-Route::resource('page', PageDetailController::class);
-Route::resource('survey', SurveyController::class);
+Route::resource('factory', viewFactoryController::class);
+Route::resource('page', pageDetailController::class);
+Route::resource('survey', surveyController::class);
 Route::resource("manage-survey", ManageSurveyController::class);
 // Route::group(['middleware' => ['checkrole:admin']], function () {
 

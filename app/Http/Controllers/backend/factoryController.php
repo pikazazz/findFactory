@@ -41,6 +41,10 @@ class factoryController extends Controller
     public function store(Request $request)
     {
         $map = json_decode(self::utm2ll($request['fac_utm1'], $request['fac_utm2'], 47, true));
+
+
+
+
         $factory = new factory();
         $factory->fac_name = $request['fac_name'];
         $factory->fac_no = $request['fac_no'];
@@ -54,6 +58,16 @@ class factoryController extends Controller
         $factory->fac_tel = $request['fac_tel'];
         $factory->fac_fax = $request['fac_fax'];
         $factory->save();
+        $factory->id;
+
+        if ($image = $request->file('img')) {
+            $destinationPath = 'factorys/' .  $factory->id . '/' . $request->type;
+            $file = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $factory->img = $destinationPath.$file;
+            $image->move($destinationPath, $file);
+            $factory->save();
+        }
+
 
         return redirect()->route('manage-factory.index')->with('message', 'เพิ่มโรงงานใหม่สำเร็จ')->with('message-status', 'success');
     }
@@ -105,10 +119,17 @@ class factoryController extends Controller
             $factory->fac_lon = $request['fac_lon'];
             $factory->fac_tel = $request['fac_tel'];
             $factory->fac_fax = $request['fac_fax'];
-            dd($request['fac_category']);
-            // $factory->img = $request['img'];
             $factory->fac_lat = $map->attr->lat;
             $factory->fac_lon = $map->attr->lon;
+
+            if ($image = $request->file('img')) {
+                $destinationPath = 'factorys/' .  $id. '/' . $request->type;
+                $file = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $factory->img = $destinationPath.$file;
+                $image->move($destinationPath, $file);
+
+            }
+
             $factory->save();
         } else {
             return redirect()->route('manage-factory.show', $factory->id        .',view')->with('message', 'ไม่สามารถแก้ไขได้')->with('message-status', 'error');
