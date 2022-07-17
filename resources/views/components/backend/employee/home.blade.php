@@ -6,17 +6,18 @@
     จัดการผู้ใช้งาน
 @endsection
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @section('backend-header-content')
-@if (\Session::has('message'))
-<script>
-    Swal.fire(
-        'สำเร็จ',
-        '{!! \Session::get('message') !!}',
-        '{!! \Session::get('message-status') !!}',
-    )
-</script>
-@endif
+    @if (\Session::has('message'))
+        <script>
+            Swal.fire(
+                'ข้อความจากระบบ',
+                '{!! \Session::get('message') !!}',
+                '{!! \Session::get('message-status') !!}',
+            )
+        </script>
+    @endif
 @endsection
 
 
@@ -60,18 +61,18 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title">ตารางรายการพนักงาน</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>ชื่อ - สกุล</th>
+                                        <th>อีเมล์</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>โรงงาน</th>
+                                        <th>สถานะ</th>
                                         <th>เมนู</th>
                                     </tr>
                                 </thead>
@@ -81,18 +82,18 @@
                                             <td><?= $employeeS->name ?></td>
                                             <td><?= $employeeS->email ?></td>
                                             <td><?= $employeeS->tel ?></td>
-                                            <td><?= $employeeS->fac_category?></td>
-                                            <td><?= $employeeS->role ?></td>
+                                            <td><?= $employeeS->fac_category ?></td>
+                                            <td> {{ $employeeS->role === '0' ? 'ผู้ใช้งานทั่วไป' : 'ผู้ดูแลระบบ' }}</td>
                                             <td>
                                                 <a type="button"
-                                                    href="{{ route('manage-factory.show', $employeeS->id . ',view') }}"
+                                                    href="{{ route('manage-employee.show', $employeeS->id . ',view') }}"
                                                     class="btn btn-primary mt-1" style="color: #FFFFFF;width: 60px"> <i
                                                         class="fa-solid fa-eye"></i></a>
                                                 <a type="button"
-                                                    href="{{ route('manage-factory.show', $employeeS->id . ',edit') }}"
+                                                    href="{{ route('manage-employee.show', $employeeS->id . ',edit') }}"
                                                     class="btn btn-warning mt-1" style="color: #FFFFFF;width: 60px"><i
                                                         class="fa-solid fa-pencil"></i></a>
-                                                <form action="{{ route('manage-factory.destroy', $employeeS->id) }}"
+                                                <form action="{{ route('manage-employee.destroy', $employeeS->id) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('delete')
@@ -141,26 +142,26 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">ชื่อ - นามสกุล</label>
                                         <input type="name" name="name" class="form-control" id="exampleInputEmail1"
-                                            placeholder="กรุณากรอกชื่อ  - นามสกุล">
+                                            placeholder="กรุณากรอกชื่อ  - นามสกุล" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">อีเมล์</label>
                                         <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                                            placeholder="กรุณากรอก อีเมล์">
+                                            placeholder="กรุณากรอก อีเมล์" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">เบอร์โทร</label>
                                         <input type="text" name="tel" class="form-control" id="exampleInputEmail1"
-                                            placeholder="กรุณากรอก เบอร์โทร">
+                                            placeholder="กรุณากรอก เบอร์โทร" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">รหัสผ่าน</label>
                                         <input type="password" name="password" class="form-control"
-                                            id="exampleInputPassword1" placeholder="กรุณากรอก รหัสผ่าน">
+                                            id="exampleInputPassword1" placeholder="กรุณากรอก รหัสผ่าน" required>
                                     </div>
                                     <div class="form-group">
                                         <label>ระดับผู้ใช้งาน</label>
-                                        <select class="form-control select2" name="role" style="width: 100%;">
+                                        <select class="form-control select2" name="role" style="width: 100%;" required>
 
                                             <option value="0">ผู้ใช้งานทั่วไป</option>
                                             <option value="1">ผู้ดูแลระบบ</option>
@@ -168,7 +169,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>หน่วยงาน</label>
-                                        <select class="form-control select2" name="factory" style="width: 100%;">
+                                        <select class="form-control select2" name="factory" style="width: 100%;" required>
                                             @foreach ($factory as $factoryS)
                                                 <option value="{{ $factoryS->id }}">{{ $factoryS->fac_name }}</option>
                                             @endforeach
@@ -182,7 +183,7 @@
                             <button type="submit" style=" background-color: #78909c;color:#FFFFFF"
                                 class="btn">บันทึก</button>
                         </div>
-                        </form>
+                    </form>
 
                 </div>
                 <!-- /.modal-content -->

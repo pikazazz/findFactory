@@ -36,7 +36,7 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('/assets/plugins/daterangepicker/daterangepicker.css') }}">
 
-  
+
 
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('/assets/plugins/summernote/summernote-bs4.min.css') }}">
@@ -151,7 +151,7 @@
                          with font-awesome or any other icon font library -->
                             <li class="nav-item">
                                 <a href="{{ route('manage-employee.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <i class="nav-icon fas fa-user-alt"></i>
                                     <p>จัดการผู้ใช้งาน</p>
                                 </a>
                             </li>
@@ -169,7 +169,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('manage-survey.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <i class="nav-icon fas fa-chart-alt"></i>
                                     <p>จัดการข้อมูลแบบสำรวจ</p>
                                 </a>
                             </li>
