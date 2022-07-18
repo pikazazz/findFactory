@@ -8,6 +8,15 @@
 
 
 @section('backend-header-content')
+@if (\Session::has('message'))
+<script>
+    Swal.fire(
+        'ข้อความจากระบบ',
+        '{!! \Session::get('message') !!}',
+        '{!! \Session::get('message-status') !!}',
+    )
+</script>
+@endif
 @endsection
 
 
@@ -49,30 +58,23 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title">ตารางรายการข่าวประชาสัมพันธ์</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>หัวข้อข่าว</th>
+                                        <th>โรงงาน</th>
                                         <th>เมนู</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($infomation as $infomationS)
                                     <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
+                                        <td>{{$infomationS->info_title}}</td>
+                                        <td>{{$infomationS->fac_category}}</td>
                                         <td>
                                             <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
                                                     class="fa-solid fa-eye"></i></button>
@@ -82,24 +84,8 @@
                                                     class="fa-solid fa-trash-can"></i></button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td>5</td>
-                                        <td>C</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-eye"></i></button>
-                                            <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-pencil"></i></button>
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </td>
-                                    </tr>
-                                    </tfoot>
+                                    @endforeach
+
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -126,32 +112,33 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                    <form action="{{route('manage-infomation.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('post')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>หัวข้อข่าว</label>
-                                        <input type="name" name="" class="form-control" placeholder="">
+                                        <input type="name" name="info_title" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label>โรงงาน</label>
-                                        <select class="form-control select2" style="width: 100%;">
-                                            <option value="0">โรงงานรีไซเคิล</option>
-                                            <option value="1">โรงงานผลิตอุปกรณ์ก่อสร้าง</option>
-                                            <option value="2">โรงงานผลิตอุปกรณ์เกษตร</option>
-                                            <option value="3">โรงปูน</option>
-                                            <option value="4">เปลี่ยนเป็นเชื้อเพลิง</option>
+                                        <select class="form-control select2" name="info_factory" style="width: 100%;" required>
+                                            @foreach ($factory as $factoryS)
+                                                <option value="{{ $factoryS->id }}">{{ $factoryS->fac_name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <textarea id="summernote" name="editordata"></textarea>
+                                        <textarea id="summernote" name="info_detail"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <div id="msg"></div>
                                         <label for="exampleInputEmail1">อัพโหลดรูปประกอบ</label>
-                                        <input type="file" name="img[]" class="file" accept="image/*" hidden>
+                                        <input type="file" name="img" class="file" accept="image/*" hidden>
                                         <div class="input-group my-3">
                                             <input type="text" class="form-control" disabled placeholder="Upload File"
                                                 id="file">
@@ -166,18 +153,20 @@
 
                                     </div>
                                     <!-- /.card-body -->
-                            </form>
-                        </div>
 
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" style=" background-color: #78909c;color:#FFFFFF" class="btn">บันทึก</button>
-                </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="submit" style=" background-color: #78909c;color:#FFFFFF"
+                                class="btn">บันทึก</button>
+                        </div>
+                </form>
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
+
 @endsection

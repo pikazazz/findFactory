@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\checkrole;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fontend\viewFactoryController;
 use App\Http\Controllers\fontend\pageDetailController;
@@ -30,22 +32,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('manage-employee', employeeController::class);
-Route::put('manage-employee/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');
-Route::resource('manage-factory', factoryController::class);
-Route::put('manage-factory/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');
-Route::resource('manage-survey', SurveyController::class);
-Route::resource('manage-infomation', publicrelationsController::class);
-Route::resource('manage-profile', userProfileController::class);
+
+
+// Route::group(['middleware' => ['checkrole:0']], function () {
+    Route::resource('manage-employee', employeeController::class);
+    Route::put('manage-employee/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');
+    Route::resource('manage-factory', factoryController::class);
+    Route::put('manage-factory/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');
+    Route::resource('manage-survey', SurveyController::class);
+    Route::resource('manage-infomation', publicrelationsController::class);
+    Route::resource('manage-profile', userProfileController::class);
+    Route::resource("manage-survey", ManageSurveyController::class);
+// });
+
+// Route::group(['middleware' => ['checkrole:1']], function () {
+    Route::resource('survey', surveyController::class);
+// });
 
 
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
-Route::resource('survey', surveyController::class);
-Route::resource("manage-survey", ManageSurveyController::class);
-// Route::group(['middleware' => ['checkrole:admin']], function () {
-
-// });
-
 
 Auth::routes();

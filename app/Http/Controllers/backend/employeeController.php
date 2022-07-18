@@ -23,7 +23,7 @@ class employeeController extends Controller
         $employee = User::get();
         $user = [];
         foreach ($employee as $employeeS) {
-            $Datauser = factory::find($employeeS->id);
+            $Datauser = factory::find($employeeS->factory);
             $employeeS->fac_category =  $Datauser->fac_name;
             array_push($user, $employeeS);
         }
