@@ -9,8 +9,10 @@ class factory extends Model
 {
     use HasFactory;
     protected $table = 'factory';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
+        'id',
         'fac_name',
         'fac_no',
         'fac_category',

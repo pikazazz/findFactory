@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class factoryController extends Controller
 {
@@ -40,6 +41,10 @@ class factoryController extends Controller
     public function store(Request $request)
     {
         $map = json_decode(self::utm2ll($request['fac_utm1'], $request['fac_utm2'], 47, true));
+
+
+
+
         $factory = new factory();
         $factory->fac_name = $request['fac_name'];
         $factory->fac_no = $request['fac_no'];
@@ -53,6 +58,16 @@ class factoryController extends Controller
         $factory->fac_tel = $request['fac_tel'];
         $factory->fac_fax = $request['fac_fax'];
         $factory->save();
+        $factory->id;
+
+        if ($image = $request->file('img')) {
+            $destinationPath = 'factorys/' .  $factory->id . '/' . $request->type;
+            $file = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $factory->img = $destinationPath.$file;
+            $image->move($destinationPath, $file);
+            $factory->save();
+        }
+
 
         return redirect()->route('manage-factory.index')->with('message', 'เพิ่มโรงงานใหม่สำเร็จ')->with('message-status', 'success');
     }
@@ -63,9 +78,13 @@ class factoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        //
+        $data = explode(",", $id);
+        $factory = factory::where('id', '=', $data[0])->get();
+        // dd($factory);
+        return view('components.backend.factory.page', ['factory' => $factory, 'type' => $data[1]])->with('message', 'เพิ่มโรงงานใหม่สำเร็จ')->with('message-status', 'success');
     }
 
     /**
@@ -76,7 +95,47 @@ class factoryController extends Controller
      */
     public function edit($id)
     {
-        //
+
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateFac(Request $request, $id)
+    {
+        $map = json_decode(self::utm2ll($request['fac_utm1'], $request['fac_utm2'], 47, true));
+        $factory = factory::find($id);
+        if ($factory) {
+            $factory->fac_name = $request['fac_name'];
+            $factory->fac_no = $request['fac_no'];
+            $factory->fac_category = $request['fac_category'];
+            $factory->fac_address = $request['fac_address'];
+            $factory->fac_utm1 = $request['fac_utm1'];
+            $factory->fac_utm2 = $request['fac_utm2'];
+            $factory->fac_lat = $request['ac_lat'];
+            $factory->fac_lon = $request['fac_lon'];
+            $factory->fac_tel = $request['fac_tel'];
+            $factory->fac_fax = $request['fac_fax'];
+            $factory->fac_lat = $map->attr->lat;
+            $factory->fac_lon = $map->attr->lon;
+
+            if ($image = $request->file('img')) {
+                $destinationPath = 'factorys/' .  $id. '/' . $request->type;
+                $file = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $factory->img = $destinationPath.$file;
+                $image->move($destinationPath, $file);
+
+            }
+
+            $factory->save();
+        } else {
+            return redirect()->route('manage-factory.show', $factory->id        .',view')->with('message', 'ไม่สามารถแก้ไขได้')->with('message-status', 'error');
+        }
+
+        return redirect()->route('manage-factory.show',  $factory->id.',view')->with('message', 'แก้ไขโรงงาน')->with('message-status', 'success');
     }
 
     /**
@@ -89,7 +148,7 @@ class factoryController extends Controller
     public function update(Request $request, $id)
     {
         $factory = factory::get();
-        foreach($factory as $Factory){
+        foreach ($factory as $Factory) {
             $map = json_decode(self::utm2ll($Factory->fac_utm1, $Factory->fac_utm2, 47, true));
             $Factory->fac_lon = $map->attr->lon;
             $Factory->fac_lat = $map->attr->lat;

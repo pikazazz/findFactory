@@ -5338,19 +5338,27 @@ function InputGroup(_ref) {
       min = _ref.min,
       max = _ref.max,
       className = _ref.className,
+      _ref$value = _ref.value,
+      value = _ref$value === void 0 ? null : _ref$value,
+      _ref$onChange = _ref.onChange,
+      _onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
       _ref$required = _ref.required,
       required = _ref$required === void 0 ? false : _ref$required;
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "input-group ".concat(className),
     style: style,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
       type: "number",
-      defaultValue: "0",
+      defaultValue: value !== null && value !== void 0 ? value : "0",
       name: name,
       min: min,
       max: max,
       className: "form-control",
-      required: required
+      required: required,
+      onChange: function onChange(e) {
+        _onChange(e.target.value);
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
       className: "input-group-text",
       id: "basic-addon2",
@@ -5607,6 +5615,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _row_render__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../row-render */ "./resources/js/components/row-render.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5661,7 +5677,9 @@ function Row(_ref) {
 
 function _Extended(_ref2) {
   var other = _ref2.other,
-      setOther = _ref2.setOther;
+      setOther = _ref2.setOther,
+      value = _ref2.value,
+      setValues = _ref2.setValues;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "d-flex flex-column gap-2",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -5670,7 +5688,9 @@ function _Extended(_ref2) {
         type: "checkbox",
         id: "benefit-1",
         name: "benefit-value[]",
-        value: "\u0E1C\u0E2A\u0E21\u0E17\u0E33\u0E16\u0E19\u0E19"
+        value: "\u0E1C\u0E2A\u0E21\u0E17\u0E33\u0E16\u0E19\u0E19",
+        onChange: setValues,
+        checked: value.includes("ผสมทำถนน")
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         htmlFor: "benefit-1",
         children: "\u0E1C\u0E2A\u0E21\u0E17\u0E33\u0E16\u0E19\u0E19"
@@ -5681,7 +5701,9 @@ function _Extended(_ref2) {
         type: "checkbox",
         id: "benefit-2",
         name: "benefit-value[]",
-        value: "\u0E17\u0E33\u0E40\u0E1F\u0E2D\u0E23\u0E4C\u0E19\u0E34\u0E40\u0E08\u0E2D\u0E23\u0E4C"
+        value: "\u0E17\u0E33\u0E40\u0E1F\u0E2D\u0E23\u0E4C\u0E19\u0E34\u0E40\u0E08\u0E2D\u0E23\u0E4C",
+        onChange: setValues,
+        checked: value.includes("ทำเฟอร์นิเจอร์")
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         htmlFor: "benefit-2",
         children: "\u0E17\u0E33\u0E40\u0E1F\u0E2D\u0E23\u0E4C\u0E19\u0E34\u0E40\u0E08\u0E2D\u0E23\u0E4C"
@@ -5692,7 +5714,9 @@ function _Extended(_ref2) {
         type: "checkbox",
         id: "benefit-3",
         name: "benefit-value[]",
-        value: "\u0E40\u0E1C\u0E32\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E1B\u0E47\u0E19\u0E1E\u0E25\u0E31\u0E07\u0E07\u0E32\u0E19"
+        value: "\u0E40\u0E1C\u0E32\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E1B\u0E47\u0E19\u0E1E\u0E25\u0E31\u0E07\u0E07\u0E32\u0E19",
+        onChange: setValues,
+        checked: value.includes("เผาเพื่อเป็นพลังงาน")
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         htmlFor: "benefit-3",
         children: "\u0E40\u0E1C\u0E32\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E40\u0E1B\u0E47\u0E19\u0E1E\u0E25\u0E31\u0E07\u0E07\u0E32\u0E19"
@@ -5703,7 +5727,9 @@ function _Extended(_ref2) {
         type: "checkbox",
         id: "benefit-4",
         name: "benefit-value[]",
-        value: "\u0E02\u0E36\u0E49\u0E19\u0E23\u0E39\u0E1B\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E21\u0E49\u0E40\u0E17\u0E35\u0E22\u0E21"
+        value: "\u0E02\u0E36\u0E49\u0E19\u0E23\u0E39\u0E1B\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E21\u0E49\u0E40\u0E17\u0E35\u0E22\u0E21",
+        onChange: setValues,
+        checked: value.includes("ขึ้นรูปเป็นไม้เทียม")
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         htmlFor: "benefit-4",
         children: "\u0E02\u0E36\u0E49\u0E19\u0E23\u0E39\u0E1B\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E21\u0E49\u0E40\u0E17\u0E35\u0E22\u0E21"
@@ -5714,7 +5740,9 @@ function _Extended(_ref2) {
         type: "checkbox",
         id: "benefit-5",
         name: "benefit-value[]",
-        value: "\u0E02\u0E36\u0E49\u0E19\u0E23\u0E39\u0E1B\u0E40\u0E1B\u0E47\u0E19\u0E41\u0E1C\u0E48\u0E19\u0E1C\u0E19\u0E31\u0E07"
+        value: "\u0E02\u0E36\u0E49\u0E19\u0E23\u0E39\u0E1B\u0E40\u0E1B\u0E47\u0E19\u0E41\u0E1C\u0E48\u0E19\u0E1C\u0E19\u0E31\u0E07",
+        onChange: setValues,
+        checked: value.includes("ขึ้นรูปเป็นแผ่นผนัง")
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         htmlFor: "benefit-5",
         children: "\u0E02\u0E36\u0E49\u0E19\u0E23\u0E39\u0E1B\u0E40\u0E1B\u0E47\u0E19\u0E41\u0E1C\u0E48\u0E19\u0E1C\u0E19\u0E31\u0E07"
@@ -5725,7 +5753,9 @@ function _Extended(_ref2) {
         type: "checkbox",
         id: "benefit-6",
         name: "benefit-value[]",
-        value: "\u0E40\u0E0A\u0E37\u0E49\u0E2D\u0E40\u0E1E\u0E25\u0E07\u0E2D\u0E31\u0E14\u0E41\u0E17\u0E48\u0E07"
+        value: "\u0E40\u0E0A\u0E37\u0E49\u0E2D\u0E40\u0E1E\u0E25\u0E07\u0E2D\u0E31\u0E14\u0E41\u0E17\u0E48\u0E07",
+        onChange: setValues,
+        checked: value.includes("เชื้อเพลงอัดแท่ง")
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         htmlFor: "benefit-6",
         children: "\u0E40\u0E0A\u0E37\u0E49\u0E2D\u0E40\u0E1E\u0E25\u0E07\u0E2D\u0E31\u0E14\u0E41\u0E17\u0E48\u0E07"
@@ -5736,7 +5766,9 @@ function _Extended(_ref2) {
         type: "checkbox",
         id: "benefit-7",
         name: "benefit-value[]",
-        value: "\u0E1C\u0E2A\u0E21\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E1C\u0E25\u0E34\u0E15\u0E40\u0E1B\u0E47\u0E19\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C\u0E27\u0E31\u0E2A\u0E14\u0E38\u0E01\u0E48\u0E2D\u0E2A\u0E23\u0E49\u0E32\u0E07"
+        value: "\u0E1C\u0E2A\u0E21\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E1C\u0E25\u0E34\u0E15\u0E40\u0E1B\u0E47\u0E19\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C\u0E27\u0E31\u0E2A\u0E14\u0E38\u0E01\u0E48\u0E2D\u0E2A\u0E23\u0E49\u0E32\u0E07",
+        onChange: setValues,
+        checked: value.includes("ผสมเพื่อผลิตเป็นผลิตภัณฑ์วัสดุก่อสร้าง")
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         htmlFor: "benefit-7",
         children: "\u0E1C\u0E2A\u0E21\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E1C\u0E25\u0E34\u0E15\u0E40\u0E1B\u0E47\u0E19\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C\u0E27\u0E31\u0E2A\u0E14\u0E38\u0E01\u0E48\u0E2D\u0E2A\u0E23\u0E49\u0E32\u0E07"
@@ -5764,6 +5796,23 @@ function MakeBenefit() {
       other = _useState2[0],
       setOther = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      value = _useState4[0],
+      setValue = _useState4[1];
+
+  var setValues = function setValues(event) {
+    var newArray = [].concat(_toConsumableArray(value), [event.target.value]);
+
+    if (value.includes(event.target.value)) {
+      newArray = newArray.filter(function (v) {
+        return v !== event.target.value;
+      });
+    }
+
+    setValue(newArray);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: "\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E17\u0E35\u0E48\u0E08\u0E30\u0E19\u0E33\u0E44\u0E1B\u0E43\u0E0A\u0E49\u0E1B\u0E23\u0E30\u0E42\u0E22\u0E0A\u0E19\u0E4C",
@@ -5771,7 +5820,9 @@ function MakeBenefit() {
       Extended: function Extended() {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Extended, {
           other: other,
-          setOther: setOther
+          setOther: setOther,
+          value: value,
+          setValues: setValues
         });
       },
       showButton: other
@@ -5918,7 +5969,7 @@ function ColorTypeRow(_ref2) {
         className: "d-flex align-items-center gap-2",
         children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
           unit: "% / \u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E40\u0E21\u0E47\u0E14\u0E1E\u0E25\u0E32\u0E2A\u0E15\u0E34\u0E01 1 kg",
-          name: "plasticAdditive-colorTotal",
+          name: "plasticAdditive-colorTotal[]",
           style: {
             width: "350px"
           }
@@ -5956,7 +6007,7 @@ function AdditiveRow(_ref3) {
         className: "d-flex align-items-center gap-2",
         children: ["\u0E0A\u0E19\u0E34\u0E14\u0E02\u0E2D\u0E07\u0E2A\u0E32\u0E23\u0E40\u0E15\u0E34\u0E21\u0E41\u0E15\u0E48\u0E07", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "text",
-          name: "plasticAdditive-additiveType",
+          name: "plasticAdditive-additiveType[]",
           className: "form-control",
           style: {
             width: "250px"
@@ -5969,7 +6020,7 @@ function AdditiveRow(_ref3) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "d-flex align-items-center gap-2",
         children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          name: "plasticAdditive-additiveTotal",
+          name: "plasticAdditive-additiveTotal[]",
           unit: "% / \u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E40\u0E21\u0E47\u0E14\u0E1E\u0E25\u0E32\u0E2A\u0E15\u0E34\u0E01 1 kg",
           style: {
             width: "350px"
@@ -6064,7 +6115,7 @@ function PlastocAdditiveColors() {
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "type-color-1",
-          children: "\u0E43\u0E0A\u0E49"
+          children: "\u0E0A\u0E19\u0E34\u0E14\u0E1C\u0E07"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "radio",
           name: "plasticAdditive-typeColor",
@@ -6076,10 +6127,10 @@ function PlastocAdditiveColors() {
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "type-color-2",
-          children: "\u0E44\u0E21\u0E48\u0E43\u0E0A\u0E49"
+          children: "\u0E0A\u0E19\u0E34\u0E14\u0E40\u0E21\u0E47\u0E14"
         })]
       })]
-    }), typeColor === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), useColor === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
       renderItem: ColorTypeRow,
       label: "\u0E0A\u0E19\u0E34\u0E14\u0E02\u0E2D\u0E07\u0E2A\u0E35"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -6099,7 +6150,7 @@ function PlastocAdditiveColors() {
           checked: additive === "1",
           value: "1"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          htmlFor: "use-color-1",
+          htmlFor: "use-additive-1",
           children: "\u0E43\u0E0A\u0E49"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "radio",
@@ -6111,7 +6162,7 @@ function PlastocAdditiveColors() {
           checked: additive === "0",
           value: "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          htmlFor: "use-color-2",
+          htmlFor: "use-additive-2",
           children: "\u0E44\u0E21\u0E48\u0E43\u0E0A\u0E49"
         })]
       })]
@@ -6174,9 +6225,10 @@ function PlasticProcessed() {
           id: "processed-1",
           name: "processsed-processed",
           value: "0",
-          onClick: function onClick(e) {
+          onChange: function onChange(e) {
             return setProcessed(e.target.value);
-          }
+          },
+          checked: processed === "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
           htmlFor: "processed-1",
           children: "\u0E44\u0E21\u0E48\u0E21\u0E35"
@@ -6188,9 +6240,10 @@ function PlasticProcessed() {
           id: "processed-2",
           name: "processed-processed",
           value: "1",
-          onClick: function onClick(e) {
+          onChange: function onChange(e) {
             return setProcessed(e.target.value);
-          }
+          },
+          checked: processed === "1"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
           htmlFor: "processed-2",
           children: "\u0E21\u0E35"
@@ -6221,7 +6274,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dropdown */ "./resources/js/components/dropdown.jsx");
 /* harmony import */ var _InputGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../InputGroup */ "./resources/js/components/InputGroup.jsx");
 /* harmony import */ var _row_render__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../row-render */ "./resources/js/components/row-render.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6242,6 +6297,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Row = function Row(_ref) {
   var index = _ref.index,
       removeRow = _ref.removeRow;
@@ -6250,35 +6306,35 @@ var Row = function Row(_ref) {
     removeRow(index);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "row mt-1 gap-2 align-items-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "col-md-4 col-sm-12",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
         useOther: true,
         items: _data_mock__WEBPACK_IMPORTED_MODULE_1__.plasticTypes,
         name: "recycle-backValue[]"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "col-md-6 col-sm-12",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "d-flex align-items-center gap-2",
-        children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          name: "recycle-notBackQuantity",
+        children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          name: "recycle-notBackQuantity[]",
           unit: "kg/\u0E40\u0E14\u0E37\u0E2D\u0E19",
           style: {
             width: "350px"
           }
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "col-md-1 col-sm-12",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "d-flex justify-content-end",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
           className: "btn btn-sm btn-danger",
           onClick: onRemoveRow,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
             className: "fas fa-minus"
           })
         })
@@ -6289,41 +6345,51 @@ var Row = function Row(_ref) {
 
 var _Extended = function Extended(_ref2) {
   var toNo = _ref2.toNo,
-      setToNo = _ref2.setToNo;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      setToNo = _ref2.setToNo,
+      state1 = _ref2.state1,
+      state2 = _ref2.state2,
+      setState1 = _ref2.setState1,
+      setState2 = _ref2.setState2;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "mt-2",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "d-flex align-items-center gap-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
         children: "\u0E19\u0E33\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"
-      }), "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
         name: "recycle-backAll",
         unit: "kg/\u0E40\u0E14\u0E37\u0E2D\u0E19",
+        value: state1,
+        onChange: setState1,
         style: {
           width: "300px"
         }
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "d-flex align-items-center gap-2 mt-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
         children: "\u0E19\u0E33\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15\u0E1A\u0E32\u0E07\u0E2A\u0E48\u0E27\u0E19"
-      }), "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), "\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
         name: "recycle-backSome",
         unit: "kg/\u0E40\u0E14\u0E37\u0E2D\u0E19",
+        value: state2,
+        onChange: setState2,
         style: {
           width: "300px"
         }
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "d-flex align-items-center gap-2 mt-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         type: "checkbox",
+        name: "usenoback",
         id: "to-no",
         checked: toNo,
         onChange: function onChange(e) {
           return setToNo(e.target.checked);
-        }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        },
+        value: "1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
         htmlFor: "to-no",
         children: "\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E19\u0E33\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15"
       })]
@@ -6337,14 +6403,41 @@ function PlasticRecycle() {
       toNo = _useState2[0],
       setToNo = _useState2[1];
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      state1 = _useState4[0],
+      _setState = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
+      _useState6 = _slicedToArray(_useState5, 2),
+      state2 = _useState6[0],
+      _setState2 = _useState6[1];
+
+  var handleDebounceFn = function handleDebounceFn(e, fn) {
+    fn(e);
+  };
+
+  var debounceFn = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((0,lodash__WEBPACK_IMPORTED_MODULE_5__.debounce)(handleDebounceFn, 1000), []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
       renderItem: Row,
       label: "\u0E02\u0E22\u0E30\u0E1E\u0E25\u0E32\u0E2A\u0E15\u0E34\u0E01\u0E17\u0E35\u0E48\u0E40\u0E01\u0E34\u0E14\u0E08\u0E32\u0E01\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E34\u0E15",
       Extended: function Extended() {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Extended, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Extended, {
           toNo: toNo,
-          setToNo: setToNo
+          setToNo: setToNo,
+          state1: state1,
+          state2: state2,
+          setState1: function setState1(e) {
+            return debounceFn(e, function (v) {
+              _setState(v);
+            });
+          },
+          setState2: function setState2(e) {
+            return debounceFn(e, function (v) {
+              _setState2(v);
+            });
+          }
         });
       },
       showButton: toNo
@@ -6508,7 +6601,8 @@ var _Extended = function Extended(_ref2) {
         checked: noSum,
         onChange: function onChange(e) {
           return setNoSum(e.target.checked);
-        }
+        },
+        value: "1"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
         htmlFor: "no-sum",
         children: "\u0E41\u0E1A\u0E1A\u0E44\u0E21\u0E48\u0E23\u0E27\u0E21"
@@ -6568,8 +6662,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 
 
@@ -6661,7 +6753,7 @@ var RowForWash = function RowForWash(_ref2) {
           name: "waste-forWasteSize[]",
           unit: "\u0E25\u0E39\u0E01\u0E1A\u0E32\u0E28\u0E01\u0E4C\u0E40\u0E21\u0E15\u0E23",
           style: {
-            width: "150px"
+            width: "220px"
           }
         })]
       })
@@ -6673,7 +6765,7 @@ var RowForWash = function RowForWash(_ref2) {
           name: "waste-forWasteTotal[]",
           unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
           style: {
-            width: "150px"
+            width: "200px"
           }
         })]
       })
@@ -6727,18 +6819,10 @@ var RowManageWater = function RowManageWater(_ref3) {
 };
 
 var _Extended = function Extended(_ref4) {
-  _objectDestructuringEmpty(_ref4);
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      useWater = _useState2[0],
-      setUseWater = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      useForWash = _useState4[0],
-      setUseForWash = _useState4[1];
-
+  var state1 = _ref4.state1,
+      state2 = _ref4.state2,
+      setState1 = _ref4.setState1,
+      setState2 = _ref4.setState2;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "mt-2",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -6752,9 +6836,9 @@ var _Extended = function Extended(_ref4) {
           id: "water-1-water-waste",
           name: "water-waterWaste",
           onChange: function onChange(e) {
-            return setUseWater(e.target.value);
+            return setState1(e.target.value);
           },
-          checked: useWater === "0",
+          checked: state1 === "0",
           value: "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "water-1-water-waste",
@@ -6763,18 +6847,19 @@ var _Extended = function Extended(_ref4) {
           type: "radio",
           id: "water-2-water-waste",
           name: "water-waterWaste",
-          checked: useWater === "1",
+          checked: state1 === "1",
           value: "1",
           onChange: function onChange(e) {
-            return setUseWater(e.target.value);
+            return setState1(e.target.value);
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "water-2-water-waste",
           children: "\u0E21\u0E35"
         })]
-      }), useWater === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      }), state1 === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13\u0E19\u0E49\u0E33\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49\u0E23\u0E27\u0E21", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
           unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
+          name: "water-waterWasteValue",
           style: {
             width: "300px"
           }
@@ -6791,9 +6876,9 @@ var _Extended = function Extended(_ref4) {
           id: "water-1-for-waste",
           name: "water-forWasteWash",
           onChange: function onChange(e) {
-            return setUseForWash(e.target.value);
+            return setState2(e.target.value);
           },
-          checked: useForWash === "0",
+          checked: state2 === "0",
           value: "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "water-1-for-waste",
@@ -6802,16 +6887,16 @@ var _Extended = function Extended(_ref4) {
           type: "radio",
           id: "water-2-for-waste",
           name: "water-forWasteWash",
-          checked: useForWash === "1",
+          checked: state2 === "1",
           value: "1",
           onChange: function onChange(e) {
-            return setUseForWash(e.target.value);
+            return setState2(e.target.value);
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "water-2-for-waste",
           children: "\u0E21\u0E35"
         })]
-      }), useForWash === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      }), state2 === "1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: ["\u0E1B\u0E23\u0E34\u0E21\u0E32\u0E13", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
           name: "water-forWasteWashQuantity",
           unit: "\u0E25\u0E34\u0E15\u0E23/\u0E40\u0E14\u0E37\u0E2D\u0E19",
@@ -6825,15 +6910,25 @@ var _Extended = function Extended(_ref4) {
 };
 
 function WasteWater() {
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-      _useState6 = _slicedToArray(_useState5, 2),
-      noSum = _useState6[0],
-      setNoSum = _useState6[1];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      noSum = _useState2[0],
+      setNoSum = _useState2[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      washMachine = _useState4[0],
+      setWashMachine = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
+      _useState6 = _slicedToArray(_useState5, 2),
+      state1 = _useState6[0],
+      setState1 = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
       _useState8 = _slicedToArray(_useState7, 2),
-      washMachine = _useState8[0],
-      setWashMachine = _useState8[1];
+      state2 = _useState8[0],
+      setState2 = _useState8[1];
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_row_render__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -6842,7 +6937,11 @@ function WasteWater() {
       Extended: function Extended() {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Extended, {
           noSum: noSum,
-          setNoSum: setNoSum
+          setNoSum: setNoSum,
+          state1: state1,
+          setState1: setState1,
+          state2: state2,
+          setState2: setState2
         });
       },
       showButton: noSum
@@ -12341,7 +12440,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n    font-family: \"Prompt\", sans-serif;\r\n}\r\n\r\nlabel {\r\n    margin: 0 !important;\r\n}\r\n\r\n.underline {\r\n    text-decoration: underline;\r\n}\r\n\r\n.dark {\r\n    color: black !important;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n    font-family: \"Prompt\", sans-serif;\r\n}\r\n\r\nlabel {\r\n    margin: 0 !important;\r\n}\r\n\r\n.underline {\r\n    text-decoration: underline;\r\n}\r\n\r\n.dark {\r\n    color: black !important;\r\n}\r\n\r\n.text-default{\r\n    font-weight: 200 !important;\r\n    color: white;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

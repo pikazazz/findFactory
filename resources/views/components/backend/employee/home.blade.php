@@ -6,8 +6,18 @@
     จัดการผู้ใช้งาน
 @endsection
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @section('backend-header-content')
+    @if (\Session::has('message'))
+        <script>
+            Swal.fire(
+                'ข้อความจากระบบ',
+                '{!! \Session::get('message') !!}',
+                '{!! \Session::get('message-status') !!}',
+            )
+        </script>
+    @endif
 @endsection
 
 
@@ -51,72 +61,49 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title">ตารางรายการพนักงาน</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>ชื่อ - สกุล</th>
+                                        <th>อีเมล์</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>โรงงาน</th>
+                                        <th>สถานะ</th>
                                         <th>เมนู</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-eye"></i></button>
-                                            <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-pencil"></i></button>
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td>5</td>
-                                        <td>C</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-eye"></i></button>
-                                            <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-pencil"></i></button>
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.5
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td>5.5</td>
-                                        <td>A</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-eye"></i></button>
-                                            <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-pencil"></i></button>
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                    </tr>
+                                    @foreach ($employee as $employeeS)
+                                        <tr>
+                                            <td><?= $employeeS->name ?></td>
+                                            <td><?= $employeeS->email ?></td>
+                                            <td><?= $employeeS->tel ?></td>
+                                            <td><?= $employeeS->fac_category ?></td>
+                                            <td> {{ $employeeS->role === '0' ? 'ผู้ใช้งานทั่วไป' : 'ผู้ดูแลระบบ' }}</td>
+                                            <td>
+                                                <a type="button"
+                                                    href="{{ route('manage-employee.show', $employeeS->id . ',view') }}"
+                                                    class="btn btn-primary mt-1" style="color: #FFFFFF;width: 60px"> <i
+                                                        class="fa-solid fa-eye"></i></a>
+                                                <a type="button"
+                                                    href="{{ route('manage-employee.show', $employeeS->id . ',edit') }}"
+                                                    class="btn btn-warning mt-1" style="color: #FFFFFF;width: 60px"><i
+                                                        class="fa-solid fa-pencil"></i></a>
+                                                <form action="{{ route('manage-employee.destroy', $employeeS->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" style="color: #FFFFFF;width: 60px"
+                                                        class="btn btn-danger mt-1"><i
+                                                            class="fa-solid fa-trash-can"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
                                     </tfoot>
 
@@ -145,28 +132,36 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form>
+                    <form action="{{ route('manage-employee.store') }}" method="post">
+                        @csrf
+                        @method('post')
+                        <div class="row">
+                            <div class="col-md-12">
+
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">ชื่อ - นามสกุล</label>
-                                        <input type="name" class="form-control" id="exampleInputEmail1"
-                                            placeholder="กรุณากรอกชื่อ  - นามสกุล">
+                                        <input type="name" name="name" class="form-control" id="exampleInputEmail1"
+                                            placeholder="กรุณากรอกชื่อ  - นามสกุล" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">อีเมล์</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            placeholder="กรุณากรอก อีเมล์">
+                                        <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                                            placeholder="กรุณากรอก อีเมล์" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">เบอร์โทร</label>
+                                        <input type="text" name="tel" class="form-control" id="exampleInputEmail1"
+                                            placeholder="กรุณากรอก เบอร์โทร" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">รหัสผ่าน</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1"
-                                            placeholder="กรุณากรอก รหัสผ่าน">
+                                        <input type="password" name="password" class="form-control"
+                                            id="exampleInputPassword1" placeholder="กรุณากรอก รหัสผ่าน" required>
                                     </div>
                                     <div class="form-group">
                                         <label>ระดับผู้ใช้งาน</label>
-                                        <select class="form-control select2" style="width: 100%;">
+                                        <select class="form-control select2" name="role" style="width: 100%;" required>
 
                                             <option value="0">ผู้ใช้งานทั่วไป</option>
                                             <option value="1">ผู้ดูแลระบบ</option>
@@ -174,21 +169,22 @@
                                     </div>
                                     <div class="form-group">
                                         <label>หน่วยงาน</label>
-                                        <select class="form-control select2" style="width: 100%;">
-
-                                            <option value="0">บริษัท เคียงดอย โปรดักส์ จำกัด</option>
-                                            <option value="1">บริษัท พงศ์พสิษฐ์ จำกัด</option>
-                                            <option value="2">นิศารัตน์ พลาสติก</option>
+                                        <select class="form-control select2" name="factory" style="width: 100%;" required>
+                                            @foreach ($factory as $factoryS)
+                                                <option value="{{ $factoryS->id }}">{{ $factoryS->fac_name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                            </form>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" style=" background-color: #78909c;color:#FFFFFF"
-                            class="btn">บันทึก</button>
-                    </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="submit" style=" background-color: #78909c;color:#FFFFFF"
+                                class="btn">บันทึก</button>
+                        </div>
+                    </form>
+
                 </div>
                 <!-- /.modal-content -->
             </div>

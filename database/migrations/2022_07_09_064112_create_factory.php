@@ -15,9 +15,9 @@ class CreateFactory extends Migration
     {
         Schema::create('factory', function (Blueprint $table) {
             $table->id();
-            $table->string('fac_name')->nullable();
+            $table->string('fac_name')->unique();
             $table->string('fac_no')->nullable();
-            $table->string('fac_des')->nullable();
+            $table->longText('fac_des')->nullable();
             $table->string('fac_category')->nullable();
             $table->string('fac_address')->nullable();
             $table->string('fac_utm1')->nullable();

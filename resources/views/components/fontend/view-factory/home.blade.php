@@ -34,9 +34,11 @@
                                                         src="{{ asset('assets/about/picture/kindpng_1491757.png') }}"
                                                         width="20%" alt=""></a>
                                                 <a target="blank"
-                                                    href="https://www.google.com/maps/@<?= $Factory->fac_lat ?>,<?= $Factory->fac_lon ?>,15z"><img
+                                                    href="https://www.google.com/maps/search/?api=1&query=
+                                                    <?= $Factory->fac_lat ?>%2C<?= $Factory->fac_lon ?>"><img
                                                         src="{{ asset('assets/about/picture/355980.png') }}"
                                                         width="20%" alt=""></a>
+
                                             </div>
                                         </div>
                                     </center>

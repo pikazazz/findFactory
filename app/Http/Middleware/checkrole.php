@@ -21,13 +21,13 @@ class checkrole
             if ($role == Auth::user()->role) {
                 return $next($request);
             }else{
-                return redirect()->route('Error.show',401);
+                return redirect()->route('login');
 
             }
 
 
         }else{
-            return redirect()->route('Error.show',401);
+            return redirect()->route('login');
         }
 
     }

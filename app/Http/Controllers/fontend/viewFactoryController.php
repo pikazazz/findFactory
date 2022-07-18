@@ -14,6 +14,7 @@ class Map
     public $lat;
     public $lon;
 }
+
 class viewFactoryController extends Controller
 {
     /**
@@ -24,8 +25,6 @@ class viewFactoryController extends Controller
 
     public function index()
     {
-
-
         $Map  = new Map();
         $Data = new ArrayObject();
         $factory = factory::get();
@@ -35,7 +34,6 @@ class viewFactoryController extends Controller
             $Map->lon = $Factory->fac_lon;
             $Data->append(["name"=>$Factory->fac_name,"lat"=>$Factory->fac_lat,"lon"=>$Factory->fac_lon]);
         }
-
         return view('components.fontend.view-factory.home', ['factory' => $factory,'map'=>$Data]);
     }
 

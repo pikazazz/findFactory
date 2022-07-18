@@ -6,7 +6,7 @@
     จัดการข้อมูลโรงงาน
 @endsection
 
-  <!-- sweetalert -->
+<!-- sweetalert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @section('backend-header-content')
     @if (\Session::has('message'))
@@ -67,10 +67,9 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('manage-factory.update', true) }}" method="post">
+                            <form action="{{ route('manage-factory.update', true) }}"  method="post">
                                 @csrf
                                 @method('put')
-
                                 <button type="submit" class="btn btn-success">
                                     Update Map
                                 </button>
@@ -103,18 +102,26 @@
                                             <td><?= $factoryS->fac_tel ?></td>
                                             <td><?= $factoryS->fac_fax ?></td>
                                             <td>
-                                                <a target="blank" type="button" href="https://www.google.com/maps/@<?= $factoryS->fac_lat ?>,<?= $factoryS->fac_lon?>,15z" class="btn btn-primary" style="color: #FFFFFF"> <i
+                                                <a target="blank" type="button"
+                                                    href="https://www.google.com/maps/@<?= $factoryS->fac_lat ?>,<?= $factoryS->fac_lon ?>,15z"
+                                                    class="btn btn-primary mt-1" style="color: #FFFFFF;width: 60px">
+                                                    <i class="fa-solid fa-location-dot"></i></a>
+                                                <a type="button"
+                                                    href="{{ route('manage-factory.show', $factoryS->id . ',view') }}"
+                                                    class="btn btn-primary mt-1" style="color: #FFFFFF;width: 60px"> <i
                                                         class="fa-solid fa-eye"></i></a>
-                                                <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
-                                                        class="fa-solid fa-pencil"></i></button>
+                                                <a type="button"
+                                                    href="{{ route('manage-factory.show', $factoryS->id . ',edit') }}"
+                                                    class="btn btn-warning mt-1" style="color: #FFFFFF;width: 60px"><i
+                                                        class="fa-solid fa-pencil"></i></a>
                                                 <form action="{{ route('manage-factory.destroy', $factoryS->id) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-danger"><i
+                                                    <button type="submit" style="color: #FFFFFF;width: 60px"
+                                                        class="btn btn-danger mt-1"><i
                                                             class="fa-solid fa-trash-can"></i></button>
                                                 </form>
-
                                             </td>
                                         </tr>
                                     @endforeach
@@ -151,7 +158,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="{{ route('manage-factory.store') }}" method="POST">
+                            <form action="{{ route('manage-factory.store') }}" method="POST"  enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
                                 <div class="card-body">
@@ -168,43 +175,52 @@
                                         <textarea id="summernote" name="fac_des"></textarea>
                                     </div>
                                     <div class="form-group">
+                                        <input type="text" name="fac_category" id="fac_category" value="" hidden>
                                         <label>ประกอบกิจการ</label>
-                                        <select class="form-control select2" name="fac_category[]" style="width: 100%;"
-                                            multiple required>
-                                            <option value="0">โรงงานรีไซเคิล</option>
-                                            <option value="1">โรงงานผลิตอุปกรณ์ก่อสร้าง</option>
-                                            <option value="2">โรงงานผลิตอุปกรณ์เกษตร</option>
-                                            <option value="3">โรงปูน</option>
-                                            <option value="4">เปลี่ยนเป็นเชื้อเพลิง</option>
-                                        </select>
+                                        <br>
+                                        <input id="fac1" type="checkbox" onclick="setFac()" value="โรงงานรีไซเคิล">
+                                        <a class="mt-1" style="color:black;">โรงงานรีไซเคิล</a>
+                                        <input id="fac2" type="checkbox" onclick="setFac()"
+                                            value="โรงงานผลิตอุปกรณ์ก่อสร้าง">
+                                        <a class="mt-1" style="color:black;">โรงงานผลิตอุปกรณ์ก่อสร้าง</a>
+                                        <input id="fac3" type="checkbox" onclick="setFac()"
+                                            value="โรงงานผลิตอุปกรณ์เกษตร">
+                                        <a class="mt-1" style="color:black;">โรงงานผลิตอุปกรณ์เกษตร</a>
+                                        <input id="fac4" type="checkbox" onclick="setFac()"
+                                            value="โรงปูนเปลี่ยนเป็นเชื้อเพลิง">
+                                        <a class="mt-1" style="color:black;">โรงปูนเปลี่ยนเป็นเชื้อเพลิง</a>
                                     </div>
 
                                     <div class="form-group">
                                         <label>ที่อยู่โรงงาน</label>
-                                        <input type="name" name="fac_address" class="form-control" placeholder="" required>
+                                        <input type="name" name="fac_address" class="form-control" placeholder=""
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label>พิกัด UTM N</label>
-                                        <input type="name" name="fac_utm1" class="form-control"
-                                            placeholder="" required>
+                                        <input type="name" name="fac_utm1" class="form-control" placeholder=""
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label>พิกัด UTM E</label>
-                                        <input type="name"  name="fac_utm2" class="form-control"
-                                            placeholder="" required>
+                                        <input type="name" name="fac_utm2" class="form-control" placeholder=""
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label>เบอร์โทร</label>
-                                        <input type="name" name="fac_tel" class="form-control" placeholder="" required>
+                                        <input type="name" name="fac_tel" class="form-control" placeholder=""
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label>fax</label>
-                                        <input type="name" name="fac_fax" class="form-control" placeholder="" required>
+                                        <input type="name" name="fac_fax" class="form-control" placeholder=""
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <div id="msg"></div>
                                         <label for="exampleInputEmail1">อัพโหลดรูปภาพโรงงาน</label>
-                                        <input type="file" name="img[]" class="file" accept="image/*" hidden required>
+                                        <input type="file" name="img" class="file" accept="image/*" hidden
+                                            required>
                                         <div class="input-group my-3">
                                             <input type="text" class="form-control" disabled placeholder="Upload File"
                                                 id="file">
@@ -235,3 +251,41 @@
         </div>
         <!-- /.modal -->
     @endsection
+
+    <script>
+        function setFac() {
+            // Get the checkbox
+            var checkBox1 = document.getElementById("fac1");
+            var checkBox2 = document.getElementById("fac2");
+            var checkBox3 = document.getElementById("fac3");
+            var checkBox4 = document.getElementById("fac4");
+            // Get the output text
+            var fac_category = document.getElementById("fac_category");
+            var text = [];
+            var i = 0;
+            // If the checkbox is checked, display the output text
+            if (checkBox1.checked == true) {
+                text.push(checkBox1.value);
+            } else if (checkBox1.checked == false) {
+                fac_category.value = '';
+            }
+            if (checkBox2.checked == true) {
+                text.push(checkBox2.value);
+            } else if (checkBox2.checked == false) {
+                fac_category.value = '';
+            }
+            if (checkBox3.checked == true) {
+                text.push(checkBox3.value);
+            } else if (checkBox3.checked == false) {
+                fac_category.value = '';
+            }
+            if (checkBox4.checked == true) {
+                text.push(checkBox4.value);
+            } else if (checkBox4.checked == false) {
+                fac_category.value = '';
+            }
+            fac_category.value = text;
+
+            console.log(text);
+        }
+    </script>
