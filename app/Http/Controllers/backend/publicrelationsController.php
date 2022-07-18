@@ -68,7 +68,17 @@ class publicrelationsController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $data = explode(",", $id);
+        $factory = factory::get();
+        $infomation = infomation::where('id', '=', $data[0])->get();
+        $infomationSS = [];
+        foreach ($infomation as $infomationS) {
+            $Datauser = factory::find($infomationS->info_factory);
+            $infomationS->fac_category =  $Datauser->fac_name;
+            array_push($infomationSS, $infomationS);
+        }
+        return view('components.backend.infomation.page', ['infomation' => $infomationSS, 'type' => $data[1], 'factory' => $factory]);
     }
 
     /**
@@ -102,6 +112,15 @@ class publicrelationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        infomation::destroy($id);
+
+
+        $status = infomation::destroy($id);
+
+        if ($status) {
+            return redirect()->route('manage-infomation.index')->with('message', 'ลบข้อมูลพนักงานสำเร็จ')->with('message-status', 'success');
+        } else {
+            return redirect()->route('manage-infomation.index')->with('message', 'ไม่พบผู้ใช้นี้ในระบบ')->with('message-status', 'error');
+        }
     }
 }
