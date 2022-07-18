@@ -5931,7 +5931,8 @@ function Extended() {
       type: "radio",
       name: "plasticAdditive-mixColor",
       id: "mix-color-2",
-      value: "\u0E44\u0E21\u0E48\u0E1C\u0E2A\u0E21"
+      value: "\u0E44\u0E21\u0E48\u0E1C\u0E2A\u0E21",
+      checked: true
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
       htmlFor: "mix-color-2",
       children: "\u0E44\u0E21\u0E48\u0E1C\u0E2A\u0E21"
@@ -6044,17 +6045,17 @@ function AdditiveRow(_ref3) {
 }
 
 function PlastocAdditiveColors() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
       _useState2 = _slicedToArray(_useState, 2),
       useColor = _useState2[0],
       setUseColor = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
       _useState4 = _slicedToArray(_useState3, 2),
       typeColor = _useState4[0],
       setTypeColor = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
       _useState6 = _slicedToArray(_useState5, 2),
       additive = _useState6[0],
       setAdditive = _useState6[1];
@@ -6915,7 +6916,7 @@ function WasteWater() {
       noSum = _useState2[0],
       setNoSum = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
       _useState4 = _slicedToArray(_useState3, 2),
       washMachine = _useState4[0],
       setWashMachine = _useState4[1];

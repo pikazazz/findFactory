@@ -191,7 +191,7 @@ const Extended = ({ state1, state2, setState1, setState2 }) => {
 };
 export default function WasteWater() {
     const [noSum, setNoSum] = useState("");
-    const [washMachine, setWashMachine] = useState(false);
+    const [washMachine, setWashMachine] = useState("0");
     const [state1, setState1] = useState("0");
     const [state2, setState2] = useState("0");
     return (

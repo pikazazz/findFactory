@@ -45,7 +45,8 @@
             data.push({
                 id: Number(`{{ $survey->id }}`),
                 data: JSON.parse(`{{ $survey->data }}`.replace(/(&quot\;)/g, "\"")),
-                created_at: new Date(`{{ $survey->created_at }}`)
+                created_at: new Date(`{{ $survey->created_at }}`),
+                route:"{{route('manage-survey.destroy',$survey->id)}}",
 
             });
         @endforeach
@@ -66,6 +67,26 @@
         const {
             DateTime
         } = luxon;
+        function del(e,form){
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $(form).submit();
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+            })
+        }
         data.forEach((item, idx) => {
             const dateTime = new DateTime(item.created_at)
             modal.append(`
@@ -425,7 +446,17 @@
                 <tr>
                     <td>${idx+1}</td>
                         <td>${dateTime.setLocale('th').toFormat("วันที่ dd MMMM yyyy (เวลา HH:mm:ss)")}</td>
-                         <td><button type="submit" class="btn btn-primary" style="color: #FFFFFF" data-bs-toggle="modal" data-bs-target="#survey-${idx}"><i class="fa-solid fa-eye"></i></button>
+                         <td>
+                         <div class="d-flex">
+                         <button type="submit" class="btn btn-primary mx-2" style="color: #FFFFFF" data-bs-toggle="modal" data-bs-target="#survey-${idx}"><i class="fa-solid fa-eye"></i>
+                         </button>
+                         <form class="d-block" method="post" action="${item.route}"  id="form-survey-${idx}" >
+                         @csrf
+                         @method('delete')
+                         <button type="button" onclick=del(this,'#form-survey-${idx}') class="btn btn-danger" style="color: #FFFFFF" ><i class="fa-solid fa-trash"></i>
+                         </button>
+                         </div>
+                         </form>
                     </td>
                 </tr>`)
         })
