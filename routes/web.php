@@ -12,7 +12,6 @@ use App\Http\Controllers\backend\factoryController;
 use App\Http\Controllers\backend\fanageSurveyController;
 use App\Http\Controllers\backend\fublicrelationsController;
 use App\Http\Controllers\backend\ManageSurveyController;
-use App\Http\Controllers\backend\ManageSurveyController;
 use App\Http\Controllers\backend\publicrelationsController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\SurveyController;
