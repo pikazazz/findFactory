@@ -55,6 +55,7 @@ function Extended() {
                 name="plasticAdditive-mixColor"
                 id="mix-color-2"
                 value="ไม่ผสม"
+                checked
             />
             <label htmlFor="mix-color-2">ไม่ผสม</label>
         </div>
@@ -143,9 +144,9 @@ function AdditiveRow({ index, removeRow }) {
     );
 }
 export default function PlastocAdditiveColors() {
-    const [useColor, setUseColor] = useState(false);
-    const [typeColor, setTypeColor] = useState(false);
-    const [additive, setAdditive] = useState(false);
+    const [useColor, setUseColor] = useState("0");
+    const [typeColor, setTypeColor] = useState("0");
+    const [additive, setAdditive] = useState("0");
     return (
         <Fragment>
             <RowRender

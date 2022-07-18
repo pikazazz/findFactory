@@ -86,5 +86,7 @@ class ManageSurveyController extends Controller
     public function destroy($id)
     {
         //
+        Survey::destroy($id);
+        return redirect()->back();
     }
 }

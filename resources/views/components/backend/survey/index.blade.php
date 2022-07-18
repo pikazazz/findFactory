@@ -45,7 +45,8 @@
             data.push({
                 id: Number(`{{ $survey->id }}`),
                 data: JSON.parse(`{{ $survey->data }}`.replace(/(&quot\;)/g, "\"")),
-                created_at: new Date(`{{ $survey->created_at }}`)
+                created_at: new Date(`{{ $survey->created_at }}`),
+                route:"{{route('manage-survey.destroy',$survey->id)}}",
 
             });
         @endforeach
@@ -66,6 +67,26 @@
         const {
             DateTime
         } = luxon;
+        function del(e,form){
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $(form).submit();
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+            })
+        }
         data.forEach((item, idx) => {
             const dateTime = new DateTime(item.created_at)
             modal.append(`
@@ -89,10 +110,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 mt-3">
-                            <h6>รายละเอียดเครื่องจักรที่ใช้ และอัตราการใช้ไฟฟ้า   <a data-toggle="collapse" href="#electrical-collapse" role="button" aria-expanded="false" aria-controls="electrical-collapse">
+                            <h6>รายละเอียดเครื่องจักรที่ใช้ และอัตราการใช้ไฟฟ้า   <a data-toggle="collapse" href="#electrical-collapse-${idx}" role="button" aria-expanded="false" aria-controls="electrical-collapse-${idx}">
     เรียกดูรายละเอียด
   </a></h6>
-                            <div class="collapse mx-sm-4" id="electrical-collapse">
+                            <div class="collapse mx-sm-4" id="electrical-collapse-${idx}">
                                 ${item.data["electrical-machine"] ?`<table class="table">
                                                                                                                                 <thead>
                                                                                                                                     <tr>
@@ -128,15 +149,15 @@
                             <hr/>
                             <div class="row">
                             <div class="col-md-12 mt-3">
-                            <h6>การใช้เม็ดพลาสติก สี และสารเติมแต่งในกระบวนการผลิต   <a data-toggle="collapse" href="#additive-color-collapse" role="button" aria-expanded="false" aria-controls="additive-color-collapse">
+                            <h6>การใช้เม็ดพลาสติก สี และสารเติมแต่งในกระบวนการผลิต   <a data-toggle="collapse" href="#additive-color-collapse-${idx}" role="button" aria-expanded="false" aria-controls="additive-color-collapse-${idx}">
     เรียกดูรายละเอียด
   </a></h6>
-                            <div class="collapse mx-sm-4" id="additive-color-collapse">
+                            <div class="collapse mx-sm-4" id="additive-color-collapse-${idx}">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">ชนิดเม็ดพลาสติกที่ใช้: </span>
                                     </div>
-                                    <input type="text" class="form-control bg-white" value="${item.data["plasticAdditive-mixColor"]}" disabled>
+                                    <input type="text" class="form-control bg-white" value="${item.data["plasticAdditive-mixColor"] ?? ''}" disabled>
                                 </div>      
                                 ${item.data["plasticAdditive-name"]?`<table class="table mt-3">
                                                                                                                             <thead>
@@ -156,7 +177,7 @@
                                                                                                                             </table>`:""}
                                 
 
-                                                            <div class="input-group">
+                                                            <div class="input-group mt-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">การใช้สี: </span>
                                     </div>
@@ -184,9 +205,9 @@
                                                             :''
                                 }
                                    
-                                <div class="input-group">
+                                <div class="input-group mt-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">การใช้สี: </span>
+                                        <span class="input-group-text">การใช้สารเติมแต่ง : </span>
                                     </div>
                                     <input type="text" class="form-control bg-white" value="${item.data["plasticAdditive-useAdditive"]=='1'?'ใช้':'ไม่ใช้'}" disabled>
                                 </div>  
@@ -217,10 +238,10 @@
                             <hr>
                             <div class="row">
                             <div class="col-md-12 mt-3">
-                            <h6>ขยะพลาสติกที่เกิดจากกระบวนการผลิต<a data-toggle="collapse" href="#recycle-collapse" role="button" aria-expanded="false" aria-controls="recycle-collapse">
+                            <h6>ขยะพลาสติกที่เกิดจากกระบวนการผลิต<a data-toggle="collapse" href="#recycle-collapse-${idx}" role="button" aria-expanded="false" aria-controls="recycle-collapse-${idx}">
     เรียกดูรายละเอียด
   </a></h6>
-                            <div class="collapse mx-sm-4" id="recycle-collapse">
+                            <div class="collapse mx-sm-4" id="recycle-collapse-${idx}">
                                 <div class="col-md-12 col-sm-12 mt-2">
                                     <div class="input-group">
                                     <div class="input-group-prepend">
@@ -244,6 +265,7 @@
                                     </div>
                                     </div>      
                                 </div>
+                                <div class='text-blod mt-3'>ไม่ได้นำกลับเข้าสู่กระบวนการผลิต</div>
                                 ${
                                     item.data['usenoback'] == '1'?
                                     `
@@ -255,12 +277,12 @@
                                                                                                                                                         </tr>
                                                                                                                                                     </thead>
                                                                                                                                                         <tbody>
-                                                                                                                                                            ${item.data["recycle-backValue"].map((v,i)=>(
+                                                                                                                                                            ${item.data["recycle-backValue"] ? item.data["recycle-backValue"].map((v,i)=>(
                                                                                                                                                             `<tr>
                                                                                                                 <td>${v}</td>
                                                                                                                 <td align="center">${item.data["recycle-notBackQuantity"][i]}</td>
                                                                                                             </tr>`
-                                                                                                                                                            )).join("")}
+                                                                                                                                                            )).join(""):''}
                                                                                                                                                         </tbody>
                                                                                                                                                     </table>`
                                                             :''
@@ -272,10 +294,10 @@
                             <hr>
                                  <div class="row">
                             <div class="col-md-12 mt-3">
-                            <h6>ปริมาณการใช้น้ำ<a data-toggle="collapse" href="#water-collapse" role="button" aria-expanded="false" aria-controls="water-collapse">
+                            <h6>ปริมาณการใช้น้ำ<a data-toggle="collapse" href="#water-collapse-${idx}" role="button" aria-expanded="false" aria-controls="water-collapse-${idx}">
     เรียกดูรายละเอียด
   </a></h6>
-                            <div class="collapse mx-sm-4" id="water-collapse">
+                            <div class="collapse mx-sm-4" id="water-collapse-${idx}">
                                 <div class="col-md-12 col-sm-12 mt-2">
                                     ${item.data["water-useWater"] == '1'?`<div class="input-group">
                                                                                                             <div class="input-group-prepend">
@@ -322,10 +344,10 @@
                             <hr>
                             <div class="row">
                             <div class="col-md-12 mt-3">
-                            <h6>ปริมาณการเกิดน้ำเสีย<a data-toggle="collapse" href="#waste-water-collapse" role="button" aria-expanded="false" aria-controls="waste-water-collapse">
+                            <h6>ปริมาณการเกิดน้ำเสีย<a data-toggle="collapse" href="#waste-water-collapse-${idx}" role="button" aria-expanded="false" aria-controls="waste-water-collapse-${idx}">
     เรียกดูรายละเอียด
   </a></h6>
-                            <div class="collapse mx-sm-4" id="waste-water-collapse">
+                            <div class="collapse mx-sm-4" id="waste-water-collapse-${idx}">
                                 <div class="col-md-12 col-sm-12 mt-2">
                                     <div class="mt-3">น้ำเสียที่เกิดจากกระบวนการผลิต</div>
                                     ${item.data["water-waterWaste"] == '1'?`<div class="input-group">
@@ -334,7 +356,7 @@
                                                                                                             <div class="input-group-prepend">
                                                                                                                 <span class="input-group-text">ลิตร/เดือน</span>
                                                                                                             </div></div>`:""}
-                                                    <div class="mt-3">กรณีล้างทำความสะอาดผลิตภัณฑ์ น้ำเสียที่เกิดจากกระบวนการล้างผลิตภัณฑ์</div>
+                                                    ${item.data['water-forWasteWash'] == '1' ?'<div class="mt-3">กรณีล้างทำความสะอาดผลิตภัณฑ์ น้ำเสียที่เกิดจากกระบวนการล้างผลิตภัณฑ์</div>':''}
                                     ${item.data["water-forWasteWash"] == '1'?`<div class="input-group">
                                                                                                             <input type="text" class="form-control bg-white" value="${item.data["water-forWasteWash"]}" disabled>
                                                                                                             <div class="input-group-prepend">
@@ -367,7 +389,8 @@
                                                             :''
                                 }
                                    <div class="col-md-12 mt-3">
-                                    <div class="mt-3">น้ำเสียที่เกิดจากกระบวนการล้างทำความสะอาดเครื่องจักร หรือล้างภาชนะ</div>
+                                   ${item.data['waste-washMachine'] == '1' ?'<div class="mt-3">น้ำเสียที่เกิดจากกระบวนการล้างทำความสะอาดเครื่องจักร หรือล้างภาชนะ</div>':''}
+                                    
                                     ${item.data["waste-washMachine"] == '1'?`<div class="input-group">
                                                                                                             <input type="text" class="form-control bg-white" value="${item.data["waste-total"]}" disabled>
                                                                                                             <div class="input-group-prepend">
@@ -387,10 +410,10 @@
                             <hr>
                             <div class="row">
                             <div class="col-md-12 mt-3">
-                            <h6>ขยะพลาสติกประเภทใดที่ไม่ได้นำไปใช้ประโยชน์ แต่ต้องการนำไปแปรรูปเพื่อเพิ่มมูลค่า<a data-toggle="collapse" href="#waste-process-collapse" role="button" aria-expanded="false" aria-controls="waste-process-collapse">
+                            <h6>ขยะพลาสติกประเภทใดที่ไม่ได้นำไปใช้ประโยชน์ แต่ต้องการนำไปแปรรูปเพื่อเพิ่มมูลค่า<a data-toggle="collapse" href="#waste-process-collapse-${idx}" role="button" aria-expanded="false" aria-controls="waste-process-collapse-${idx}">
     เรียกดูรายละเอียด
   </a></h6>
-                            <div class="collapse mx-sm-4" id="waste-process-collapse">
+                            <div class="collapse mx-sm-4" id="waste-process-collapse-${idx}">
                                     <div class="mt-2"> ${item.data["processed-processed"] != '1'?`ไม่มี`:`<ul>`+item.data['processed-value'].map(v=>(
                                         `<li>${v}</li>`
                                     )).join("")+`</ul>`}</div>
@@ -400,17 +423,17 @@
                             <hr>
                             <div class="row">
                             <div class="col-md-12 mt-3">
-                            <h6>ความต้องการที่จะนำไปใช้ประโยชน์<a data-toggle="collapse" href="#benefit-process-collapse" role="button" aria-expanded="false" aria-controls="benefit-process-collapse">
+                            <h6>ความต้องการที่จะนำไปใช้ประโยชน์<a data-toggle="collapse" href="#benefit-process-collapse-${idx}" role="button" aria-expanded="false" aria-controls="benefit-process-collapse-${idx}">
     เรียกดูรายละเอียด
   </a></h6>
-                            <div class="collapse mx-sm-4" id="benefit-process-collapse">
+                            <div class="collapse mx-sm-4" id="benefit-process-collapse-${idx}">
 
                                     <div class="mt-2"><ul>${item.data["benefit-value"] && item.data["benefit-value"]?.length > 0?item.data['benefit-value'].map(v=>(
                                         `<li>${v}</li>`
                                     )).join(""):''} 
                                     ${item.data["benefit-other"] && item.data["benefit-other"]?.length > 0?item.data['benefit-other'].map(v=>(
                                         `<li>${v}</li>`
-                                    )).join(""):''}</ul></div>
+                                    )).join(""):'ไม่มี'}</ul></div>
                                                             </div>
                                 </div>
                             </div>
@@ -423,7 +446,17 @@
                 <tr>
                     <td>${idx+1}</td>
                         <td>${dateTime.setLocale('th').toFormat("วันที่ dd MMMM yyyy (เวลา HH:mm:ss)")}</td>
-                         <td><button type="submit" class="btn btn-primary" style="color: #FFFFFF" data-bs-toggle="modal" data-bs-target="#survey-${idx}"><i class="fa-solid fa-eye"></i></button>
+                         <td>
+                         <div class="d-flex">
+                         <button type="submit" class="btn btn-primary mx-2" style="color: #FFFFFF" data-bs-toggle="modal" data-bs-target="#survey-${idx}"><i class="fa-solid fa-eye"></i>
+                         </button>
+                         <form class="d-block" method="post" action="${item.route}"  id="form-survey-${idx}" >
+                         @csrf
+                         @method('delete')
+                         <button type="button" onclick=del(this,'#form-survey-${idx}') class="btn btn-danger" style="color: #FFFFFF" ><i class="fa-solid fa-trash"></i>
+                         </button>
+                         </div>
+                         </form>
                     </td>
                 </tr>`)
         })
