@@ -41,7 +41,7 @@ class SurveyController extends Controller
         $survey->data = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
         $survey->factoryId = 0;
         $survey->save();
-        return redirect()->route('survey.index');
+        return redirect()->route('survey.index')->with('message', 'บันทึกสำเร็จ')->with('message-status', 'success');;
     }
 
     /**
