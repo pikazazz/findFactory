@@ -45,6 +45,9 @@ Route::get('/', function () {
     Route::resource('manage-infomation', publicrelationsController::class);
     Route::resource('manage-profile', userProfileController::class);
     Route::resource("manage-survey", ManageSurveyController::class);
+    Route::get('dashboard',function(){
+        return view('components.backend.dashboard.index');
+    })->name('dashboard');
 // });
 
 // Route::group(['middleware' => ['checkrole:1']], function () {
