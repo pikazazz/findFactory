@@ -244,6 +244,7 @@
                                     </div>
                                     </div>      
                                 </div>
+                                <div class='text-blod mt-3'>ไม่ได้นำกลับเข้าสู่กระบวนการผลิต</div>
                                 ${
                                     item.data['usenoback'] == '1'?
                                     `
@@ -255,12 +256,12 @@
                                                                                                                                                         </tr>
                                                                                                                                                     </thead>
                                                                                                                                                         <tbody>
-                                                                                                                                                            ${item.data["recycle-backValue"].map((v,i)=>(
+                                                                                                                                                            ${item.data["recycle-backValue"] ? item.data["recycle-backValue"].map((v,i)=>(
                                                                                                                                                             `<tr>
                                                                                                                 <td>${v}</td>
                                                                                                                 <td align="center">${item.data["recycle-notBackQuantity"][i]}</td>
                                                                                                             </tr>`
-                                                                                                                                                            )).join("")}
+                                                                                                                                                            )).join(""):''}
                                                                                                                                                         </tbody>
                                                                                                                                                     </table>`
                                                             :''
@@ -334,7 +335,7 @@
                                                                                                             <div class="input-group-prepend">
                                                                                                                 <span class="input-group-text">ลิตร/เดือน</span>
                                                                                                             </div></div>`:""}
-                                                    <div class="mt-3">กรณีล้างทำความสะอาดผลิตภัณฑ์ น้ำเสียที่เกิดจากกระบวนการล้างผลิตภัณฑ์</div>
+                                                    ${item.data['water-forWasteWash'] == '1' ?'<div class="mt-3">กรณีล้างทำความสะอาดผลิตภัณฑ์ น้ำเสียที่เกิดจากกระบวนการล้างผลิตภัณฑ์</div>':''}
                                     ${item.data["water-forWasteWash"] == '1'?`<div class="input-group">
                                                                                                             <input type="text" class="form-control bg-white" value="${item.data["water-forWasteWash"]}" disabled>
                                                                                                             <div class="input-group-prepend">
@@ -367,7 +368,8 @@
                                                             :''
                                 }
                                    <div class="col-md-12 mt-3">
-                                    <div class="mt-3">น้ำเสียที่เกิดจากกระบวนการล้างทำความสะอาดเครื่องจักร หรือล้างภาชนะ</div>
+                                   ${item.data['waste-washMachine'] == '1' ?'<div class="mt-3">น้ำเสียที่เกิดจากกระบวนการล้างทำความสะอาดเครื่องจักร หรือล้างภาชนะ</div>':''}
+                                    
                                     ${item.data["waste-washMachine"] == '1'?`<div class="input-group">
                                                                                                             <input type="text" class="form-control bg-white" value="${item.data["waste-total"]}" disabled>
                                                                                                             <div class="input-group-prepend">
@@ -410,7 +412,7 @@
                                     )).join(""):''} 
                                     ${item.data["benefit-other"] && item.data["benefit-other"]?.length > 0?item.data['benefit-other'].map(v=>(
                                         `<li>${v}</li>`
-                                    )).join(""):''}</ul></div>
+                                    )).join(""):'ไม่มี'}</ul></div>
                                                             </div>
                                 </div>
                             </div>
