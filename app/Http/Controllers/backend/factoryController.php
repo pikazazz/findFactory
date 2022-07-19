@@ -42,9 +42,6 @@ class factoryController extends Controller
     {
         $map = json_decode(self::utm2ll($request['fac_utm1'], $request['fac_utm2'], 47, true));
 
-
-
-
         $factory = new factory();
         $factory->fac_name = $request['fac_name'];
         $factory->fac_no = $request['fac_no'];
@@ -83,7 +80,7 @@ class factoryController extends Controller
     {
         $data = explode(",", $id);
         $factory = factory::where('id', '=', $data[0])->get();
-        // dd($factory);
+
         return view('components.backend.factory.page', ['factory' => $factory, 'type' => $data[1]])->with('message', 'เพิ่มโรงงานใหม่สำเร็จ')->with('message-status', 'success');
     }
 
@@ -127,7 +124,6 @@ class factoryController extends Controller
                 $file = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $factory->img = $destinationPath.$file;
                 $image->move($destinationPath, $file);
-
             }
 
             $factory->save();

@@ -158,7 +158,6 @@
                                                     </div>
                                                 @else
 
-
                                                 <div class="form-group">
                                                     @if ($factoryS->img!='')
                                                     <img class="img-thumbnail"  src='{{ asset("$factoryS->img") }}' />

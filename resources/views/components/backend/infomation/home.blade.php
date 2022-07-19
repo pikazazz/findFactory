@@ -8,15 +8,15 @@
 
 
 @section('backend-header-content')
-@if (\Session::has('message'))
-<script>
-    Swal.fire(
-        'ข้อความจากระบบ',
-        '{!! \Session::get('message') !!}',
-        '{!! \Session::get('message-status') !!}',
-    )
-</script>
-@endif
+    @if (\Session::has('message'))
+        <script>
+            Swal.fire(
+                'ข้อความจากระบบ',
+                '{!! \Session::get('message') !!}',
+                '{!! \Session::get('message-status') !!}',
+            )
+        </script>
+    @endif
 @endsection
 
 
@@ -72,18 +72,30 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($infomation as $infomationS)
-                                    <tr>
-                                        <td>{{$infomationS->info_title}}</td>
-                                        <td>{{$infomationS->fac_category}}</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-eye"></i></button>
-                                            <button type="submit" class="btn btn-warning" style="color: #FFFFFF"> <i
-                                                    class="fa-solid fa-pencil"></i></button>
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $infomationS->info_title }}</td>
+                                            <td>{{ $infomationS->fac_category }}</td>
+
+                                            <td>
+
+                                                <a type="button"
+                                                    href="{{ route('manage-infomation.show', $infomationS->id . ',view') }}"
+                                                    class="btn btn-primary mt-1" style="color: #FFFFFF;width: 60px"> <i
+                                                        class="fa-solid fa-eye"></i></a>
+                                                <a type="button"
+                                                    href="{{ route('manage-infomation.show', $infomationS->id . ',edit') }}"
+                                                    class="btn btn-warning mt-1" style="color: #FFFFFF;width: 60px"><i
+                                                        class="fa-solid fa-pencil"></i></a>
+                                                <form action="{{ route('manage-infomation.destroy', $infomationS->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" style="color: #FFFFFF;width: 60px"
+                                                        class="btn btn-danger mt-1"><i
+                                                            class="fa-solid fa-trash-can"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
 
                             </table>
@@ -113,12 +125,14 @@
                     </button>
                 </div>
 
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                    <form action="{{route('manage-infomation.store')}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('post')
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <form action="{{ route('manage-infomation.store') }}" method="post"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('post')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>หัวข้อข่าว</label>
@@ -126,7 +140,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>โรงงาน</label>
-                                        <select class="form-control select2" name="info_factory" style="width: 100%;" required>
+                                        <select class="form-control select2" name="info_factory" style="width: 100%;"
+                                            required>
                                             @foreach ($factory as $factoryS)
                                                 <option value="{{ $factoryS->id }}">{{ $factoryS->fac_name }}</option>
                                             @endforeach
@@ -153,20 +168,18 @@
 
                                     </div>
                                     <!-- /.card-body -->
-
                                 </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="submit" style=" background-color: #78909c;color:#FFFFFF"
+                                        class="btn">บันทึก</button>
+                                </div>
+                                </form>
+                        </div>
+                    </div>
 
-                            </div>
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="submit" style=" background-color: #78909c;color:#FFFFFF"
-                                class="btn">บันทึก</button>
-                        </div>
-                </form>
+                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-
-@endsection
+    @endsection
