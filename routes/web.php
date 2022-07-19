@@ -47,7 +47,7 @@ Route::get('/', function () {
     Route::resource('manage-survey', SurveyController::class);
     Route::resource('manage-infomation', publicrelationsController::class);
     Route::resource('manage-profile', userProfileController::class);
-    Route::resource("manage-survey", ManageSurveyController::class);
+    Route::resource("manage-survey", ManageSurveyController::class)->middleware(['check.factory:123']);;
     Route::get('dashboard',function(Request $request){
         $cat = $request->input('cat');
         $factory = (object)[];
@@ -68,7 +68,7 @@ Route::get('/', function () {
 // });
 
 // Route::group(['middleware' => ['checkrole:1']], function () {
-    Route::resource('survey', surveyController::class);
+    Route::resource('survey', surveyController::class)->middleware(['check.factory:123']);
 // });
 
 
