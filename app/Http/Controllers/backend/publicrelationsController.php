@@ -101,7 +101,28 @@ class publicrelationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        $info = infomation::find($id);
+        if ($info) {
+
+           infomation::updated($request->all());
+            if ($image = $request->file('img')) {
+                $destinationPath = 'infomations/' .  $id. '/' . $request->type;
+                $file = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $info->img = $destinationPath.$file;
+                $info = infomation::find($id);
+                $image->move($destinationPath, $file);
+
+            }
+
+            $info->save();
+        } else {
+            return redirect()->route('manage-infomation.show', $info->id.',view')->with('message', 'ไม่สามารถแก้ไขได้')->with('message-status', 'error');
+        }
+     
+        return redirect()->route('manage-infomation.show',  $info->id.',view')->with('message', 'แก้ไขข้อมูลข่าวสำเร็จ')->with('message-status', 'success');
+
     }
 
     /**
@@ -118,9 +139,9 @@ class publicrelationsController extends Controller
         $status = infomation::destroy($id);
 
         if ($status) {
-            return redirect()->route('manage-infomation.index')->with('message', 'ลบข้อมูลพนักงานสำเร็จ')->with('message-status', 'success');
+            return redirect()->route('manage-infomation.index')->with('message', 'ลบข้อมูลข่าวประชาสัมพัธ์สำเร็จ')->with('message-status', 'success');
         } else {
-            return redirect()->route('manage-infomation.index')->with('message', 'ไม่พบผู้ใช้นี้ในระบบ')->with('message-status', 'error');
+            return redirect()->route('manage-infomation.index')->with('message', 'ไม่พบข้อมูลข่าวประชาสัมพัธ์สำเร็จ')->with('message-status', 'error');
         }
     }
 }
