@@ -50,9 +50,9 @@
                                         <center>
                                             <div class="row mt-4">
                                                 <div class="col">
-                                                    <a target="_blank" href="{{ route('page.index') }}?id={{$Factory->id}}"><img
+                                                    <a target="_blank" href="{{ route('page.index') }}"><img
                                                             src="{{ asset('assets/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
-                                                            width="20%" alt=""></a>
+                                                            width="18%" alt=""></a>
                                                     <a data-toggle="modal"
                                                         data-target="#exampleModalCenter{{ $Factory->id }}"><img
                                                             src="{{ asset('assets/about/picture/kindpng_1491757.png') }}"
