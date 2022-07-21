@@ -107,7 +107,7 @@
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
                     <img src="{{ asset('/logo.png') }}" alt="AdminLTE Logo" width="20%">
-                    <span class="brand-text font-weight-light" style="color: white">{Factory Name}</span>
+                    <span class="brand-text font-weight-light" style="color: white">Factory System</span>
                 </a>
                 <hr>
                 <!-- Sidebar -->
@@ -119,8 +119,7 @@
                                 class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="{{ route('manage-profile.index') }}" style="color: white" class="d-block">{Fname
-                                Lname}</a>
+                            <a href="{{ route('manage-profile.index') }}" style="color: white" class="d-block">{{Auth::user()->name}}</a>
                         </div>
                     </div>
                     <hr>
@@ -151,7 +150,7 @@
                          with font-awesome or any other icon font library -->
                             <li class="nav-item">
                                 <a href="{{ route('dashboard') }}" class="nav-link ">
-                                <i class="fa-solid fa-chart-pie"></i>
+                                <i class="nav-icon fas fa-chart-pie"></i>
                                     <p>กระดานสรุปข้อมูล</p>
                                 </a>
                             </li>
