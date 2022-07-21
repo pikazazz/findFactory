@@ -33,7 +33,7 @@
                             <span>โรงงานของเรา</span>
                         </h1>
                     </div>
-                    <div class="row" id="cardFind">
+                    <div class="row align-items-stretch" id="cardFind">
                     </div>
 
                 </div>
@@ -78,8 +78,9 @@
             }
                 let card_text = ''
                 response.factory.filter(i => _.includes(name?i.fac_category:i.fac_name, text.value)).forEach((item) => {
-                    card_text += `<div class="col mt-4 ml-4">
-                            <div class="card" style="width:20rem;">
+                    card_text += `<div class="col-12 col-sm-4 mt-4">
+                            <div class="d-flex justify-content-center">
+                            <div class="card" style="max-width:20rem">
                                 <img class="card-img-top" src='${item.img}' />
                                 <div class="card-body">
                                     <h5 class="card-title">
@@ -106,6 +107,8 @@
                                         </div>
                                     </center>
                                 </div>
+                            </div>
+
                             </div>
                         </div>
                         <!-- Modal -->
