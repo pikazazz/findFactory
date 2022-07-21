@@ -19,6 +19,7 @@ use App\Http\Controllers\SurveyController;
 use App\Models\Factory;
 use App\Models\Survey;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,16 +31,14 @@ use App\Models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/factory', function () {
-//   return view('welcome');
-// });
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-// Route::group(['middleware' => ['checkrole:0']], function () {
+Route::group(['middleware' => ['checkrole:0']], function () {
     Route::resource('manage-employee', employeeController::class);
     Route::put('manage-employee/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');
     Route::resource('manage-factory', factoryController::class);
@@ -82,13 +81,17 @@ Route::get('/', function () {
         return view('components.backend.dashboard.index',['factories'=>$factories]);
     })->name('dashboard');
 
-// });
+});
 
-// Route::group(['middleware' => ['checkrole:1']], function () {
+Route::group(['middleware' => ['checkrole:1']], function () {
     Route::resource('survey', surveyController::class)->middleware(['check.factory:123']);
-// });
+});
 
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return view('auth.login');
+});
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
 
