@@ -16,12 +16,12 @@
                         <div class="col mt-4 ml-4">
                             <div class="card" style="width:18rem;">
                                 <img class="card-img-top"
-                                    src="https://image.shutterstock.com/z/stock-photo-cartoon-factory-176642414.jpg"
-                                    alt="Card image cap">
+                                src='{{ asset("$Factory->img") }}' />
+
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $Factory->fac_name }}</h5>
                                     <p class="card-text">
-                                        - ไม่มีข้อมูลตัวอย่าง -
+                                       
                                     </p>
                                     <center>
                                         <div class="row mt-4">
