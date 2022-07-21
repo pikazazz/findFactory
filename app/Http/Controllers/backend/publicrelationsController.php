@@ -110,17 +110,15 @@ class publicrelationsController extends Controller
             if ($image = $request->file('img')) {
                 $destinationPath = 'infomations/' .  $id. '/' . $request->type;
                 $file = date('YmdHis') . "." . $image->getClientOriginalExtension();
-                $info->img = $destinationPath.$file;
-                $info = infomation::find($id);
                 $image->move($destinationPath, $file);
-
+                $infos = infomation::find($id);
+                $infos->img = $destinationPath.$file;
             }
-
-            $info->save();
+            $infos->save();
         } else {
             return redirect()->route('manage-infomation.show', $info->id.',view')->with('message', 'ไม่สามารถแก้ไขได้')->with('message-status', 'error');
         }
-     
+
         return redirect()->route('manage-infomation.show',  $info->id.',view')->with('message', 'แก้ไขข้อมูลข่าวสำเร็จ')->with('message-status', 'success');
 
     }

@@ -68,7 +68,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" name="fac_category" id="fac_category"
-                                                            value="{{ $factoryS->fac_category }}">
+                                                            value="{{ $factoryS->fac_category }}" hidden>
                                                         <label>ประกอบกิจการ</label>
                                                         <br>
                                                         <input id="fac1" type="checkbox" onclick="setFac()"

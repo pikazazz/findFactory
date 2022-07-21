@@ -179,16 +179,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href=""
-                                    onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"
-                                    class="nav-link">
+                                <a href="/logout" onclick="" class="nav-link">
                                     <i class="nav-icon fas fa-sign-out-alt"></i>
                                     <p>
                                         Logout
+
                                     </p>
                                 </a>
                             </li>
+
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
@@ -323,5 +322,12 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     @yield('script')
 </body>
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function(reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+</script>
 
 </html>

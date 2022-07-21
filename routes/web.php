@@ -20,6 +20,7 @@ use App\Models\Factory;
 use App\Models\infomation;
 use App\Models\Survey;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,7 @@ use App\Models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/factory', function () {
-//   return view('welcome');
-// });
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -83,7 +82,7 @@ Route::get('dashboard', function () {
     return view('components.backend.dashboard.index', ['factories' => $factories]);
 })->name('dashboard');
 
-// });
+});
 
 // Route::group(['middleware' => ['checkrole:1']], function () {
 Route::resource('survey', surveyController::class);
@@ -95,6 +94,10 @@ Route::get('infomation', function (Request $request) {
     return view('components.fontend.page-detail.info', ['info' => $info]);
 })->name('infomation');
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return view('auth.login');
+});
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
 
