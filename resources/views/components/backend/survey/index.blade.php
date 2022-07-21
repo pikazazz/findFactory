@@ -107,13 +107,13 @@
             })
         }
         data.forEach((item, idx) => {
-            const dateTime = new DateTime(item.created_at)
+            const dateTime =  DateTime.fromISO(item.created_at.toISOString())
             modal.append(`
             <div class="modal fade" id="survey-${idx}" tabindex="-1" aria-labelledby="survey-${idx}-label" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="survey-${idx}-label">${dateTime.setLocale('th').toFormat("วันที่ dd MMMM yyyy (เวลา HH:mm:ss)")}</h5>
+                        <h5 class="modal-title" id="survey-${idx}-label">${dateTime.toFormat("วันที่ dd MMMM yyyy (เวลา HH:mm:ss)")}</h5>
                         <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     <div class="modal-body">
