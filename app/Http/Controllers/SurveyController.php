@@ -42,11 +42,13 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
         //
+
         $survey = new Survey();
         $survey->data = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
         $survey->factoryId = $request->factory ?? '';
         $survey->save();
-        return redirect()->route('survey.index')->with('message', 'บันทึกสำเร็จ')->with('message-status', 'success');;
+
+        return redirect()->route('manage-survey.index')->with('message', 'บันทึกสำเร็จ')->with('message-status', 'success');;
     }
 
     /**

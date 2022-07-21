@@ -128,7 +128,7 @@ class factoryController extends Controller
 
             $factory->save();
         } else {
-            return redirect()->route('manage-factory.show', $factory->id        .',view')->with('message', 'ไม่สามารถแก้ไขได้')->with('message-status', 'error');
+            return redirect()->route('manage-factory.show', $factory->id.',view')->with('message', 'ไม่สามารถแก้ไขได้')->with('message-status', 'error');
         }
 
         return redirect()->route('manage-factory.show',  $factory->id.',view')->with('message', 'แก้ไขโรงงาน')->with('message-status', 'success');

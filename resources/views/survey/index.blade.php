@@ -17,17 +17,7 @@
         window.factory = "{{$factory->fac_name}}"
     </script>
     <script src="{{ asset('/resources/js/app.js') }}"></script>
-    <!-- sweetalert -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        @if (\Session::has('message'))
-            <script>
-                Swal.fire(
-                    'สำเร็จ',
-                    '{!! \Session::get('message') !!}',
-                    '{!! \Session::get('message-status') !!}',
-                )
-            </script>
-        @endif
+
 </body>
 
 </html>
