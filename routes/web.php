@@ -41,7 +41,7 @@ Route::get('/', function () {
 Route::get('/switch', function () {
     if (Auth::user()->role == "0") {
         return redirect()->route('dashboard');
-    }else{
+    } else {
         return redirect()->route('manage-survey.index');
     }
 });
@@ -91,6 +91,7 @@ Route::group(['middleware' => ['checkrole:0']], function () {
 Route::group(['middleware' => ['checkrole:1']], function () {
     Route::resource("manage-survey", ManageSurveyController::class);
     Route::resource('survey', surveyController::class);
+    Route::resource('manage-profile', userProfileController::class);
 });
 
 Route::get('infomation', function (Request $request) {
@@ -104,8 +105,8 @@ Route::get('/logout', function () {
     return view('auth.login');
 });
 
-Route::post("/search",function(Request $request){
-    return redirect()->route('factory.index',['keyword'=>"$request->search"]);
+Route::post("/search", function (Request $request) {
+    return redirect()->route('factory.index', ['keyword' => "$request->search"]);
 })->name('search');
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
