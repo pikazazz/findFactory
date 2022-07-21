@@ -59,12 +59,12 @@ Route::get('dashboard-data', function (Request $request) {
     $users = new User();
     if ($cat) {
         $factories = $factories::whereRaw("1=?", [$cat == NULL])->orWhere('fac_category', 'like', "%" . $cat . "%");
-        $surveys = $surveys::leftJoin('factory', 'factory.id', '=', 'survey.factory')->whereRaw("1=?", [$cat == NULL])->orWhere('fac_category', 'like', "%" . $cat . "%");
+        $surveys = $surveys::leftJoin('factory', 'factory.id', '=', 'survey.factoryId')->whereRaw("1=?", [$cat == NULL])->orWhere('fac_category', 'like', "%" . $cat . "%");
         $users = $users::leftJoin('factory', 'factory.id', '=', 'users.factory')->whereRaw("1=?", [$cat == NULL])->orWhere('fac_category', 'like', "%" . $cat . "%");
     }
     if ($name) {
         $factories = $factories::whereRaw("1=?", [$cat == NULL])->orWhere('fac_name', '=', $name);
-        $surveys = $surveys::leftJoin('factory', 'factory.id', '=', 'survey.factory')->whereRaw("1=?", [$name == NULL])->orWhere('fac_name', '=', $name);
+        $surveys = $surveys::leftJoin('factory', 'factory.id', '=', 'survey.factoryId')->whereRaw("1=?", [$name == NULL])->orWhere('fac_name', '=', $name);
         $users = $users::leftJoin('factory', 'factory.id', '=', 'users.factory')->whereRaw("1=?", [$name == NULL])->orWhere('fac_name', '=', $name);
     }
     $factory->list = $factories->get();
