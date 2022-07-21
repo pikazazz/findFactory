@@ -12,6 +12,7 @@ import WasteWater from "../components/questions/watse-water";
 import MakeBenefit from "../components/questions/make-benefit";
 import PlasticProcessed from "../components/questions/plastic-processed";
 function SurveyPage() {
+    console.log(window.factory)
     return (
         <div className="container survey py-5 bg-white shadow">
             <h2>แบบสำรวจข้อมูลเพิ่มเติมของสถานประกอบการอุตสาหกรรมพลาสติก</h2>
@@ -35,10 +36,11 @@ function SurveyPage() {
                         ข้อมูลโรงงาน
                     </legend>
                     <div className="px-3">
-                        ชื่อโรงงาน บริษัท มู่ พลาสติก อินดัสตรีส์ จำกัด
+                        ชื่อโรงงาน <strong><u>{window.factory ?? ""}</u></strong>
                         <br />
-                        อัตราการผลิต 80 ตัน/เดือน
-                        <br />
+                        <br/>
+                        {/* อัตราการผลิต 80 ตัน/เดือน
+                        <br /> */}
                         <div className="d-flex align-items-md-center flex-md-row flex-column gap-2">
                             <div className="d-flex align-items-md-center">
                                 จำนวนวันทำงาน

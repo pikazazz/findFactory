@@ -14,6 +14,7 @@
     <script>
         window.postUrl = "{{ route('survey.store') }}"
         window.csrf_token = "{{ csrf_token() }}"
+        window.factory = "{{$factory->fac_name}}"
     </script>
     <script src="{{ asset('/resources/js/app.js') }}"></script>
     <!-- sweetalert -->

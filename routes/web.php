@@ -83,9 +83,9 @@ Route::group(['middleware' => ['checkrole:0']], function () {
 
 });
 
-Route::group(['middleware' => ['checkrole:1']], function () {
-    Route::resource('survey', surveyController::class)->middleware(['check.factory:123']);
-});
+ Route::group(['middleware' => ['checkrole:1']], function () {
+    Route::resource('survey', surveyController::class);
+ });
 
 
 Route::get('/logout', function () {
