@@ -458,7 +458,7 @@
                          <form class="d-block" method="post" action="${item.route}"  id="form-survey-${idx}" >
                          @csrf
                          @method('delete')
-                         <button type="button" onclick=del(this,'#form-survey-${idx}') class="btn btn-danger" style="color: #FFFFFF" ><i class="fa-solid fa-trash"></i>
+                         <button type="button" onclick="del(this,'#form-survey-${idx}') "class="btn btn-danger" style="color: #FFFFFF" ><i class="fa-solid fa-trash"></i>
                          </button>
                          </div>
                          </form>
