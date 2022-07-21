@@ -38,7 +38,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-    
+
 // Route::group(['middleware' => ['checkrole:0']], function () {
     Route::resource('manage-employee', employeeController::class);
     Route::put('manage-employee/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');
@@ -81,7 +81,7 @@ Route::get('/', function () {
         $factories = Factory::all();
         return view('components.backend.dashboard.index',['factories'=>$factories]);
     })->name('dashboard');
-    
+
 // });
 
 // Route::group(['middleware' => ['checkrole:1']], function () {

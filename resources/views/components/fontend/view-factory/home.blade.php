@@ -21,7 +21,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $Factory->fac_name }}</h5>
                                     <p class="card-text">
-                                       
+
                                     </p>
                                     <center>
                                         <div class="row mt-4">
@@ -62,7 +62,7 @@
                                                 <h1>เกี่ยวกับโรงงาน</h1>
                                                 <div class="bd-callout bd-callout-warning">
                                                     <p style="text-align: left;">
-                                                        - ข้อมูลตัวอย่าง -
+                                                        {{ $Factory->fac_detail }}
                                                     </p>
                                                 </div>
                                             </div>
@@ -82,12 +82,14 @@
                                                 </li>
                                                 <br>
                                                 <br>
+
                                                 <select class="custom-select" onchange="changeMap(this)">
                                                     <option selected>ตำแหน่งที่ตั้งของท่าน</option>
+
                                                     @foreach ($map as $Map)
                                                         <option
-                                                            value="{{ print_r($Map['lat']) }},{{ print_r($Map['lon']) }},{{ $Factory->fac_lat }},{{ $Factory->fac_lon }}">
-                                                            {{ print_r($Map['name']) }}</option>
+                                                            value="{{ $Map['lat'] }},{{ $Map['lon'] }},{{ $Factory->fac_lat }},{{ $Factory->fac_lon }}">
+                                                            {{ $Map['name'] }}</option>
                                                     @endforeach
                                                 </select>
 
