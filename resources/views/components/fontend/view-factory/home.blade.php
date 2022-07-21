@@ -50,7 +50,7 @@
                                         <center>
                                             <div class="row mt-4">
                                                 <div class="col">
-                                                    <a target="_blank" href="{{ route('page.index',$Factory->id) }}"><img
+                                                    <a target="_blank" href="{{ route('page.index') }}?id={{$Factory->id}}"><img
                                                             src="{{ asset('assets/about/picture/kisspng-international-real-estate-renting-commercial-prope-house-icon-5ad03dcf06a0f5.0353035715235967510272.png') }}"
                                                             width="20%" alt=""></a>
                                                     <a data-toggle="modal"
