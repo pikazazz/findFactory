@@ -18,7 +18,7 @@
                             <div class="col-md-12">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-end">
-                                        <a href="{{route('survey.index')}}" class="btn btn-success mb-3"><i class="fas fa-plus"></i> เพิ่มเลย</a>
+                                        <a href="{{route('survey.index')}}?id={{Auth::user()->factory}}" class="btn btn-success mb-3"><i class="fas fa-plus"></i> เพิ่มเลย</a>
                                     </div>
                                     <div style="max-height:500px;" class="overflow-auto d-block">
                                     <table class="table table-bordered ">
