@@ -17,7 +17,6 @@ class SurveyController extends Controller
     {
         $id = $request->input('id');
         $factory = factory::find($id);
-        // dd($factory);
         return view('survey.index',['factory'=>$factory]);
     }
 
