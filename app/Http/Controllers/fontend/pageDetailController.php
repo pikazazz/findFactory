@@ -16,8 +16,10 @@ class pageDetailController extends Controller
      */
     public function index(Request $request)
     {
-
         $id = $request->input('id');
+        if(!$id){
+            return redirect()->back();
+        }
         $factory = factory::find($id);
         $info = infomation::where('info_factory', '=', $id)->get();
         return view('components.fontend.page-detail.home', ['factory' => $factory,'info' => $info]);
