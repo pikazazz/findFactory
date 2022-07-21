@@ -103,6 +103,10 @@ Route::get('/logout', function () {
     Auth::logout();
     return view('auth.login');
 });
+
+Route::post("/search",function(Request $request){
+    return redirect()->route('factory.index',['keyword'=>"$request->search"]);
+})->name('search');
 Route::resource('factory', viewFactoryController::class);
 Route::resource('page', pageDetailController::class);
 

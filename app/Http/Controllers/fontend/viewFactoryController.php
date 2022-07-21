@@ -23,8 +23,9 @@ class viewFactoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
+        $keyword = $request->input('keyword');
         $Map  = new Map();
         $Data = new ArrayObject();
         $factory = factory::get();
@@ -34,7 +35,7 @@ class viewFactoryController extends Controller
             $Map->lon = $Factory->fac_lon;
             $Data->append(["name"=>$Factory->fac_name,"lat"=>$Factory->fac_lat,"lon"=>$Factory->fac_lon]);
         }
-        return view('components.fontend.view-factory.home', ['factory' => $factory,'map'=>$Data]);
+        return view('components.fontend.view-factory.home', ['factory' => $factory,'map'=>$Data,'keyword'=>$keyword]);
     }
 
     /**

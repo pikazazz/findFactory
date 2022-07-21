@@ -35,14 +35,15 @@
                             <h1>
                                 <span>ค้</span><span>น</span><span>ห</span><span>า</span><span>โ</span><span>ร</span><span>ง</span><span>ง</span><span>า</span><span>น</span><span>ข</span><span>อ</span><span>ง</span><span>เ</span><span>ร</span><span>า</span>
                             </h1>
-                            <div class="input-group">
-                                <input type="text" class="form-control" style="width: 50%" placeholder="Search">
+                            <form class="input-group" method="POST" action="{{route('search')}}">
+                                @csrf
+                                <input type="text" class="form-control" style="width: 50%" placeholder="Search" name="search">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="submit">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                             <p>เลื่อนเพื่อเปลี่ยนเป็นโหมดกลางคืน </p>
                         </div>
                     </div>
