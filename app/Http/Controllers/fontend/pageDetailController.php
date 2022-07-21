@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\fontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\factory;
+use App\Models\infomation;
 use Illuminate\Http\Request;
 
 class pageDetailController extends Controller
@@ -12,9 +14,13 @@ class pageDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('components.fontend.page-detail.home');
+
+        $id = $request->input('id');
+        $factory = factory::find($id);
+        $info = infomation::where('info_factory', '=', $id)->get();
+        return view('components.fontend.page-detail.home', ['factory' => $factory,'info' => $info]);
     }
 
     /**
