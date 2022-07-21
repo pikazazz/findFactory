@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::GET('fillterFactory', function (Request $request) {
+    $result = DB::table('factory')
+        ->where(function ($query) use ($request) {
+            $query->Where('fac_name', 'LIKE', '%' . $request->fac_name . '%');
+        })
+        ->orWhere(function ($query) use ($request) {
+            $query->Where('fac_category', 'LIKE', '%' . $request->category . '%');
+        })->get();
+
+    return $result;
+});

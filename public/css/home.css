@@ -3,7 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700&display=swap");
 /* #Primary
 ================================================== */
+.dark .card{
+background-color: #90a4ae53;
 
+}
 body {
     font-family: "Prompt", sans-serif;
     font-size: 16px;
