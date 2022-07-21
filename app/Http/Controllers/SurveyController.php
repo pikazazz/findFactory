@@ -16,7 +16,7 @@ class SurveyController extends Controller
     public function index(Request $request)
     {
         $id = $request->input('id');
-        if(!id){
+        if(!$id){
             return redirect()->back();
         }
         $factory = factory::find($id);
