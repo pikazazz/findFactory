@@ -76,13 +76,11 @@ Route::get('dashboard-data', function (Request $request) {
     $data = ['factory' => $factory, 'survey' => $survey, 'user' => $user];
     return json_encode($data);
 })->name('dashboard-data');
-
 Route::get('dashboard', function () {
     $factories = Factory::all();
     return view('components.backend.dashboard.index', ['factories' => $factories]);
 })->name('dashboard');
 
-});
 
 // Route::group(['middleware' => ['checkrole:1']], function () {
 Route::resource('survey', surveyController::class);
