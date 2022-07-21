@@ -22,11 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::GET('fillterFactory', function (Request $request) {
     $result = DB::table('factory')
         ->where(function ($query) use ($request) {
-            $query->Where('fac_name', 'LIKE', '%' . $request->fac_name . '%');
+            $query->Where('fac_name', 'LIKE', '%' . $request->text . '%');
         })
         ->orWhere(function ($query) use ($request) {
-            $query->Where('fac_category', 'LIKE', '%' . $request->category . '%');
+            $query->Where('fac_category', 'LIKE', '%' . $request->text . '%');
         })->get();
 
-    return $result;
+    return 'sss';
 });

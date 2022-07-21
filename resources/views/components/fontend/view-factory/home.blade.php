@@ -8,11 +8,12 @@
 
                     <div class="col-6">
                         <label>ค้นหาด้วยชื่อ</label> <br>
-                    <div class="input-group">
+                        <div class="input-group">
 
 
-                        <input type="text" class="form-control" onkeyup="fillterCategory(this)"  style="width: 250px" placeholder="Search">
-                    </div>
+                            <input type="text" class="form-control" onkeyup="fillterCategory(this)" style="width: 250px"
+                                placeholder="Search">
+                        </div>
                     </div>
                     <div class="col-6">
                         <label>หมวดหมู่โรงงาน</label> <br>
@@ -42,7 +43,7 @@
 
                                     <div class="card-body">
                                         <h5 class="card-title">
-                                            <span > {{ $Factory->fac_name }}</span>
+                                            <span> {{ $Factory->fac_name }}</span>
                                         </h5>
                                         <p class="card-text">
 
@@ -151,13 +152,30 @@
     @endsection
 
     <script>
+        function fillterCategory(text) {
+           
+            $.ajax({
+                type: 'get',
+                url: `/api/fillterFactory`,
+                data: {
+                    text: text.value,
+                }, //Add request data
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(e) {
+
+                }
+            });
+
+        }
+
         function changeMap(data) {
             var map = data.value.split(",");
             onchangeLocation(map[0], map[1], map[2], map[3]);
         }
-        function fillterCategory(data) {
-            console.log(data.value);
-        }
+
 
 
 
@@ -167,7 +185,8 @@
                 key: "GXVnVpMIXOX(mLaVclrF4eguAh4vKRKXuJXz8uI0V0T8ZggCWsjCt4Gw)(hMBKnxuBfC48mc22gW1eR1uuOa6P0=====2",
                 stops: '[{"name":"location_1","lat":' + lat + ',"lon":' + lon +
                     ',"timeWindowStart":"","timeWindowEnd":"","serviceTime":""},{"name":"location_2","lat":' +
-                    local_lat + ',"lon":' + local_lon + ',"timeWindowStart":"","timeWindowEnd":"","serviceTime":""}]'
+                    local_lat + ',"lon":' + local_lon +
+                    ',"timeWindowStart":"","timeWindowEnd":"","serviceTime":""}]'
             }
             $.ajax({
                 url: "//api.nostramap.com/Service/V2/Network/Route",

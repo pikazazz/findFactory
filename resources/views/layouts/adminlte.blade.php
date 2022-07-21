@@ -9,8 +9,7 @@
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -119,7 +118,8 @@
                                 class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="{{ route('manage-profile.index') }}" style="color: white" class="d-block">{{Auth::user()->name}}</a>
+                            <a href="{{ route('manage-profile.index') }}" style="color: white"
+                                class="d-block">{{ Auth::user()->name }}</a>
                         </div>
                     </div>
                     <hr>
@@ -148,33 +148,37 @@
                             role="menu" data-accordion="false">
                             <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                            <li class="nav-item">
-                                <a href="{{ route('dashboard') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                    <p>กระดานสรุปข้อมูล</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('manage-employee.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-user-alt"></i>
-                                    <p>จัดการผู้ใช้งาน</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('manage-factory.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>จัดการข้อมูลโรงงาน</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('manage-infomation.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>จัดการข้อมูลข่าวประชาสัมพันธ์</p>
-                                </a>
-                            </li>
+
+                            @if (Auth::user()->role == '0')
                                 <li class="nav-item">
+                                    <a href="{{ route('dashboard') }}" class="nav-link ">
+                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <p>กระดานสรุปข้อมูล</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('manage-employee.index') }}" class="nav-link ">
+                                        <i class="nav-icon fas fa-user-alt"></i>
+                                        <p>จัดการผู้ใช้งาน</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('manage-factory.index') }}" class="nav-link ">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>จัดการข้อมูลโรงงาน</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('manage-infomation.index') }}" class="nav-link ">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>จัดการข้อมูลข่าวประชาสัมพันธ์</p>
+                                    </a>
+                                </li>
+                            @endif
+
+                            <li class="nav-item">
                                 <a href="{{ route('manage-survey.index') }}" class="nav-link ">
-                                <i class="fa-solid fa-chart-simple"></i>
+                                    <i class="nav-icon fas fa-chart-simple"></i>
                                     <p>จัดการข้อมูลแบบสำรวจ</p>
                                 </a>
                             </li>
@@ -183,7 +187,6 @@
                                     <i class="nav-icon fas fa-sign-out-alt"></i>
                                     <p>
                                         Logout
-
                                     </p>
                                 </a>
                             </li>
