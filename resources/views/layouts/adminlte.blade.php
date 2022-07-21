@@ -173,7 +173,7 @@
                                     <p>จัดการข้อมูลข่าวประชาสัมพันธ์</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                                <li class="nav-item" hidden="{{Auth::user()->factory == 123}}">
                                 <a href="{{ route('manage-survey.index') }}" class="nav-link ">
                                 <i class="fa-solid fa-chart-simple"></i>
                                     <p>จัดการข้อมูลแบบสำรวจ</p>

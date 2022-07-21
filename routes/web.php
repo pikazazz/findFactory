@@ -47,28 +47,45 @@ Route::get('/', function () {
     Route::resource('manage-survey', SurveyController::class);
     Route::resource('manage-infomation', publicrelationsController::class);
     Route::resource('manage-profile', userProfileController::class);
-    Route::resource("manage-survey", ManageSurveyController::class);
-    Route::get('dashboard',function(Request $request){
+    Route::resource("manage-survey", ManageSurveyController::class)->middleware(['check.factory:123']);;
+    Route::get('dashboard-data',function(Request $request){
         $cat = $request->input('cat');
+        $name = $request->input('name');
         $factory = (object)[];
         $survey = (object)[];
         $user = (object)[];
-        $factories = Factory::whereRaw("1=?",[$cat==NULL])->orWhere('fac_category','=',$cat);
-        $surveys = Survey::leftJoin('factory','factory.id','=','survey.factory')->whereRaw("1=?",[$cat==NULL])->orWhere('fac_category','=',$cat);;
-        $users = User::leftJoin('factory','factory.id','=','users.factory')->whereRaw("1=?",[$cat==NULL])->orWhere('fac_category','=',$cat);;
-        $factory->list = $factories;
+        $factories = new Factory();
+        $surveys = new Survey();
+        $users = new User();
+        if($cat){
+            $factories = $factories::whereRaw("1=?",[$cat==NULL])->orWhere('fac_category','like',"%".$cat."%");
+            $surveys = $surveys::leftJoin('factory','factory.id','=','survey.factory')->whereRaw("1=?",[$cat==NULL])->orWhere('fac_category','like',"%".$cat."%");
+            $users = $users::leftJoin('factory','factory.id','=','users.factory')->whereRaw("1=?",[$cat==NULL])->orWhere('fac_category','like',"%".$cat."%");
+        }
+        if($name){
+            $factories = $factories::whereRaw("1=?",[$cat==NULL])->orWhere('fac_name','=',$name);
+            $surveys = $surveys::leftJoin('factory','factory.id','=','survey.factory')->whereRaw("1=?",[$name==NULL])->orWhere('fac_name','=',$name);
+            $users = $users::leftJoin('factory','factory.id','=','users.factory')->whereRaw("1=?",[$name==NULL])->orWhere('fac_name','=',$name);
+        }
+        $factory->list = $factories->get();
         $factory->total = $factories->count();
-        $survey->list = $surveys;
+        $survey->list = $surveys->get();
         $survey->total = $surveys->count();
-        $user->list = $users;
+        $user->list = $users->get();
         $user->total = $users->count();
         $data = ['factory'=>$factory, 'survey'=>$survey, 'user'=>$user];
-        return view('components.backend.dashboard.index',['data'=>$data]);
+        return json_encode($data);
+    })->name('dashboard-data');
+
+    Route::get('dashboard',function(){
+        $factories = Factory::all();
+        return view('components.backend.dashboard.index',['factories'=>$factories]);
     })->name('dashboard');
+    
 // });
 
 // Route::group(['middleware' => ['checkrole:1']], function () {
-    Route::resource('survey', surveyController::class);
+    Route::resource('survey', surveyController::class)->middleware(['check.factory:123']);
 // });
 
 

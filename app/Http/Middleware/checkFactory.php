@@ -6,29 +6,27 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class checkrole
+class checkFactory
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next,$role)
+    public function handle(Request $request, Closure $next,$factoryId)
     {
         if(Auth::user()){
-            if ($role == Auth::user()->role) {
+            if ($factoryId == Auth::user()->factory) {
                 return $next($request);
             }else{
                 return redirect()->route('login');
-
             }
+
+
         }else{
             return redirect()->route('login');
         }
-
     }
-
-
 }
