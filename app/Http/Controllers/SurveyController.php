@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\factory;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,12 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return view('survey.index');
+        $id = $request->input('id');
+        $factory = factory::find($id);
+        // dd($factory);
+        return view('survey.index',['factory'=>$factory]);
     }
 
     /**

@@ -85,7 +85,7 @@ Route::get('/', function () {
 // });
 
 // Route::group(['middleware' => ['checkrole:1']], function () {
-    Route::resource('survey', surveyController::class)->middleware(['check.factory:123']);
+    Route::resource('survey', surveyController::class);
 // });
 
 
