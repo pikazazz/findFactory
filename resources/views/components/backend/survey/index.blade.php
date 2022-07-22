@@ -29,7 +29,7 @@
                                                 <th>เมนู</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="survey-table">
                                         </tbody>
                                     </table>
                                 </div>
@@ -80,7 +80,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.0.0/luxon.min.js" integrity="sha512-5OY/m4qoNRTzriZLTMtfojLGcf8oIchTuLWTsLpxR7Iog995oy9DaPdP2x6r1I8kqWa9xzTZVSSwim/XVVAkYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
-    const table = $("#example1");
+    const table = $("#survey-table");
     const modal = $('#modal-list')
     const {
         DateTime
