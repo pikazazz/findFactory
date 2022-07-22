@@ -105,7 +105,7 @@
             <aside class="main-sidebar  elevation-4" style="background-color: #455a64">
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
-                    <img src="{{ asset('/logo.png') }}" class="brand-image" alt="AdminLTE Logo">
+                    <img src="{{ asset('/logo.PNG') }}" class="brand-image" alt="AdminLTE Logo">
                     <span class="brand-text font-weight-light" style="color: white">Factory System</span>
                 </a>
                 <hr>
