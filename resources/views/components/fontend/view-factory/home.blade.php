@@ -33,8 +33,10 @@
                             <span>โรงงานของเรา</span>
                         </h1>
                     </div>
-                    <div class="row align-items-stretch" id="cardFind">
+                   <div class="col-12">
+                   <div class="row" id="cardFind">
                     </div>
+                   </div>
 
                 </div>
             </div>
