@@ -477,12 +477,13 @@
                     </td>
                 </tr>`)
     })
+    $('#survey-table').DataTable();
 </script>
 <script>
     $(document).ready(function() {
-        setTimeout(function() {
-            $('#survey-table').DataTable();
-        }, 3000)
+
+
+
     });
 </script>
 @endsection
