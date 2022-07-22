@@ -480,7 +480,9 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#survey-table').DataTable();
+        setTimeout(function() {
+            $('#survey-table').DataTable();
+        }, 3000)
     });
 </script>
 @endsection
