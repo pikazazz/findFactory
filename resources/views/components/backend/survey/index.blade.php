@@ -2,113 +2,111 @@
 {{-- setting title-web --}}
 @section('backend-header', 'จัดการข้อมูลแบบสำรวจ')
 @section('backend-content')
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row mt-2">
-                <div class="col-md-12">
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fas fa-edit"></i>
-                                จัดการข้อมูลแบบสำรวจ
-                            </h3>
-                        </div>
-                        <div id="modal-list"></div>
-                        <div class="card-body">
-                            <div class="col-md-12">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-end">
-                                        <a href="{{ route('survey.index') }}?id={{ Auth::user()->factory }}"
-                                            class="btn btn-success mb-3"><i class="fas fa-plus"></i> เพิ่มเลย</a>
-                                    </div>
-                                    <div style="max-height:500px;" class="overflow-auto d-block">
-                                        <table class="table table-bordered ">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>วันที่บันทึก</th>
-                                                    <th>เมนู</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="survey-table">
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <!-- /.card -->
-                            </div>
-
-                        </div>
-                        <!-- /.col -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-edit"></i>
+                            จัดการข้อมูลแบบสำรวจ
+                        </h3>
                     </div>
-                    <!-- ./row -->
-                </div><!-- /.container-fluid -->
-    </section>
+                    <div id="modal-list"></div>
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ route('survey.index') }}?id={{ Auth::user()->factory }}" class="btn btn-success mb-3"><i class="fas fa-plus"></i> เพิ่มเลย</a>
+                                </div>
+                                <div style="max-height:500px;" class="overflow-auto d-block">
+                                    <table class="table table-bordered " id="survey-table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>วันที่บันทึก</th>
+                                                <th>เมนู</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="survey-table">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+                        </div>
 
-    <script type="text/javascript">
-        const data = [];
-        @foreach ($surveyList as $survey)
-            data.push({
-                id: Number(`{{ $survey->id }}`),
-                data: JSON.parse(`{{ $survey->data }}`.replace(/(&quot\;)/g, "\"")),
-                created_at: new Date(`{{ $survey->created_at }}`),
-                route: "{{ route('manage-survey.destroy', $survey->id) }}",
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- ./row -->
+            </div><!-- /.container-fluid -->
+</section>
 
-            });
-        @endforeach
-    </script>
+<script type="text/javascript">
+    const data = [];
+    @foreach($surveyList as $survey)
+    data.push({
+        id: Number(`{{ $survey->id }}`),
+        data: JSON.parse(`{{ $survey->data }}`.replace(/(&quot\;)/g, "\"")),
+        created_at: new Date(`{{ $survey->created_at }}`),
+        route: "{{ route('manage-survey.destroy', $survey->id) }}",
+
+    });
+    @endforeach
+</script>
 @endsection
 
 @section('script')
-    <!-- sweetalert -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @if (\Session::has('message'))
-        <script>
-            Swal.fire(
-                'สำเร็จ',
-                '{!! \Session::get('message') !!}',
-                '{!! \Session::get('message-status') !!}',
-            )
-        </script>
-    @endif
+<!-- sweetalert -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (\Session::has('message'))
+<script>
+    Swal.fire(
+        'สำเร็จ',
+        '{!! \Session::get('
+        message ') !!}',
+        '{!! \Session::get('
+        message - status ') !!}',
+    )
+</script>
+@endif
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.0.0/luxon.min.js"
-        integrity="sha512-5OY/m4qoNRTzriZLTMtfojLGcf8oIchTuLWTsLpxR7Iog995oy9DaPdP2x6r1I8kqWa9xzTZVSSwim/XVVAkYg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript">
-        const table = $("#survey-table");
-        const modal = $('#modal-list')
-        const {
-            DateTime
-        } = luxon;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.0.0/luxon.min.js" integrity="sha512-5OY/m4qoNRTzriZLTMtfojLGcf8oIchTuLWTsLpxR7Iog995oy9DaPdP2x6r1I8kqWa9xzTZVSSwim/XVVAkYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    const table = $("#survey-table");
+    const modal = $('#modal-list')
+    const {
+        DateTime
+    } = luxon;
 
-        function del(e, form) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $(form).submit();
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
-                }
-            })
-        }
-        data.forEach((item, idx) => {
-            const dateTime =  DateTime.fromISO(item.created_at.toISOString())
-            modal.append(`
+    function del(e, form) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(form).submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    }
+    data.forEach((item, idx) => {
+        const dateTime = DateTime.fromISO(item.created_at.toISOString())
+        modal.append(`
             <div class="modal fade" id="survey-${idx}" tabindex="-1" aria-labelledby="survey-${idx}-label" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -461,7 +459,7 @@
                 </div>
             </div>
             `);
-            table.append(`
+        table.append(`
                 <tr>
                     <td>${idx+1}</td>
                         <td>${dateTime.setLocale('th').toFormat("วันที่ dd MMMM yyyy (เวลา HH:mm:ss)")}</td>
@@ -478,6 +476,11 @@
                          </form>
                     </td>
                 </tr>`)
-        })
-    </script>
+    })
+</script>
+<script>
+    $(document).ready(function() {
+        $('#survey-table').DataTable();
+    });
+</script>
 @endsection
