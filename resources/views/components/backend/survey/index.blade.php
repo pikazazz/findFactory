@@ -21,7 +21,7 @@
                                     <a href="{{ route('survey.index') }}?id={{ Auth::user()->factory }}" class="btn btn-success mb-3"><i class="fas fa-plus"></i> เพิ่มเลย</a>
                                 </div>
                                 <div style="max-height:500px;" class="overflow-auto d-block">
-                                    <table class="table table-bordered " id="survey-table">
+                                    <table class="table table-bordered " id="example1">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -73,16 +73,14 @@
 </script>
 @endif
 <script>
-    $(document).ready(function() {
-        $('#survey-table').DataTable();
-    });
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.0.0/luxon.min.js" integrity="sha512-5OY/m4qoNRTzriZLTMtfojLGcf8oIchTuLWTsLpxR7Iog995oy9DaPdP2x6r1I8kqWa9xzTZVSSwim/XVVAkYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
-    const table = $("#survey-table");
+    const table = $("#example1");
     const modal = $('#modal-list')
     const {
         DateTime
