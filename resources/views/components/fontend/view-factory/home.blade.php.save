@@ -1,11 +1,12 @@
 @extends('layouts.home')
 
 @section('content')
-	<div style="background:#ffffff44;position:fixed;width:100vw;height:100vh;z-index:100;" id="loading"></div>
-    <div class="section content full-height ">
+	<div style="background:#fffff44;position:absolute;width:100vw;height:100vh;"></div>
+    <div class="section content full-height 
         <div class="section">
             <div class="container ">
                 <div class="row">
+
                     <div class="col-6">
                         <label>ค้นหาด้วยชื่อ</label> <br>
                         <div class="input-group">
@@ -42,7 +43,6 @@
             </div>
         </div>
     @endsection
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
@@ -53,33 +53,25 @@
 
         response = []
 	loaded = false;
-        $(document).ready(function() {
+      //  $(document).ready(function() {
             $("#input").val("{{$keyword}}")
-        	console.log("ready...");
-
-//	axios.get(`fillterFactory`,{params:{text:''}}).then(res=>{
-//
-//loaded = true;response = res;console.log("complete");});
-	    $.ajax({
+            $.ajax({
                 type: 'get',
                 url: `/api/fillterFactory`,
-               data: {
+                data: {
                     text: '',
-              }, //Add request data
-            dataType: 'json',
-          success: (res) => {
-           response = res;
-	loaded = true;
-      },
-    complete:()=>{
-		$('#loading').remove()
-          fillterCategory({value:"{{$keyword}}"});
-console.log('complete');
-              }
-        })
+                }, //Add request data
+                dataType: 'json',
+                success: (res) => {
+                    response = res;
+			loaded = true;
+                },
+                complete:()=>{
+                    fillterCategory({value:"{{$keyword}}"});
+                }
+            })
 
-      
-  });
+        //});
 
         function fillterCategory(text,name) {
 	    console.log(loaded)

@@ -16,7 +16,7 @@ use App\Http\Controllers\backend\publicrelationsController;
 use App\Http\Controllers\backend\UserProfileController;
 use App\Http\Controllers\SurveyController;
 
-use App\Models\Factory;
+use App\Models\factory;
 use App\Models\infomation;
 use App\Models\Survey;
 use App\Models\User;
@@ -33,7 +33,32 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::GET('fillterFactory', function (Request $request) {
 
+ //   $result = DB::table('factory')
+        $result = factory::where(function ($query) use ($request) {
+            $query->Where('fac_name', 'LIKE', '%' . $request->text . '%');
+        })
+        ->orWhere(function ($query) use ($request) {
+            $query->Where('fac_category', 'LIKE', '%' . $request->text . '%');
+        })->get();
+
+  //  $Map  = new Map();
+        $Map = (object)[];
+        $Data = [];
+  //$Data = new ArrayObject();
+    $factory = factory::get();
+//    foreach ($factory as $Factory) {
+  //      $Map->name = $Factory->fac_name;
+    //    $Map->lat = $Factory->fac_lat;
+      //  $Map->lon = $Factory->fac_lon;
+
+    //    $Data->append(["name" => $Factory->fac_name, "lat" => $Factory->fac_lat, "lon" => $Factory->fac_lon]);
+    //}
+
+    // return $result;
+    return ['factory' => $result,'map'=>$factory];
+});
 Route::get('/', function () {
     return view('welcome');
 });

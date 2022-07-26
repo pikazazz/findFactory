@@ -83,7 +83,7 @@
                                             <td><?= $employeeS->email ?></td>
                                             <td><?= $employeeS->tel ?></td>
                                             <td><?= $employeeS->fac_category ?></td>
-                                            <td> {{ $employeeS->role === '0' ? 'ผู้ใช้งานทั่วไป' : 'ผู้ดูแลระบบ' }}</td>
+                                            <td> {{ $employeeS->role === '0' ? 'ผู้ดูแลระบบ' : 'ผู้ใช้งานทั่วไป' }}</td>
                                             <td>
                                                 <a type="button"
                                                     href="{{ route('manage-employee.show', $employeeS->id . ',view') }}"
@@ -163,8 +163,8 @@
                                         <label>ระดับผู้ใช้งาน</label>
                                         <select class="form-control select2" name="role" style="width: 100%;" required>
 
-                                            <option value="0">ผู้ใช้งานทั่วไป</option>
-                                            <option value="1">ผู้ดูแลระบบ</option>
+                                            <option value="1">ผู้ใช้งานทั่วไป</option>
+                                            <option value="0">ผู้ดูแลระบบ</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

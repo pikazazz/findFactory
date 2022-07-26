@@ -21,7 +21,7 @@
                                     <a href="{{ route('survey.index') }}?id={{ Auth::user()->factory }}" class="btn btn-success mb-3"><i class="fas fa-plus"></i> เพิ่มเลย</a>
                                 </div>
                                 <div style="max-height:500px;" class="overflow-auto d-block">
-                                    <table class="table table-bordered " id="survey-table">
+                                    <table class="table table-bordered " id="example1">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -29,7 +29,7 @@
                                                 <th>เมนู</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="survey-table">
                                         </tbody>
                                     </table>
                                 </div>
@@ -73,9 +73,7 @@
 </script>
 @endif
 <script>
-    $(document).ready(function() {
-        $('#survey-table').DataTable();
-    });
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>

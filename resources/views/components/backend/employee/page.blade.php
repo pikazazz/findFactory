@@ -82,10 +82,10 @@
                                                             style="width: 100%;"
                                                             {{ $type === 'edit' ? 'required' : 'disabled' }}>
                                                             <option value="{{ $employee->role }}">
-                                                                {{ $employee->role === '0' ? 'ผู้ใช้งานทั่วไป' : 'ผู้ดูแลระบบ' }}
+                                                                {{ $employee->role === '0' ? 'ผู้ดูแลระบบ' : 'ผู้ใช้งานทั่วไป' }}
                                                             </option>
-                                                            <option value="0">ผู้ใช้งานทั่วไป</option>
-                                                            <option value="1">ผู้ดูแลระบบ</option>
+                                                            <option value="0">ผู้ดูแลระบบ</option>
+                                                            <option value="1">ผู้ใช้งานทั่วไป</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
