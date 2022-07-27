@@ -60,7 +60,7 @@ Route::GET('fillterFactory', function (Request $request) {
     return ['factory' => $result, 'map' => $factory];
 });
 Route::get('/', function () {
-    $infos = infomation::join('factory', 'factory.id', '=', 'publicrelations.info_factory')->select("publicrelations.created_at", 'publicrelations.img', 'publicrelations.info_title', 'factory.fac_name')->take(6)->orderBy('publicrelations.created_at', 'desc')->get();
+    $infos = infomation::join('factory', 'factory.id', '=', 'publicrelations.info_factory')->select("publicrelations.id","publicrelations.created_at", 'publicrelations.img', 'publicrelations.info_title', 'factory.fac_name')->take(6)->orderBy('publicrelations.created_at', 'desc')->get();
     return view('welcome', ['infos' => $infos]);
 });
 

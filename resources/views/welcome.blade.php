@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="d-flex justify-content-end">
-                                        <a href="#">ดูเพิ่มเติม <i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{route('infomation')}}?id={{$info->id}}">ดูเพิ่มเติม <i class="fas fa-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>
