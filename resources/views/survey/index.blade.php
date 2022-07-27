@@ -15,6 +15,7 @@
         window.postUrl = "{{ route('survey.store') }}"
         window.csrf_token = "{{ csrf_token() }}"
         window.factory = "{{$factory->fac_name}}"
+        window.base = "{{ route('manage-survey.index') }}";
     </script>
     <script src="{{ asset('/resources/js/app.js') }}"></script>
 

@@ -7240,10 +7240,20 @@ __webpack_require__.r(__webpack_exports__);
 function SurveyPage() {
   var _window$factory;
 
-  console.log(window.factory);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
     className: "container survey py-5 bg-white shadow",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
+      className: "d-flex justify-content-end",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("button", {
+        className: "btn btn-success",
+        onClick: function onClick() {
+          return window.location.href = window.base;
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("i", {
+          className: "fas fa-arrow-left me-2"
+        }), "\u0E01\u0E25\u0E31\u0E1A"]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("h2", {
       children: "\u0E41\u0E1A\u0E1A\u0E2A\u0E33\u0E23\u0E27\u0E08\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E40\u0E15\u0E34\u0E21\u0E02\u0E2D\u0E07\u0E2A\u0E16\u0E32\u0E19\u0E1B\u0E23\u0E30\u0E01\u0E2D\u0E1A\u0E01\u0E32\u0E23\u0E2D\u0E38\u0E15\u0E2A\u0E32\u0E2B\u0E01\u0E23\u0E23\u0E21\u0E1E\u0E25\u0E32\u0E2A\u0E15\u0E34\u0E01"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
       className: "card pt-3 px-3 text-danger my-4 survey-text-blod",
@@ -7270,7 +7280,7 @@ function SurveyPage() {
           children: "\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E42\u0E23\u0E07\u0E07\u0E32\u0E19"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
           className: "px-3",
-          children: ["\u0E0A\u0E37\u0E48\u0E2D\u0E42\u0E23\u0E07\u0E07\u0E32\u0E19 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("strong", {
+          children: ["\u0E0A\u0E37\u0E48\u0E2D\u0E42\u0E23\u0E07\u0E07\u0E32\u0E19", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("strong", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("u", {
               children: (_window$factory = window.factory) !== null && _window$factory !== void 0 ? _window$factory : ""
             })

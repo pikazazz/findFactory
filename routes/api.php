@@ -16,48 +16,8 @@ use Illuminate\Support\Facades\Cache;
 |
 */
 
-//class Map
-//{
-//    public $name;
-//    public $lat;
- //   public $lon;
-//}
-
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
-
 Route::GET('fillterFactory', function (Request $request) {
-$seconds = 3600;
-//$result = [];
- //   $result = DB::table('factory')
-	$result = Cache::remember('result', $seconds, function () use ($request) {
-    		return factory::Where('fac_name', 'LIKE', '%' . $request->text . '%')->orWhere('fac_category', 'LIKE', '%' . $request->text . '%')->get(); 
-	});
-//	$result = factory::where(function ($query) use ($request) {
-  //          $query->Where('fac_name', 'LIKE', '%' . $request->text . '%');
-    //    })
-     //   ->orWhere(function ($query) use ($request) {
-       //     $query->Where('fac_category', 'LIKE', '%' . $request->text . '%');
-        //})->get();
-  //  $Map  = new Map();
-	//$Map = (object)[];  
-	//$Data = [];
-	$factory = Cache::remember('factory',$seconds,function(){
-		return factory::get();
-	});
-  //$Data = new ArrayObject();
-    //$factory = factory::get();
-//    foreach ($factory as $Factory) {
-  //      $Map->name = $Factory->fac_name;
-    //    $Map->lat = $Factory->fac_lat;
-      //  $Map->lon = $Factory->fac_lon;
-
-    //    $Data->append(["name" => $Factory->fac_name, "lat" => $Factory->fac_lat, "lon" => $Factory->fac_lon]);
-    //}
-//return [];
-    // return $result;
-   return ['factory' => $result,'map'=>$factory];
+  $result = factory::Where('fac_name', 'LIKE', '%' . $request->text . '%')->orWhere('fac_category', 'LIKE', '%' . $request->text . '%')->get();
+  $factory =  factory::get();
+  return ['factory' => $result, 'map' => $factory];
 });
- 

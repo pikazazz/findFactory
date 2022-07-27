@@ -35,32 +35,33 @@ use Illuminate\Support\Facades\Auth;
 
 Route::GET('fillterFactory', function (Request $request) {
 
- //   $result = DB::table('factory')
-        $result = factory::where(function ($query) use ($request) {
-            $query->Where('fac_name', 'LIKE', '%' . $request->text . '%');
-        })
+    //   $result = DB::table('factory')
+    $result = factory::where(function ($query) use ($request) {
+        $query->Where('fac_name', 'LIKE', '%' . $request->text . '%');
+    })
         ->orWhere(function ($query) use ($request) {
             $query->Where('fac_category', 'LIKE', '%' . $request->text . '%');
         })->get();
 
-  //  $Map  = new Map();
-        $Map = (object)[];
-        $Data = [];
-  //$Data = new ArrayObject();
+    //  $Map  = new Map();
+    $Map = (object)[];
+    $Data = [];
+    //$Data = new ArrayObject();
     $factory = factory::get();
-//    foreach ($factory as $Factory) {
-  //      $Map->name = $Factory->fac_name;
+    //    foreach ($factory as $Factory) {
+    //      $Map->name = $Factory->fac_name;
     //    $Map->lat = $Factory->fac_lat;
-      //  $Map->lon = $Factory->fac_lon;
+    //  $Map->lon = $Factory->fac_lon;
 
     //    $Data->append(["name" => $Factory->fac_name, "lat" => $Factory->fac_lat, "lon" => $Factory->fac_lon]);
     //}
 
     // return $result;
-    return ['factory' => $result,'map'=>$factory];
+    return ['factory' => $result, 'map' => $factory];
 });
 Route::get('/', function () {
-    return view('welcome');
+    $infos = infomation::join('factory', 'factory.id', '=', 'publicrelations.info_factory')->select("publicrelations.created_at", 'publicrelations.img', 'publicrelations.info_title', 'factory.fac_name')->take(6)->orderBy('publicrelations.created_at', 'desc')->get();
+    return view('welcome', ['infos' => $infos]);
 });
 
 Route::get('/switch', function () {

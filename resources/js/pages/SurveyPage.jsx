@@ -12,9 +12,16 @@ import WasteWater from "../components/questions/watse-water";
 import MakeBenefit from "../components/questions/make-benefit";
 import PlasticProcessed from "../components/questions/plastic-processed";
 function SurveyPage() {
-    console.log(window.factory)
     return (
         <div className="container survey py-5 bg-white shadow">
+            <div className="d-flex justify-content-end">
+                <button
+                    className="btn btn-success"
+                    onClick={() => window.location.href = window.base}
+                >
+                    <i className="fas fa-arrow-left me-2"></i>กลับ
+                </button>
+            </div>
             <h2>แบบสำรวจข้อมูลเพิ่มเติมของสถานประกอบการอุตสาหกรรมพลาสติก</h2>
             <div className="card pt-3 px-3 text-danger my-4 survey-text-blod">
                 <span>**คำชี้แจง**</span>
@@ -36,9 +43,12 @@ function SurveyPage() {
                         ข้อมูลโรงงาน
                     </legend>
                     <div className="px-3">
-                        ชื่อโรงงาน <strong><u>{window.factory ?? ""}</u></strong>
+                        ชื่อโรงงาน{" "}
+                        <strong>
+                            <u>{window.factory ?? ""}</u>
+                        </strong>
                         <br />
-                        <br/>
+                        <br />
                         {/* อัตราการผลิต 80 ตัน/เดือน
                         <br /> */}
                         <div className="d-flex align-items-md-center flex-md-row flex-column gap-2">
