@@ -39,15 +39,15 @@ a {
     z-index: 1;
 }
 
-.card:hover {
+.card:hover .image-container{
     cursor: pointer;
 }
-.card:hover img {
+.card:hover .image-container img {
     transform: scale(1.5);
     transition: all 0.4s;
 }
 
-.card:hover .text{
+.card:hover .image-container .text{
     opacity: 1;
 }
 body {
