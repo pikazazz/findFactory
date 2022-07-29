@@ -6,6 +6,11 @@
 .dark .card {
     background-color: #90a4ae53;
 }
+@media screen and (max-width: 874px) {
+    .content {
+        margin-top: 200px;
+    }
+}
 
 a {
     color: inherit;
@@ -30,7 +35,7 @@ a {
     align-items: center;
     text-align: center;
     opacity: 0;
-    transition: ease-in .4s;
+    transition: ease-in 0.4s;
 }
 
 .image-container img {
@@ -39,7 +44,7 @@ a {
     z-index: 1;
 }
 
-.card:hover .image-container{
+.card:hover .image-container {
     cursor: pointer;
 }
 .card:hover .image-container img {
@@ -47,7 +52,7 @@ a {
     transition: all 0.4s;
 }
 
-.card:hover .image-container .text{
+.card:hover .image-container .text {
     opacity: 1;
 }
 body {

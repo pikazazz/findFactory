@@ -23,9 +23,11 @@
 <body class="hero-anime">
     <style src="{{ asset('css/home.css') }}"></style>
     @include('include.navbar')
-    <div class="section full-height">
+    <div class="section full-height content">
         <div class="absolute-center">
-            <div class="section">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="section">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -46,39 +48,49 @@
                     </div>
                 </div>
             </div>
-            <div class="section mt-2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="switch">
-                                <div id="circle"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section mt-2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="switch">
+                                        <div id="circle"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="section mt-5">
-                <div class="container">
-                    <div class="row justify-content-start">
-                        @foreach ($infos as $info)
-                        <div class="col-md-3">
-                            <div class="card h-100">
-                                <div class="image-container"><img src="{{$info->img}}" alt="fac-logo">
-                                    <div class="text">{{$info->fac_name}}</div>
-                                </div>
-                                <div class="card-body">
-                                    <h6>{{$info->info_title}}</h6>
-                                    {{$info->created_at}}
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-flex justify-content-end">
-                                        <a href="{{route('infomation')}}?id={{$info->id}}">ดูเพิ่มเติม <i class="fas fa-arrow-right"></i></a>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section mt-5">
+                        <div class="container">
+                            <div class="row justify-content-start ">
+                                @foreach ($infos as $info)
+                                <div class="col-md-3 mt-2">
+                                    <div class="card h-100">
+                                        <div class="image-container"><img src="{{$info->img}}" alt="fac-logo">
+                                            <div class="text">{{$info->fac_name}}</div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h6>{{$info->info_title}}</h6>
+                                            {{$info->created_at}}
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="d-flex justify-content-end">
+                                                <a href="{{route('infomation')}}?id={{$info->id}}">ดูเพิ่มเติม <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                @endforeach
+
                             </div>
                         </div>
-                        @endforeach
-
                     </div>
                 </div>
             </div>
