@@ -35,32 +35,17 @@ use Illuminate\Support\Facades\Auth;
 
 Route::GET('fillterFactory', function (Request $request) {
 
-    //   $result = DB::table('factory')
     $result = factory::where(function ($query) use ($request) {
         $query->Where('fac_name', 'LIKE', '%' . $request->text . '%');
     })
         ->orWhere(function ($query) use ($request) {
             $query->Where('fac_category', 'LIKE', '%' . $request->text . '%');
         })->get();
-
-    //  $Map  = new Map();
-    $Map = (object)[];
-    $Data = [];
-    //$Data = new ArrayObject();
     $factory = factory::get();
-    //    foreach ($factory as $Factory) {
-    //      $Map->name = $Factory->fac_name;
-    //    $Map->lat = $Factory->fac_lat;
-    //  $Map->lon = $Factory->fac_lon;
-
-    //    $Data->append(["name" => $Factory->fac_name, "lat" => $Factory->fac_lat, "lon" => $Factory->fac_lon]);
-    //}
-
-    // return $result;
     return ['factory' => $result, 'map' => $factory];
 });
 Route::get('/', function () {
-    $infos = infomation::join('factory', 'factory.id', '=', 'publicrelations.info_factory')->select("publicrelations.id","publicrelations.created_at", 'publicrelations.img', 'publicrelations.info_title', 'factory.fac_name')->take(6)->orderBy('publicrelations.created_at', 'desc')->get();
+    $infos = infomation::join('factory', 'factory.id', '=', 'publicrelations.info_factory')->select("publicrelations.id", "publicrelations.created_at", 'publicrelations.img', 'publicrelations.info_title', 'factory.fac_name')->take(6)->orderBy('publicrelations.created_at', 'desc')->get();
     return view('welcome', ['infos' => $infos]);
 });
 
@@ -71,7 +56,9 @@ Route::get('/switch', function () {
         return redirect()->route('manage-survey.index');
     }
 });
-
+Route::get('/infomation-list', function () {
+    return view('infomation-list');
+})->name('infomation-list');
 Route::group(['middleware' => ['checkrole:0']], function () {
     Route::resource('manage-employee', employeeController::class);
     Route::put('manage-employee/m/{id}', [factoryController::class, 'updateFac'])->name('manage-factory.updateFac');

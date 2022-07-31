@@ -8,7 +8,7 @@
 }
 @media screen and (max-width: 874px) {
     .content {
-        margin-top: 200px;
+        top: 100px;
     }
 }
 

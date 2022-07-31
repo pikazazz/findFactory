@@ -22,8 +22,9 @@
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                 <a class="nav-link" href="{{ route('factory.index') }}">โรงงานทั้งหมด</a>
                             </li>
-                            <li></li>
-                            <li></li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="{{ route('infomation-list') }}">ข้อมูลประชาสัมพันธ์ทั้งหมด</a>
+                            </li>
                         </ul>
                     </div>
 

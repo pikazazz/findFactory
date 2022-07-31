@@ -90,6 +90,9 @@
                                 @endforeach
 
                             </div>
+                            <div class="row justify-content-center mt-3">
+                                <a href="{{route('infomation-list')}}" class="btn btn-outline-secondary">ดูทั้งหมด</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,9 +105,9 @@
     <!-- Link to page
   ================================================== -->
 
-    <a href="https://front.codes/" class="logo" target="_blank">
+    <!-- <a href="https://front.codes/" class="logo" target="_blank">
         <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-    </a>
+    </a> -->
 
 </body>
 
