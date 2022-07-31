@@ -44,6 +44,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.0.0/luxon.min.js" integrity="sha512-5OY/m4qoNRTzriZLTMtfojLGcf8oIchTuLWTsLpxR7Iog995oy9DaPdP2x6r1I8kqWa9xzTZVSSwim/XVVAkYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         response = []
         loaded = false;
@@ -79,7 +81,12 @@
             } else {
                 $("#select").val("")
             }
+
             response.filter(i => _.includes(name ? i.fac_category : i.info_title, text.value)).forEach((item) => {
+                const {
+                    DateTime
+                } = luxon;
+                const dateTime = DateTime.fromISO(new Date(item.created_at).toISOString())
                 card_text += `<div class="col-md-3 mt-2">
                             <div class="card h-100">
                                 <div class="image-container"><img src="${item.img}" alt="fac-logo">
@@ -87,7 +94,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h6>${item.info_title}</h6>
-                                    ${item.created_at}
+                                    ${dateTime.toFormat("วันที่ dd MMMM yyyy")}
                                 </div>
                                 <div class="card-footer">
                                     <div class="d-flex justify-content-end">
